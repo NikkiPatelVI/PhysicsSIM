@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid Dynamics — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<nav>
+  <span class="logo"><a href="../../../index.html" style="color:inherit;text-decoration:none;">Nikki<span>Physics</span></a></span>
+  <ul class="nav-links">
+    <li><a href="../../../index.html">Home</a></li>
+    <li><a href="../index.html" class="active">AP Physics</a></li>
+  </ul>
+</nav>
+
+<main class="container page">
+
+  <div class="breadcrumb">
+    <a href="../../../index.html">Home</a>
+    <span>›</span>
+    <a href="../index.html">AP Physics 2</a>
+    <span>›</span>
+    <span>Fluid Dynamics</span>
+  </div>
+
+  <div style="display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+    <h1 class="section-title" style="margin-bottom:0;">Fluid Dynamics</h1>
+    <span class="card-tag tag-blue">Unit 1</span>
+  </div>
+
+  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;">
+    <div class="tabs" style="margin-bottom:0; border-bottom:none;">
+      <button class="tab-btn active" onclick="switchTab('cheatsheet', this)">Cheatsheet</button>
+      <button class="tab-btn" onclick="switchTab('studyguide', this)">Study Guide</button>
+      <button class="tab-btn" onclick="switchTab('simulation', this)">Simulation</button>
+    </div>
+    <button class="print-btn" id="printBtn" onclick="printCheatsheet()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Cheatsheet
+    </button>
+  </div>
+  <div style="border-bottom:2px solid var(--border); margin-bottom:2rem;"></div>
+
+  <!-- shown only when printing -->
+  <div class="print-header" style="display:none;">
+    <div>
+      <h1>Fluid Dynamics — Formula Cheatsheet</h1>
+      <p>AP Physics 2 · Unit 1</p>
+    </div>
+    <p>NikkiPhysics</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CHEATSHEET
+  ══════════════════════════════════════════ -->
+  <div id="tab-cheatsheet" class="tab-panel active">
+
+    <div class="study-section">
+      <h3>Fluid Properties</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Density</div>
+          <div class="formula-eq">ρ = m / V</div>
+          <div class="formula-desc">Mass per unit volume. For water, ρ ≈ 1000 kg/m³.</div>
+          <div class="formula-vars">
+            <span>ρ — density (kg/m³)</span>
+            <span>m — mass (kg)</span>
+            <span>V — volume (m³)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Pressure</div>
+          <div class="formula-eq">P = F / A</div>
+          <div class="formula-desc">Force per unit area. Pressure acts equally in all directions in a static fluid.</div>
+          <div class="formula-vars">
+            <span>P — pressure (Pa = N/m²)</span>
+            <span>F — force (N)</span>
+            <span>A — area (m²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Gauge Pressure / Hydrostatic Pressure</div>
+          <div class="formula-eq">P = P₀ + ρgh</div>
+          <div class="formula-desc">Pressure at depth h below the surface. P₀ is the pressure at the surface (often atmospheric, ~101 325 Pa).</div>
+          <div class="formula-vars">
+            <span>P₀ — surface pressure (Pa)</span>
+            <span>ρ — fluid density (kg/m³)</span>
+            <span>g — 9.8 m/s²</span>
+            <span>h — depth below surface (m)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Pascal's &amp; Archimedes' Principles</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Pascal's Principle</div>
+          <div class="formula-eq">F₁/A₁ = F₂/A₂</div>
+          <div class="formula-desc">Pressure applied to an enclosed fluid transmits equally throughout. Basis of hydraulic systems.</div>
+          <div class="formula-vars">
+            <span>F₁, F₂ — input/output forces (N)</span>
+            <span>A₁, A₂ — piston areas (m²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Buoyant Force (Archimedes)</div>
+          <div class="formula-eq">F_b = ρ_f · V_sub · g</div>
+          <div class="formula-desc">Upward force on a submerged/floating object equals the weight of fluid displaced.</div>
+          <div class="formula-vars">
+            <span>F_b — buoyant force (N)</span>
+            <span>ρ_f — fluid density (kg/m³)</span>
+            <span>V_sub — submerged volume (m³)</span>
+            <span>g — 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Floating Condition</div>
+          <div class="formula-eq">ρ_obj / ρ_f = V_sub / V_obj</div>
+          <div class="formula-desc">Fraction of object submerged equals the ratio of densities. Object floats when ρ_obj &lt; ρ_f.</div>
+          <div class="formula-vars">
+            <span>ρ_obj — object density (kg/m³)</span>
+            <span>ρ_f — fluid density (kg/m³)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Fluid Flow</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Volume Flow Rate</div>
+          <div class="formula-eq">Q = A · v</div>
+          <div class="formula-desc">Volume of fluid passing a cross-section per second. Units: m³/s.</div>
+          <div class="formula-vars">
+            <span>Q — flow rate (m³/s)</span>
+            <span>A — cross-sectional area (m²)</span>
+            <span>v — fluid speed (m/s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Continuity Equation</div>
+          <div class="formula-eq">A₁v₁ = A₂v₂</div>
+          <div class="formula-desc">For an incompressible fluid in a pipe, flow rate is constant. Smaller area → faster speed.</div>
+          <div class="formula-vars">
+            <span>A₁, A₂ — areas at points 1, 2 (m²)</span>
+            <span>v₁, v₂ — speeds at points 1, 2 (m/s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Bernoulli's Equation</div>
+          <div class="formula-eq">P + ½ρv² + ρgh = const</div>
+          <div class="formula-desc">Energy conservation for ideal fluid flow. Higher speed → lower pressure (and vice versa).</div>
+          <div class="formula-vars">
+            <span>P — pressure (Pa)</span>
+            <span>½ρv² — kinetic energy density (Pa)</span>
+            <span>ρgh — gravitational PE density (Pa)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Bernoulli (two points)</div>
+          <div class="formula-eq">P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂</div>
+          <div class="formula-desc">Apply between any two points along a streamline in steady, incompressible, non-viscous flow.</div>
+          <div class="formula-vars">
+            <span>Subscripts 1, 2 — two points on streamline</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Torricelli's Theorem</div>
+          <div class="formula-eq">v = √(2gh)</div>
+          <div class="formula-desc">Speed of fluid exiting a hole at depth h below the open surface. Derived from Bernoulli with v_top ≈ 0.</div>
+          <div class="formula-vars">
+            <span>v — exit speed (m/s)</span>
+            <span>h — depth of hole below surface (m)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Quick Reference: Units &amp; Constants</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Key Values</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (use 10 for quick estimates)<br/>
+            ρ_water = 1000 kg/m³<br/>
+            ρ_air ≈ 1.2 kg/m³<br/>
+            P_atm = 101 325 Pa ≈ 1.01 × 10⁵ Pa<br/>
+            1 atm = 101 325 Pa = 760 mmHg
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">SI Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Pressure: Pa = N/m² = kg/(m·s²)<br/>
+            Density: kg/m³<br/>
+            Flow rate: m³/s<br/>
+            Force: N = kg·m/s²<br/>
+            Energy density: J/m³ = Pa
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       STUDY GUIDE
+  ══════════════════════════════════════════ -->
+  <div id="tab-studyguide" class="tab-panel">
+
+    <div class="study-section">
+      <h3>What AP Physics 2 Actually Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Fluid dynamics questions are heavily conceptual — qualitative reasoning about pressure, flow, and buoyancy usually earns as many points as calculation. Don't just memorize formulas; know what each term means physically.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — Pressure increases with depth</h4>
+        <p>P = P₀ + ρgh is linear in h. Two points at the same depth in a connected fluid are at the same pressure — even if the containers have different shapes. This is why a U-tube manometer works.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — Continuity means speed and area trade off</h4>
+        <p>A₁v₁ = A₂v₂ is conservation of mass for incompressible flow. The fluid doesn't pile up anywhere. A narrower pipe → faster flow. A wider pipe → slower flow. Sketch the pipe and label what's bigger/smaller first.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Bernoulli is energy conservation</h4>
+        <p>P + ½ρv² + ρgh = constant is just conservation of energy per unit volume. If speed goes up (kinetic energy density up), pressure must go down. This explains lift on a wing, flow in a Venturi meter, and why a shower curtain blows inward.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 4 — Buoyancy depends on displaced volume, not object mass</h4>
+        <p>F_b = ρ_fluid · V_displaced · g. The object's weight doesn't appear in the buoyant force formula — only the volume of fluid it displaces matters. A hollow steel ball and a solid plastic ball of the same outer volume experience the same buoyant force.</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Common AP Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1</strong>
+        Confusing absolute pressure with gauge pressure. Gauge pressure = P − P_atm. A tire gauge reads gauge pressure. Bernoulli's equation uses absolute pressure.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2</strong>
+        Applying Bernoulli where it doesn't apply. Bernoulli requires: steady flow, incompressible fluid, non-viscous fluid, along a single streamline. Turbulent flow, viscous fluids (honey), and compressible flow (gas at high speed) violate these.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3</strong>
+        Thinking a heavier object sinks faster. Objects sink or float based on density comparison, not mass alone. A massive cruise ship floats; a small pebble sinks. Compare ρ_obj vs ρ_fluid.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4</strong>
+        Forgetting that pressure is a scalar. It acts in all directions. Don't apply a direction to pressure itself — only to the force it produces (F = PA, perpendicular to a surface).
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Problem-Solving Frameworks</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">Buoyancy Problems</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Draw a free-body diagram</strong> — weight (mg down) and buoyant force (F_b up). Add tension or normal force if needed.</li>
+          <li><strong>Identify V_displaced</strong> — if fully submerged, V_displaced = V_object. If floating, V_displaced &lt; V_object and you'll need the floating condition.</li>
+          <li><strong>Apply F_b = ρ_fluid · V_displaced · g</strong> — use the fluid's density, not the object's.</li>
+          <li><strong>Apply Newton's 2nd law</strong> — ΣF = ma. For equilibrium (floating, hovering): ΣF = 0.</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Bernoulli / Pipe Flow Problems</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Choose two points</strong> on the same streamline where you know most variables.</li>
+          <li><strong>Write the full Bernoulli equation</strong> between those two points before canceling terms.</li>
+          <li><strong>Cancel what's equal</strong> — same height? ρgh terms cancel. Same area (wide reservoir)? v ≈ 0 there.</li>
+          <li><strong>Use continuity first</strong> if you need to find a speed — A₁v₁ = A₂v₂ gives you the other speed.</li>
+          <li><strong>Check units</strong> — everything in Bernoulli has units of Pa (N/m²).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Must-Know Conceptual Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Hydraulic Lift</h4>
+        <p>Small force on small piston → same pressure transmitted → large force on large piston. F₂ = F₁ · (A₂/A₁). Work is conserved: the small piston moves farther.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Venturi Effect</h4>
+        <p>Fluid speeds up through a constriction (continuity) → pressure drops (Bernoulli). Used in carburetors, atomizers, and Venturi meters. The narrow section has lower pressure, not higher.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Torricelli's Theorem / Tank Drain</h4>
+        <p>Fluid exits a hole at v = √(2gh). The exit speed equals that of an object in free fall from the same height. The hole's area doesn't affect exit speed (ignoring viscosity).</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Apparent Weight in Fluid</h4>
+        <p>W_apparent = W_actual − F_b = mg − ρ_f · V · g. This is what a scale reads when an object is submerged. A scale under the fluid reads more (reaction to buoyancy).</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>5-Point Exam Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        AP FRQs award partial credit generously. Write the correct formula first, substitute values second, solve third. A correct formula with an arithmetic mistake still earns most of the points.
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>State which principle you're using (Bernoulli, Archimedes, Pascal, Continuity)</li>
+          <li>Show the general equation before substituting</li>
+          <li>Justify any simplifications (e.g., "the reservoir is large so v₁ ≈ 0")</li>
+          <li>Include units in your final answer</li>
+          <li>For qualitative questions: explain the direction of change AND the reason</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SIMULATION (placeholder)
+  ══════════════════════════════════════════ -->
+  <div id="tab-simulation" class="tab-panel">
+    <div style="text-align:center; padding: 4rem 2rem; color: var(--text-muted);">
+      <div style="font-size:3rem; margin-bottom:1rem;">⚗️</div>
+      <h3 style="font-size:1.25rem; font-weight:700; color:var(--text); margin-bottom:.5rem;">Simulation coming soon</h3>
+      <p style="max-width:420px; margin:0 auto;">An interactive p5.js simulation for Bernoulli's principle and pipe flow is in progress. Check back soon.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    Built by Nikki Patel · AP Physics 2
+  </div>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function printCheatsheet() {
+    // switch to cheatsheet tab so @media print picks it up as active
+    const cheatBtn = document.querySelector('.tab-btn');
+    switchTab('cheatsheet', cheatBtn);
+    window.print();
+  }
+</script>
+
+</body>
+</html>
