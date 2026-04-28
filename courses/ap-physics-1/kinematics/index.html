@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinematics — Nikki Patel AP Physics 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Kinematics"></site-breadcrumb>
+
+  <div style="display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+    <h1 class="section-title" style="margin-bottom:0;">Kinematics</h1>
+    <span class="card-tag tag-blue">Unit 1</span>
+  </div>
+
+  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;">
+    <div class="tabs" style="margin-bottom:0; border-bottom:none;">
+      <button class="tab-btn active" onclick="switchTab('cheatsheet', this)">Cheatsheet</button>
+      <button class="tab-btn" onclick="switchTab('studyguide', this)">Study Guide</button>
+      <button class="tab-btn" onclick="switchTab('simulation', this)">Simulation</button>
+    </div>
+    <button class="print-btn" onclick="printCheatsheet()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Cheatsheet
+    </button>
+  </div>
+  <div style="border-bottom:2px solid var(--border); margin-bottom:2rem;"></div>
+
+  <div class="print-header" style="display:none;">
+    <div>
+      <h1>Kinematics — Formula Cheatsheet</h1>
+      <p>AP Physics 1 · Unit 1</p>
+    </div>
+    <p>NikkiPhysics</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       CHEATSHEET
+  ══════════════════════════════════════════ -->
+  <div id="tab-cheatsheet" class="tab-panel active">
+
+    <div class="study-section">
+      <h3>Core Definitions</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Displacement</div>
+          <div class="formula-eq">Δx = x_f − x_i</div>
+          <div class="formula-desc">Change in position — a vector. Direction matters. Not the same as distance traveled.</div>
+          <div class="formula-vars">
+            <span>Δx — displacement (m)</span>
+            <span>x_f — final position (m)</span>
+            <span>x_i — initial position (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Average Velocity</div>
+          <div class="formula-eq">v_avg = Δx / Δt</div>
+          <div class="formula-desc">Displacement divided by time — a vector. Positive or negative depending on direction.</div>
+          <div class="formula-vars">
+            <span>v_avg — average velocity (m/s)</span>
+            <span>Δx — displacement (m)</span>
+            <span>Δt — time interval (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Average Acceleration</div>
+          <div class="formula-eq">a_avg = Δv / Δt</div>
+          <div class="formula-desc">Rate of change of velocity — a vector. An object can accelerate while slowing down.</div>
+          <div class="formula-vars">
+            <span>a_avg — average acceleration (m/s²)</span>
+            <span>Δv — change in velocity (m/s)</span>
+            <span>Δt — time interval (s)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>The Four Kinematic Equations</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Velocity — no displacement</div>
+          <div class="formula-eq">v = v₀ + at</div>
+          <div class="formula-desc">Use when displacement is not needed. Missing variable: Δx.</div>
+          <div class="formula-vars">
+            <span>v — final velocity (m/s)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Displacement — no final velocity</div>
+          <div class="formula-eq">Δx = v₀t + ½at²</div>
+          <div class="formula-desc">Use when final velocity is unknown. Missing variable: v.</div>
+          <div class="formula-vars">
+            <span>Δx — displacement (m)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Velocity squared — no time</div>
+          <div class="formula-eq">v² = v₀² + 2aΔx</div>
+          <div class="formula-desc">Use when time is not given or needed. Missing variable: t.</div>
+          <div class="formula-vars">
+            <span>v — final velocity (m/s)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>Δx — displacement (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Displacement — no acceleration</div>
+          <div class="formula-eq">Δx = ½(v₀ + v)t</div>
+          <div class="formula-desc">Use when acceleration is unknown. Averages initial and final velocity. Missing variable: a.</div>
+          <div class="formula-vars">
+            <span>Δx — displacement (m)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>v — final velocity (m/s)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Free Fall</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Free-Fall Acceleration</div>
+          <div class="formula-eq">a = −g = −9.8 m/s²</div>
+          <div class="formula-desc">Acceleration is always downward. Apply the kinematic equations with a = −9.8 m/s² (if up is positive).</div>
+          <div class="formula-vars">
+            <span>g — gravitational acceleration = 9.8 m/s²</span>
+            <span>Sign depends on chosen positive direction</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Max Height (thrown upward)</div>
+          <div class="formula-eq">h = v₀² / (2g)</div>
+          <div class="formula-desc">At maximum height v = 0. Derived from v² = v₀² − 2gh with v = 0.</div>
+          <div class="formula-vars">
+            <span>h — max height above launch (m)</span>
+            <span>v₀ — initial upward speed (m/s)</span>
+            <span>g — 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Time to Max Height</div>
+          <div class="formula-eq">t_up = v₀ / g</div>
+          <div class="formula-desc">Time up equals time down for symmetric trajectories. Total air time = 2v₀/g.</div>
+          <div class="formula-vars">
+            <span>t_up — time to reach max height (s)</span>
+            <span>v₀ — initial upward speed (m/s)</span>
+            <span>g — 9.8 m/s²</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Projectile Motion</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Horizontal Components</div>
+          <div class="formula-eq">v_x = v₀cosθ &nbsp;·&nbsp; x = v₀cosθ · t</div>
+          <div class="formula-desc">Horizontal velocity is constant — no horizontal acceleration. x grows linearly with time.</div>
+          <div class="formula-vars">
+            <span>v_x — horizontal velocity (m/s, constant)</span>
+            <span>v₀ — launch speed (m/s)</span>
+            <span>θ — launch angle above horizontal</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Vertical Components</div>
+          <div class="formula-eq">v_y = v₀sinθ − gt</div>
+          <div class="formula-desc">Vertical motion is free fall. v_y = 0 at the peak. Use all four kinematic equations vertically.</div>
+          <div class="formula-vars">
+            <span>v_y — vertical velocity (m/s)</span>
+            <span>v₀sinθ — initial vertical speed (m/s)</span>
+            <span>g — 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Range (level ground)</div>
+          <div class="formula-eq">R = v₀²sin(2θ) / g</div>
+          <div class="formula-desc">Maximum range at θ = 45°. Complementary angles (e.g. 30° and 60°) give equal range.</div>
+          <div class="formula-vars">
+            <span>R — horizontal range (m)</span>
+            <span>v₀ — launch speed (m/s)</span>
+            <span>θ — launch angle</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Key Values &amp; Units</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Constants</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (use 10 for quick estimates)<br/>
+            Free fall: a = −9.8 m/s² (up positive)<br/>
+            Speed of light: c = 3 × 10⁸ m/s (not needed here)
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">SI Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Position / displacement: m<br/>
+            Velocity / speed: m/s<br/>
+            Acceleration: m/s²<br/>
+            Time: s
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Scalars vs. Vectors</div>
+          <div class="formula-desc" style="line-height:2;">
+            Vectors (have direction): displacement, velocity, acceleration<br/>
+            Scalars (no direction): distance, speed, time
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       STUDY GUIDE
+  ══════════════════════════════════════════ -->
+  <div id="tab-studyguide" class="tab-panel">
+
+    <div class="study-section">
+      <h3>What the AP Exam Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Kinematics questions split evenly between calculation and conceptual reasoning.
+        Expect motion graphs (position-time, velocity-time, acceleration-time) in multiple-choice
+        and a projectile or free-fall FRQ almost every year.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — Displacement ≠ Distance</h4>
+        <p>Displacement is a vector (direction matters); distance is a scalar (total path length). An object that goes 5 m right and 5 m back has zero displacement but 10 m of distance. AP questions exploit this distinction constantly.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — Acceleration ≠ Speeding Up</h4>
+        <p>Acceleration means velocity is changing — that includes slowing down, changing direction, or both. An object with constant speed moving in a circle is accelerating. An object with velocity and acceleration pointing in opposite directions is decelerating.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Kinematic Equations Require Constant Acceleration</h4>
+        <p>The four kinematic equations only apply when acceleration is constant throughout the interval. For free fall and projectile motion, a = −g is constant. If acceleration varies, you need graphs or calculus (not tested in AP Physics 1).</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 4 — Projectile Axes Are Independent</h4>
+        <p>Horizontal and vertical motion don't affect each other. Treat them as two separate 1D problems connected only by time. A ball dropped and a ball thrown horizontally from the same height hit the ground at the same time — horizontal speed doesn't affect vertical free fall.</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Reading Motion Graphs</h3>
+
+      <div class="concept-block">
+        <h4>Position-Time (x vs. t)</h4>
+        <ul>
+          <li>Slope = velocity</li>
+          <li>Horizontal line → object at rest</li>
+          <li>Straight line (non-zero slope) → constant velocity</li>
+          <li>Curve → changing velocity (acceleration)</li>
+          <li>Object returns to start when x returns to its initial value</li>
+        </ul>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Velocity-Time (v vs. t)</h4>
+        <ul>
+          <li>Slope = acceleration</li>
+          <li>Area under curve = displacement (not distance)</li>
+          <li>Horizontal line → constant velocity (zero acceleration)</li>
+          <li>Crosses zero → object momentarily at rest, then reverses direction</li>
+          <li>Area above x-axis is positive displacement; below is negative</li>
+        </ul>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Acceleration-Time (a vs. t)</h4>
+        <ul>
+          <li>Horizontal line → constant acceleration (kinematic equations apply)</li>
+          <li>Flat line at zero → constant velocity</li>
+          <li>Area under curve = change in velocity (Δv)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Common Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1 — Sign errors</strong>
+        Always define a positive direction at the start and stick to it. If up is positive, then g = −9.8 m/s², downward velocity is negative, and downward displacement is negative. Mixing signs mid-problem is the #1 kinematics mistake.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2 — "At maximum height" doesn't mean velocity = 0</strong>
+        For a projectile, v_y = 0 at the peak, but v_x is still nonzero. Total velocity at the peak = v_x = v₀cosθ. Only for straight vertical throws is total velocity zero at the peak.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3 — Picking the wrong kinematic equation</strong>
+        Each equation is missing exactly one variable. List what you know and what you need before picking an equation. Don't just grab the first one you remember.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4 — Confusing average velocity with instantaneous velocity</strong>
+        v_avg = Δx/Δt gives the average over an interval. Instantaneous velocity is the slope of the x-t graph at a single point. On the AP exam, "what is the velocity at t = 3 s?" means instantaneous — read the v-t graph directly.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Horizontal acceleration in projectile problems</strong>
+        There is no horizontal acceleration once a projectile is in the air (ignoring air resistance). a_x = 0 always. Only gravity acts vertically.
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Problem-Solving Frameworks</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">1D Kinematics</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Define positive direction</strong> — write it down. Usually up or right is positive.</li>
+          <li><strong>List variables</strong> — write v₀, v, a, Δx, t and fill in what you know. Mark the unknown.</li>
+          <li><strong>Choose the equation</strong> that contains your unknown and all your knowns (the one missing the unused variable).</li>
+          <li><strong>Solve algebraically first</strong>, then substitute numbers. Include units throughout.</li>
+          <li><strong>Check sign and reasonableness</strong> — does the direction make sense? Is the magnitude plausible?</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Projectile Motion</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Split into components</strong> at launch: v_x = v₀cosθ, v_y₀ = v₀sinθ.</li>
+          <li><strong>Horizontal</strong>: a_x = 0, so x = v_x · t. One equation, one unknown (usually x or t).</li>
+          <li><strong>Vertical</strong>: a_y = −g. Apply kinematic equations using v_y₀ and a = −9.8 m/s².</li>
+          <li><strong>Time connects the axes</strong> — solve for t in one axis to use in the other.</li>
+          <li><strong>Final speed</strong>: combine components with v = √(v_x² + v_y²). Direction: θ = arctan(v_y/v_x).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Must-Know Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Ball Thrown Upward from Ground</h4>
+        <p>v₀ upward, a = −g. At peak: v = 0, use v² = v₀² − 2gh. Total air time = 2v₀/g. Lands with the same speed it was launched (symmetric). If launched from a height, it's no longer symmetric — use Δx = v₀t + ½at² for total displacement.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Projectile Off a Cliff</h4>
+        <p>Launched horizontally (v_y₀ = 0) from height h. Vertical: h = ½gt² → t = √(2h/g). Horizontal range: x = v_x · t. Final speed: combine v_x (unchanged) with v_y = gt at impact.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Two Objects Meeting</h4>
+        <p>Set their position equations equal: x₁(t) = x₂(t). Solve for t. Works for chasing problems (car catching up), objects thrown toward each other, or one dropped and one thrown upward simultaneously.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Velocity-Time Graph — Finding Displacement</h4>
+        <p>Displacement = area under v-t curve. For a triangle: ½ · base · height. For a trapezoid: ½(b₁ + b₂) · h. Area below the t-axis counts as negative displacement. Total distance = sum of absolute areas.</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>5-Point FRQ Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        Kinematics FRQs often ask you to (1) find a quantity, (2) sketch or interpret a graph, and (3) justify a conceptual claim. Each part is scored independently — a wrong answer in part (a) doesn't block credit in part (b).
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>Write the general kinematic equation before substituting numbers</li>
+          <li>Show your list of knowns and unknowns for full method credit</li>
+          <li>For graph questions: label axes, mark key points (peak, zero-crossing), and show correct shape (linear vs. curved)</li>
+          <li>Justify claims with physics ("because acceleration is constant, the v-t graph is linear")</li>
+          <li>Include units on every numerical answer</li>
+          <li>For projectile problems: explicitly state "horizontal and vertical motions are independent"</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+       SIMULATION
+  ══════════════════════════════════════════ -->
+  <div id="tab-simulation" class="tab-panel">
+    <div style="text-align:center; padding:4rem 2rem; color:var(--text-muted);">
+      <div style="font-size:3rem; margin-bottom:1rem;">⚗️</div>
+      <h3 style="font-size:1.25rem; font-weight:700; color:var(--text); margin-bottom:.5rem;">Simulation coming soon</h3>
+      <p style="max-width:420px; margin:0 auto;">An interactive projectile motion simulator — adjust launch angle, speed, and height — is in progress.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    Powered by Nikki Patel and AI
+  </div>
+</footer>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function printCheatsheet() {
+    const cheatBtn = document.querySelector('.tab-btn');
+    switchTab('cheatsheet', cheatBtn);
+    window.print();
+  }
+</script>
+
+</body>
+</html>
