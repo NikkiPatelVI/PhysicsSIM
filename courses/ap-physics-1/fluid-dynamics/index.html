@@ -13,20 +13,15 @@
 
 <site-nav base="../../../" active="ap-physics-1"></site-nav>
 <script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
 
 <main class="container page">
 
-  <div class="breadcrumb">
-    <a href="../../../index.html">Home</a>
-    <span>›</span>
-    <a href="../index.html">AP Physics 2</a>
-    <span>›</span>
-    <span>Fluid Dynamics</span>
-  </div>
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Fluid Dynamics"></site-breadcrumb>
 
   <div style="display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem;">
     <h1 class="section-title" style="margin-bottom:0;">Fluid Dynamics</h1>
-    <span class="card-tag tag-blue">Unit 1</span>
+    <span class="card-tag tag-blue">Unit 8</span>
   </div>
 
   <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;">
@@ -46,7 +41,7 @@
   <div class="print-header" style="display:none;">
     <div>
       <h1>Fluid Dynamics — Formula Cheatsheet</h1>
-      <p>AP Physics 2 · Unit 1</p>
+      <p>AP Physics 1 · Unit 8</p>
     </div>
     <p>NikkiPhysics</p>
   </div>
@@ -59,6 +54,17 @@
     <div class="study-section">
       <h3>Fluid Properties</h3>
       <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Absolute vs. Gauge Pressure</div>
+          <div class="formula-eq">P_gauge = P − P_atm</div>
+          <div class="formula-desc">Absolute pressure is the full pressure including atmosphere. Gauge pressure is the excess above atmospheric — what most instruments read. At the open surface, gauge pressure = 0.</div>
+          <div class="formula-vars">
+            <span>P — absolute pressure (Pa)</span>
+            <span>P_atm ≈ 1.01 × 10⁵ Pa</span>
+            <span>P_gauge — excess above atmosphere (Pa)</span>
+          </div>
+        </div>
 
         <div class="formula-card">
           <div class="formula-name">Density</div>
@@ -104,7 +110,7 @@
         <div class="formula-card">
           <div class="formula-name">Pascal's Principle</div>
           <div class="formula-eq">F₁/A₁ = F₂/A₂</div>
-          <div class="formula-desc">Pressure applied to an enclosed fluid transmits equally throughout. Basis of hydraulic systems.</div>
+          <div class="formula-desc">Pressure applied to an enclosed fluid transmits equally throughout. Basis of hydraulic systems. Work is conserved: the small piston travels farther — F₁d₁ = F₂d₂.</div>
           <div class="formula-vars">
             <span>F₁, F₂ — input/output forces (N)</span>
             <span>A₁, A₂ — piston areas (m²)</span>
@@ -163,31 +169,32 @@
 
         <div class="formula-card">
           <div class="formula-name">Bernoulli's Equation</div>
-          <div class="formula-eq">P + ½ρv² + ρgh = const</div>
-          <div class="formula-desc">Energy conservation for ideal fluid flow. Higher speed → lower pressure (and vice versa).</div>
+          <div class="formula-eq">P + ρgy + ½ρv² = const</div>
+          <div class="formula-desc">Energy conservation per unit volume for ideal fluid flow. Higher speed → lower pressure (and vice versa). y is height above a chosen reference level.</div>
           <div class="formula-vars">
             <span>P — pressure (Pa)</span>
+            <span>ρgy — gravitational PE density (Pa)</span>
             <span>½ρv² — kinetic energy density (Pa)</span>
-            <span>ρgh — gravitational PE density (Pa)</span>
           </div>
         </div>
 
         <div class="formula-card">
           <div class="formula-name">Bernoulli (two points)</div>
-          <div class="formula-eq">P₁ + ½ρv₁² + ρgh₁ = P₂ + ½ρv₂² + ρgh₂</div>
-          <div class="formula-desc">Apply between any two points along a streamline in steady, incompressible, non-viscous flow.</div>
+          <div class="formula-eq">P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂²</div>
+          <div class="formula-desc">Apply between any two points along a streamline in steady, incompressible, non-viscous flow. y is height above a reference — pick the lower point as y = 0.</div>
           <div class="formula-vars">
             <span>Subscripts 1, 2 — two points on streamline</span>
+            <span>y₁, y₂ — heights above reference (m)</span>
           </div>
         </div>
 
         <div class="formula-card">
           <div class="formula-name">Torricelli's Theorem</div>
-          <div class="formula-eq">v = √(2gh)</div>
-          <div class="formula-desc">Speed of fluid exiting a hole at depth h below the open surface. Derived from Bernoulli with v_top ≈ 0.</div>
+          <div class="formula-eq">v = √(2gy_A)</div>
+          <div class="formula-desc">Exit speed at a hole when the fluid surface (point A) is a height y_A above the hole. Derived from Bernoulli: both pressures are P_atm and cancel; v_A ≈ 0 by continuity (large tank).</div>
           <div class="formula-vars">
-            <span>v — exit speed (m/s)</span>
-            <span>h — depth of hole below surface (m)</span>
+            <span>v — exit speed at hole (m/s)</span>
+            <span>y_A — height of fluid surface above hole (m)</span>
           </div>
         </div>
 
@@ -228,7 +235,7 @@
   <div id="tab-studyguide" class="tab-panel">
 
     <div class="study-section">
-      <h3>What AP Physics 2 Actually Tests</h3>
+      <h3>What AP Physics 1 Actually Tests</h3>
 
       <div class="tip-box">
         <strong>Exam focus</strong>
@@ -278,6 +285,21 @@
         <strong>Trap 4</strong>
         Forgetting that pressure is a scalar. It acts in all directions. Don't apply a direction to pressure itself — only to the force it produces (F = PA, perpendicular to a surface).
       </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Doubling pressure doesn't double exit speed</strong>
+        In v = √(2P_gauge/ρ), exit speed scales as the square root of source pressure. Doubling P_gauge multiplies v by √2 ≈ 1.41, not 2. Likewise, quadrupling P_gauge is required to double exit speed. Anything under a square root scales sub-linearly — a common FRQ trap.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 6 — Depth doesn't change buoyant force on a fully submerged object</strong>
+        F_b = ρ_fluid · V_submerged · g depends only on the volume displaced, not on how deep the object sits. Lowering a fully submerged object deeper does not increase buoyancy because V_submerged is unchanged.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 7 — Sealed-top pressure can be below atmospheric</strong>
+        When a finger seals the top of a straw containing water, the trapped air can be at less than atmospheric pressure. At the bottom opening (exposed to air) P = P_atm; working upward with P_top = P_atm − ρgh gives P_top &lt; P_atm. Don't assume any trapped gas must be ≥ atmospheric.
+      </div>
     </div>
 
     <div class="study-section">
@@ -287,7 +309,7 @@
       <div class="steps">
         <ol>
           <li><strong>Draw a free-body diagram</strong> — weight (mg down) and buoyant force (F_b up). Add tension or normal force if needed.</li>
-          <li><strong>Identify V_displaced</strong> — if fully submerged, V_displaced = V_object. If floating, V_displaced &lt; V_object and you'll need the floating condition.</li>
+          <li><strong>Identify V_displaced</strong> — if fully submerged, V_displaced = V_object. If floating, V_displaced &lt; V_object: the submerged fraction equals the density ratio (ρ_obj/ρ_fluid), which is the floating condition.</li>
           <li><strong>Apply F_b = ρ_fluid · V_displaced · g</strong> — use the fluid's density, not the object's.</li>
           <li><strong>Apply Newton's 2nd law</strong> — ΣF = ma. For equilibrium (floating, hovering): ΣF = 0.</li>
         </ol>
@@ -297,10 +319,11 @@
       <div class="steps">
         <ol>
           <li><strong>Choose two points</strong> on the same streamline where you know most variables.</li>
+          <li><strong>Identify atmospheric pressures</strong> — anywhere the fluid is open to air (top of a reservoir, exit hole, top of a fountain) P = P_atm. When both points have P_atm, the pressure terms cancel entirely.</li>
           <li><strong>Write the full Bernoulli equation</strong> between those two points before canceling terms.</li>
-          <li><strong>Cancel what's equal</strong> — same height? ρgh terms cancel. Same area (wide reservoir)? v ≈ 0 there.</li>
-          <li><strong>Use continuity first</strong> if you need to find a speed — A₁v₁ = A₂v₂ gives you the other speed.</li>
-          <li><strong>Check units</strong> — everything in Bernoulli has units of Pa (N/m²).</li>
+          <li><strong>Cancel what's equal</strong> — same height? ρgy terms cancel. Large reservoir (wide tank top)? v ≈ 0 there by continuity.</li>
+          <li><strong>Use continuity first</strong> if you need a speed — A₁v₁ = A₂v₂ gives the other speed.</li>
+          <li><strong>Check units</strong> — every term in Bernoulli has units of Pa (N/m²).</li>
         </ol>
       </div>
     </div>
@@ -319,13 +342,42 @@
       </div>
 
       <div class="concept-block amber">
-        <h4>Torricelli's Theorem / Tank Drain</h4>
-        <p>Fluid exits a hole at v = √(2gh). The exit speed equals that of an object in free fall from the same height. The hole's area doesn't affect exit speed (ignoring viscosity).</p>
+        <h4>Torricelli's Theorem — Derivation</h4>
+        <p>Apply Bernoulli from the open surface (point A, height y_A) to the exit hole (point B, y_B = 0). Both are exposed to air so P_A = P_B = P_atm — pressure cancels. The tank is large, so A_A ≫ A_B; continuity gives v_A ≈ 0. What remains: ρgy_A = ½ρv_B², giving v_B = √(2gy_A). Exit speed depends only on the height of fluid above the hole.</p>
       </div>
 
       <div class="concept-block">
         <h4>Apparent Weight in Fluid</h4>
         <p>W_apparent = W_actual − F_b = mg − ρ_f · V · g. This is what a scale reads when an object is submerged. A scale under the fluid reads more (reaction to buoyancy).</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Submerged Object on a String</h4>
+        <p>Free-body diagram: weight mg down, buoyant force F_b up, string tension T up. Equilibrium gives T = mg − F_b — tension is always less than the object's weight when submerged. If the object rests on the bottom of the container instead, a normal force F_N acts upward and T = mg − F_b − F_N, making tension even smaller (possibly zero).</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Pressurized Tank Fountain</h4>
+        <p>When the water source has gauge pressure P_gauge (above atmospheric), Bernoulli from source to the open exit gives v_exit = √(2P_gauge/ρ). The fountain then rises to h = v²/(2g) = P_gauge/(ρg). Fountain height is linear in source pressure, but exit speed is only √-linear — doubling the pressure raises the fountain height by a factor of 2 but only increases exit speed by √2.</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Worked Examples from the Textbook</h3>
+
+      <div class="concept-block">
+        <h4>Ranking Pressures in a Non-Uniform Container</h4>
+        <p><strong>Setup:</strong> Several labeled points inside a fluid-filled container of varying width. <strong>Strategy:</strong> P = P₀ + ρgy depends only on vertical depth below the surface — container shape and horizontal position are irrelevant. Two points at the same height have equal pressure, regardless of whether the container is wide or narrow there. <strong>Takeaway:</strong> Draw a horizontal line through any point; all points on that line share the same pressure if connected by fluid.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Pipe with Halved Diameter</h4>
+        <p><strong>Setup:</strong> Fluid flows from a wide pipe into a section with half the diameter at the same height. <strong>Strategy:</strong> Area scales as d², so halving diameter quarters the area (A ∝ d²). Continuity (A₁v₁ = A₂v₂) then gives v₂ = 4v₁ — speed quadruples. Apply Bernoulli at the same height (ρgy terms cancel): P₁ + ½ρv₁² = P₂ + ½ρv₂². Since v₂ is much larger, P₂ must be lower. <strong>Takeaway:</strong> Chain continuity into Bernoulli whenever pipe geometry changes — solve for speed first, pressure second.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Gauge vs. Absolute Pressure Scaling with Density</h4>
+        <p><strong>Setup:</strong> A pressure probe sits at depth y in a container first filled with water, then with a denser fluid. <strong>Strategy:</strong> Gauge pressure = ρgy scales directly with fluid density. But absolute pressure = P_atm + ρgy changes very little near the surface because P_atm ≈ 10⁵ Pa dominates ρgy for shallow depths. Tripling fluid density triples gauge pressure but shifts absolute pressure by only a few percent. <strong>Takeaway:</strong> Gauge and absolute pressure scale very differently — know which one the problem is asking about.</p>
       </div>
     </div>
 
