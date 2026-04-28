@@ -49,8 +49,10 @@ nav .logo {
   font-size: 1rem;
   color: var(--text);
   letter-spacing: -0.02em;
+  text-decoration: none;
 }
 
+nav .logo:hover { color: var(--text); }
 nav .logo span { color: var(--accent); }
 
 nav .nav-links {
