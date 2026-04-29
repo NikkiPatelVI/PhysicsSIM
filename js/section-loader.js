@@ -19,6 +19,17 @@ const sectionLoader = (() => {
     const src = panel.dataset.src;
     if (!src) return;
 
+    // file:// protocol blocks fetch() due to CORS — content must be served via HTTP
+    if (window.location.protocol === 'file:') {
+      panel.innerHTML = '<div class="loading-state" style="text-align:left;max-width:480px;">'
+        + '<strong>Open via a local server to view this content.</strong><br><br>'
+        + 'Run in your terminal:<br>'
+        + '<code style="display:block;margin-top:.5rem;padding:.5rem .75rem;background:var(--surface);border-radius:6px;font-size:.85rem;">npx serve /path/to/physics</code>'
+        + '<br>Then open <code>http://localhost:3000</code> in your browser.'
+        + '</div>';
+      return;
+    }
+
     panel.innerHTML = '<div class="loading-state">Loading content…</div>';
 
     try {
