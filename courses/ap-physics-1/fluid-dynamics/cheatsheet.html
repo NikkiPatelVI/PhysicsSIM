@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid Dynamics Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Fluid Dynamics"></site-breadcrumb>
+
+  <div id="embedded-content">
+    <div class="study-section">
+      <h3>Fluid Properties</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Absolute vs. Gauge Pressure</div>
+          <div class="formula-eq">P_gauge = P − P_atm</div>
+          <div class="formula-desc">Absolute pressure is the full pressure including atmosphere. Gauge pressure is the excess above atmospheric — what most instruments read. At the open surface, gauge pressure = 0.</div>
+          <div class="formula-vars">
+            <span>P — absolute pressure (Pa)</span>
+            <span>P_atm ≈ 1.01 × 10⁵ Pa</span>
+            <span>P_gauge — excess above atmosphere (Pa)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Density</div>
+          <div class="formula-eq">ρ = m / V</div>
+          <div class="formula-desc">Mass per unit volume. For water, ρ ≈ 1000 kg/m³.</div>
+          <div class="formula-vars">
+            <span>ρ — density (kg/m³)</span>
+            <span>m — mass (kg)</span>
+            <span>V — volume (m³)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Pressure</div>
+          <div class="formula-eq">P = F / A</div>
+          <div class="formula-desc">Force per unit area. Pressure acts equally in all directions in a static fluid.</div>
+          <div class="formula-vars">
+            <span>P — pressure (Pa = N/m²)</span>
+            <span>F — force (N)</span>
+            <span>A — area (m²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Gauge Pressure / Hydrostatic Pressure</div>
+          <div class="formula-eq">P = P₀ + ρgh</div>
+          <div class="formula-desc">Pressure at depth h below the surface. P₀ is the pressure at the surface (often atmospheric, ~101 325 Pa).</div>
+          <div class="formula-vars">
+            <span>P₀ — surface pressure (Pa)</span>
+            <span>ρ — fluid density (kg/m³)</span>
+            <span>g — 9.8 m/s²</span>
+            <span>h — depth below surface (m)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Pascal's &amp; Archimedes' Principles</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Pascal's Principle</div>
+          <div class="formula-eq">F₁/A₁ = F₂/A₂</div>
+          <div class="formula-desc">Pressure applied to an enclosed fluid transmits equally throughout. Basis of hydraulic systems. Work is conserved: the small piston travels farther — F₁d₁ = F₂d₂.</div>
+          <div class="formula-vars">
+            <span>F₁, F₂ — input/output forces (N)</span>
+            <span>A₁, A₂ — piston areas (m²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Buoyant Force (Archimedes)</div>
+          <div class="formula-eq">F_b = ρ_f · V_sub · g</div>
+          <div class="formula-desc">Upward force on a submerged/floating object equals the weight of fluid displaced.</div>
+          <div class="formula-vars">
+            <span>F_b — buoyant force (N)</span>
+            <span>ρ_f — fluid density (kg/m³)</span>
+            <span>V_sub — submerged volume (m³)</span>
+            <span>g — 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Floating Condition</div>
+          <div class="formula-eq">ρ_obj / ρ_f = V_sub / V_obj</div>
+          <div class="formula-desc">Fraction of object submerged equals the ratio of densities. Object floats when ρ_obj &lt; ρ_f.</div>
+          <div class="formula-vars">
+            <span>ρ_obj — object density (kg/m³)</span>
+            <span>ρ_f — fluid density (kg/m³)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Fluid Flow</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Volume Flow Rate</div>
+          <div class="formula-eq">Q = A · v</div>
+          <div class="formula-desc">Volume of fluid passing a cross-section per second. Units: m³/s.</div>
+          <div class="formula-vars">
+            <span>Q — flow rate (m³/s)</span>
+            <span>A — cross-sectional area (m²)</span>
+            <span>v — fluid speed (m/s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Continuity Equation</div>
+          <div class="formula-eq">A₁v₁ = A₂v₂</div>
+          <div class="formula-desc">For an incompressible fluid in a pipe, flow rate is constant. Smaller area → faster speed.</div>
+          <div class="formula-vars">
+            <span>A₁, A₂ — areas at points 1, 2 (m²)</span>
+            <span>v₁, v₂ — speeds at points 1, 2 (m/s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Bernoulli's Equation</div>
+          <div class="formula-eq">P + ρgy + ½ρv² = const</div>
+          <div class="formula-desc">Energy conservation per unit volume for ideal fluid flow. Higher speed → lower pressure (and vice versa). y is height above a chosen reference level.</div>
+          <div class="formula-vars">
+            <span>P — pressure (Pa)</span>
+            <span>ρgy — gravitational PE density (Pa)</span>
+            <span>½ρv² — kinetic energy density (Pa)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Bernoulli (two points)</div>
+          <div class="formula-eq">P₁ + ρgy₁ + ½ρv₁² = P₂ + ρgy₂ + ½ρv₂²</div>
+          <div class="formula-desc">Apply between any two points along a streamline in steady, incompressible, non-viscous flow. y is height above a reference — pick the lower point as y = 0.</div>
+          <div class="formula-vars">
+            <span>Subscripts 1, 2 — two points on streamline</span>
+            <span>y₁, y₂ — heights above reference (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Torricelli's Theorem</div>
+          <div class="formula-eq">v = √(2gy_A)</div>
+          <div class="formula-desc">Exit speed at a hole when the fluid surface (point A) is a height y_A above the hole. Derived from Bernoulli: both pressures are P_atm and cancel; v_A ≈ 0 by continuity (large tank).</div>
+          <div class="formula-vars">
+            <span>v — exit speed at hole (m/s)</span>
+            <span>y_A — height of fluid surface above hole (m)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Quick Reference: Units &amp; Constants</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Key Values</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (use 10 for quick estimates)<br/>
+            ρ_water = 1000 kg/m³<br/>
+            ρ_air ≈ 1.2 kg/m³<br/>
+            P_atm = 101 325 Pa ≈ 1.01 × 10⁵ Pa<br/>
+            1 atm = 101 325 Pa = 760 mmHg
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">SI Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Pressure: Pa = N/m² = kg/(m·s²)<br/>
+            Density: kg/m³<br/>
+            Flow rate: m³/s<br/>
+            Force: N = kg·m/s²<br/>
+            Energy density: J/m³ = Pa
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+</body>
+</html>

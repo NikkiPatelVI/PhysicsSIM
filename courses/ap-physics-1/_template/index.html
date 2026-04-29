@@ -292,33 +292,27 @@
   </div>
 
 
-  <!-- ══════════════════════════════════════════
-       SIMULATION TAB — placeholder until built
-  ══════════════════════════════════════════ -->
-  <div id="tab-simulation" class="tab-panel">
-    <div style="text-align:center; padding:4rem 2rem; color:var(--text-muted);">
-      <div style="font-size:3rem; margin-bottom:1rem;">⚗️</div>
-      <h3 style="font-size:1.25rem; font-weight:700; color:var(--text); margin-bottom:.5rem;">Simulation coming soon</h3>
-      <p style="max-width:420px; margin:0 auto;">
-        An interactive p5.js simulation for this topic is in progress.
-      </p>
-    </div>
-  </div>
+  <div id="tab-cheatsheet" class="tab-panel active" data-src="cheatsheet.html"></div>
+  <div id="tab-studyguide" class="tab-panel" data-src="studyguide.html"></div>
+  <div id="tab-simulation" class="tab-panel" data-src="simulation.html"></div>
 
 </main>
 
-<footer>
-  <div class="container">
-    Powered by Nikki Patel and AI
-  </div>
-</footer>
-
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+<script src="../../../js/section-loader.js"></script>
 <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    sectionLoader.loadActiveTab();
+  });
+
   function switchTab(id, btn) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
+    const panel = document.getElementById('tab-' + id);
+    panel.classList.add('active');
     btn.classList.add('active');
+    sectionLoader.loadPanel(panel);
   }
 
   function printCheatsheet() {
@@ -327,6 +321,8 @@
     window.print();
   }
 </script>
+</body>
+</html>
 
 </body>
 </html>

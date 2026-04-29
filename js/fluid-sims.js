@@ -602,12 +602,16 @@ function initFountain() {
 }
 
 
-// ── INIT ALL ──
-document.addEventListener('DOMContentLoaded', () => {
+function initFluidSims() {
   initHydraulic();
   initVenturi();
   initTorricelli();
   initApparent();
   initString();
   initFountain();
+}
+
+// ── INIT ALL ──
+document.addEventListener('DOMContentLoaded', () => {
+  initFluidSims();
 });

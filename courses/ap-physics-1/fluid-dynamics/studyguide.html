@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid Dynamics Study Guide — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Fluid Dynamics"></site-breadcrumb>
+
+  <div id="embedded-content">
+    <div class="study-section">
+      <h3>What AP Physics 1 Actually Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Fluid dynamics questions are heavily conceptual — qualitative reasoning about pressure, flow, and buoyancy usually earns as many points as calculation. Don't just memorize formulas; know what each term means physically.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — Pressure increases with depth</h4>
+        <p>P = P₀ + ρgh is linear in h. Two points at the same depth in a connected fluid are at the same pressure — even if the containers have different shapes. This is why a U-tube manometer works.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — Continuity means speed and area trade off</h4>
+        <p>A₁v₁ = A₂v₂ is conservation of mass for incompressible flow. The fluid doesn't pile up anywhere. A narrower pipe → faster flow. A wider pipe → slower flow. Sketch the pipe and label what's bigger/smaller first.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Bernoulli is energy conservation</h4>
+        <p>P + ½ρv² + ρgh = constant is just conservation of energy per unit volume. If speed goes up (kinetic energy density up), pressure must go down. This explains lift on a wing, flow in a Venturi meter, and why a shower curtain blows inward.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 4 — Buoyancy depends on displaced volume, not object mass</h4>
+        <p>F_b = ρ_fluid · V_displaced · g. The object's weight doesn't appear in the buoyant force formula — only the volume of fluid it displaces matters. A hollow steel ball and a solid plastic ball of the same outer volume experience the same buoyant force.</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Common AP Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1</strong>
+        Confusing absolute pressure with gauge pressure. Gauge pressure = P − P_atm. A tire gauge reads gauge pressure. Bernoulli's equation uses absolute pressure.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2</strong>
+        Applying Bernoulli where it doesn't apply. Bernoulli requires: steady flow, incompressible fluid, non-viscous fluid, along a single streamline. Turbulent flow, viscous fluids (honey), and compressible flow (gas at high speed) violate these.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3</strong>
+        Thinking a heavier object sinks faster. Objects sink or float based on density comparison, not mass alone. A massive cruise ship floats; a small pebble sinks. Compare ρ_obj vs ρ_fluid.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4</strong>
+        Forgetting that pressure is a scalar. It acts in all directions. Don't apply a direction to pressure itself — only to the force it produces (F = PA, perpendicular to a surface).
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Doubling pressure doesn't double exit speed</strong>
+        In v = √(2P_gauge/ρ), exit speed scales as the square root of source pressure. Doubling P_gauge multiplies v by √2 ≈ 1.41, not 2. Likewise, quadrupling P_gauge is required to double exit speed. Anything under a square root scales sub-linearly — a common FRQ trap.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 6 — Depth doesn't change buoyant force on a fully submerged object</strong>
+        F_b = ρ_fluid · V_submerged · g depends only on the volume displaced, not on how deep the object sits. Lowering a fully submerged object deeper does not increase buoyancy because V_submerged is unchanged.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 7 — Sealed-top pressure can be below atmospheric</strong>
+        When a finger seals the top of a straw containing water, the trapped air can be at less than atmospheric pressure. At the bottom opening (exposed to air) P = P_atm; working upward with P_top = P_atm − ρgh gives P_top &lt; P_atm. Don't assume any trapped gas must be ≥ atmospheric.
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Problem-Solving Frameworks</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">Buoyancy Problems</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Draw a free-body diagram</strong> — weight (mg down) and buoyant force (F_b up). Add tension or normal force if needed.</li>
+          <li><strong>Identify V_displaced</strong> — if fully submerged, V_displaced = V_object. If floating, V_displaced &lt; V_object and you'll need the floating condition.</li>
+          <li><strong>Apply F_b = ρ_fluid · V_displaced · g</strong> — use the fluid's density, not the object's.</li>
+          <li><strong>Apply Newton's 2nd law</strong> — ΣF = ma. For equilibrium (floating, hovering): ΣF = 0.</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Bernoulli / Pipe Flow Problems</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Choose two points</strong> on the same streamline where you know most variables.</li>
+          <li><strong>Write the full Bernoulli equation</strong> between those two points before canceling terms.</li>
+          <li><strong>Cancel what's equal</strong> — same height? ρgh terms cancel. Same area (wide reservoir)? v ≈ 0 there.</li>
+          <li><strong>Use continuity first</strong> if you need to find a speed — A₁v₁ = A₂v₂ gives you the other speed.</li>
+          <li><strong>Check units</strong> — everything in Bernoulli has units of Pa (N/m²).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Must-Know Conceptual Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Hydraulic Lift</h4>
+        <p>Small force on small piston → same pressure transmitted → large force on large piston. F₂ = F₁ · (A₂/A₁). Work is conserved: the small piston moves farther.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Venturi Effect</h4>
+        <p>Fluid speeds up through a constriction (continuity) → pressure drops (Bernoulli). Used in carburetors, atomizers, and Venturi meters. The narrow section has lower pressure, not higher.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Torricelli's Theorem / Tank Drain</h4>
+        <p>Fluid exits a hole at v = √(2gh). The exit speed equals that of an object in free fall from the same height. The hole's area doesn't affect exit speed (ignoring viscosity).</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Apparent Weight in Fluid</h4>
+        <p>W_apparent = W_actual − F_b = mg − ρ_f · V · g. This is what a scale reads when an object is submerged. A scale under the fluid reads more (reaction to buoyancy).</p>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>5-Point Exam Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        AP FRQs award partial credit generously. Write the correct formula first, substitute values second, solve third. A correct formula with an arithmetic mistake still earns most of the points.
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>State which principle you're using (Bernoulli, Archimedes, Pascal, Continuity)</li>
+          <li>Show the general equation before substituting</li>
+          <li>Justify any simplifications (e.g., "the reservoir is large so v₁ ≈ 0")</li>
+          <li>Include units in your final answer</li>
+          <li>For qualitative questions: explain the direction of change AND the reason</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         PRACTICE PROBLEMS
+    ══════════════════════════════════════════ -->
+    <div class="study-section">
+      <h3>Practice Problems</h3>
+      <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.25rem;">
+        Try each problem on paper first, then expand the answer to check your work and reasoning.
+      </p>
+
+      <div class="concept-block">
+        <h4>Problem 1 — Sealed Straw</h4>
+        <p>A 15 cm vertical straw is filled with water. You seal the top opening with your finger and lift the straw out of a glass — the water stays inside. What is the absolute pressure of the trapped air just below your finger? (P_atm = 101 325 Pa, ρ_water = 1000 kg/m³)</p>
+        <details class="answer-toggle">
+          <summary>Show answer &amp; explanation</summary>
+          <div class="answer-body">
+            <p><strong>Answer: P_top ≈ 99 855 Pa</strong> (about 1.5 kPa <em>below</em> atmospheric)</p>
+            <p>At the bottom of the straw the water is exposed to air, so P_bottom = P_atm = 101 325 Pa. Working upward through the water column to the trapped air at the top:</p>
+            <span class="formula-eq">P_top = P_bottom − ρgh = 101 325 − (1000)(9.8)(0.15) ≈ 99 855 Pa</span>
+            <p>The trapped air is below atmospheric pressure — that's what holds the water up. Common trap: assuming any sealed gas must be at or above atmospheric.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 2 — Floating Wooden Cube</h4>
+        <p>A wooden cube of density 600 kg/m³ floats in fresh water (ρ_water = 1000 kg/m³). What fraction of the cube's volume is submerged below the waterline?</p>
+        <details class="answer-toggle">
+          <summary>Show answer &amp; explanation</summary>
+          <div class="answer-body">
+            <p><strong>Answer: 60% submerged</strong></p>
+            <p>For a floating object in equilibrium, the buoyant force equals the weight:</p>
+            <span class="formula-eq">ρ_obj · V_obj · g = ρ_fluid · V_sub · g</span>
+            <p>Cancelling g and rearranging:</p>
+            <span class="formula-eq">V_sub / V_obj = ρ_obj / ρ_fluid = 600 / 1000 = 0.6</span>
+            <p>The submerged fraction always equals the density ratio. A denser object sits deeper; if ρ_obj &gt; ρ_fluid, the object sinks completely.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 3 — Pipe Constriction</h4>
+        <p>Water flows through a horizontal pipe at 2.0 m/s where the cross-sectional area is A. The pipe narrows to A/4. (a) What is the speed in the narrow section? (b) Is the pressure higher, lower, or the same in the narrow section? Justify.</p>
+        <details class="answer-toggle">
+          <summary>Show answer &amp; explanation</summary>
+          <div class="answer-body">
+            <p><strong>(a) v₂ = 8.0 m/s</strong></p>
+            <p>Apply continuity (conservation of mass for incompressible flow):</p>
+            <span class="formula-eq">A₁v₁ = A₂v₂  →  v₂ = (A / (A/4)) · 2.0 = 8.0 m/s</span>
+            <p><strong>(b) Pressure is lower in the narrow section.</strong></p>
+            <p>Apply Bernoulli at the same height (so ρgy cancels):</p>
+            <span class="formula-eq">P₁ + ½ρv₁² = P₂ + ½ρv₂²</span>
+            <p>Since v₂ &gt; v₁, the kinetic-energy term is larger at point 2, which means P₂ must be smaller than P₁. Faster flow → lower pressure.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 4 — Submerged Cylinder on a String</h4>
+        <p>A solid metal cylinder (density 8000 kg/m³, volume 1.0 × 10⁻³ m³) hangs from a string completely submerged in water. Find the tension in the string.</p>
+        <details class="answer-toggle">
+          <summary>Show answer &amp; explanation</summary>
+          <div class="answer-body">
+            <p><strong>Answer: T = 68.6 N</strong></p>
+            <p>Free-body diagram: weight (mg ↓), tension (T ↑), buoyant force (F_b ↑).</p>
+            <p>Mass: m = ρ_obj · V = (8000)(0.001) = 8.0 kg → weight = 78.4 N.</p>
+            <p>Buoyant force (submerged in water):</p>
+            <span class="formula-eq">F_b = ρ_water · V_sub · g = (1000)(0.001)(9.8) = 9.8 N</span>
+            <p>Equilibrium (ΣF = 0):</p>
+            <span class="formula-eq">T = mg − F_b = 78.4 − 9.8 = 68.6 N</span>
+            <p>Tension is always less than the dry weight when an object is submerged — that's why things feel lighter underwater.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 5 — Diver's Pressure</h4>
+        <p>A swimmer descends to 5.0 m depth in a freshwater pool. Calculate (a) the gauge pressure and (b) the absolute pressure at that depth.</p>
+        <details class="answer-toggle">
+          <summary>Show answer &amp; explanation</summary>
+          <div class="answer-body">
+            <p><strong>(a) P_gauge = 49 000 Pa = 49 kPa</strong></p>
+            <span class="formula-eq">P_gauge = ρgh = (1000)(9.8)(5.0) = 49 000 Pa</span>
+            <p><strong>(b) P_abs = 150 325 Pa ≈ 150 kPa</strong></p>
+            <span class="formula-eq">P_abs = P_atm + ρgh = 101 325 + 49 000 ≈ 150 kPa</span>
+            <p>At just 5 m of depth the absolute pressure is already ~1.5 atmospheres. Every 10 m of water adds about 1 atm of pressure — useful rule of thumb for diving problems.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         ANNOTATED FRQ EXAMPLE
+    ══════════════════════════════════════════ -->
+    <div class="study-section">
+      <h3>FRQ Example — Annotated Scoring</h3>
+
+      <div class="tip-box">
+        <strong>How to read this</strong>
+        Each green check shows a discrete scoring point the AP graders look for. The sample response below would earn full credit. Notice how each point is a separate sentence or step — graders give partial credit, so write distinct, labeled statements.
+      </div>
+
+      <div class="concept-block">
+        <h4>The Question (10 points total)</h4>
+        <p>A pressurized water source delivers water through a horizontal nozzle at ground level. The water exits the nozzle into the open atmosphere and creates a vertical fountain. The gauge pressure at the source is P_gauge, and the source is wide compared to the nozzle.</p>
+        <p style="margin-top:.5rem;"><strong>(a)</strong> [3 pts] Derive an expression for the exit speed v of the water at the nozzle in terms of P_gauge, ρ, and g.</p>
+        <p><strong>(b)</strong> [2 pts] Calculate v if P_gauge = 50 000 Pa and ρ = 1000 kg/m³.</p>
+        <p><strong>(c)</strong> [2 pts] Find the maximum height the fountain reaches above the nozzle.</p>
+        <p><strong>(d)</strong> [3 pts] By what factor must P_gauge change to <em>double</em> the fountain's maximum height? Justify your answer.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Part (a) — Sample Response <span class="score-tag">3 / 3</span></h4>
+        <p style="font-size:.875rem;">"Apply Bernoulli's equation between the source (point 1) and the nozzle exit (point 2), both at the same height (y₁ = y₂):"</p>
+        <span class="formula-eq" style="background:var(--accent-light); padding:.5rem .75rem; border-radius:6px; display:inline-block;">P₁ + ½ρv₁² = P₂ + ½ρv₂²</span>
+        <div class="score-point">Identifies pressures: P₁ = P_atm + P_gauge (source) and P₂ = P_atm (open nozzle).</div>
+        <div class="score-point">Justifies v₁ ≈ 0 because the source is wide compared to the nozzle (continuity).</div>
+        <div class="score-point">Solves algebraically to get the symbolic expression v = √(2P_gauge / ρ).</div>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Part (b) — Sample Response <span class="score-tag">2 / 2</span></h4>
+        <p style="font-size:.875rem;">"Substitute into the result from part (a):"</p>
+        <span class="formula-eq" style="background:var(--accent-light); padding:.5rem .75rem; border-radius:6px; display:inline-block;">v = √(2 · 50 000 / 1000) = √100 = 10 m/s</span>
+        <div class="score-point">Correct substitution into the symbolic expression.</div>
+        <div class="score-point">Numerical answer with correct units: v = 10 m/s.</div>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Part (c) — Sample Response <span class="score-tag">2 / 2</span></h4>
+        <p style="font-size:.875rem;">"At maximum height the water is momentarily at rest. Use conservation of energy (or kinematics: v² = v₀² − 2gh with v = 0):"</p>
+        <span class="formula-eq" style="background:var(--accent-light); padding:.5rem .75rem; border-radius:6px; display:inline-block;">h = v² / (2g) = (10)² / (2 · 9.8) ≈ 5.1 m</span>
+        <div class="score-point">Identifies that v = 0 at maximum height and applies energy/kinematics correctly.</div>
+        <div class="score-point">Numerical answer with units: h ≈ 5.1 m.</div>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Part (d) — Sample Response <span class="score-tag">3 / 3</span></h4>
+        <p style="font-size:.875rem;">"From parts (a) and (c), combine the expressions:"</p>
+        <span class="formula-eq" style="background:var(--accent-light); padding:.5rem .75rem; border-radius:6px; display:inline-block;">h = v² / (2g) = P_gauge / (ρg)</span>
+        <p style="font-size:.875rem; margin-top:.5rem;">"So fountain height is <em>linear</em> in source pressure. To double h, P_gauge must also double."</p>
+        <div class="score-point">Shows that h is proportional to P_gauge (combines results algebraically).</div>
+        <div class="score-point">States the correct factor: P_gauge must increase by a factor of 2.</div>
+        <div class="score-point">Provides a physics-based justification (linear relationship between height and pressure).</div>
+      </div>
+
+      <div class="warn-box">
+        <strong>What loses points on this FRQ</strong>
+        Common errors that cost a point each: skipping the v₁ ≈ 0 justification in (a), forgetting units in (b) or (c), or stating "P must increase by √2" in (d) — that confuses the relationship between v and P_gauge with the relationship between h and P_gauge.
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+</body>
+</html>
