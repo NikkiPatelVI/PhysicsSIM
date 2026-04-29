@@ -11,17 +11,44 @@
 </head>
 <body>
 
+<!--
+  ════════════════════════════════════════════════════════════════════
+  TOPIC PAGE TEMPLATE (fragment-loading version)
+  ════════════════════════════════════════════════════════════════════
+
+  Each topic folder contains FOUR files:
+    index.html         — this shell with the tab buttons (you are here)
+    cheatsheet.html    — formula cards (Cheatsheet tab)
+    studyguide.html    — concepts, traps, FRQs, practice (Study Guide tab)
+    simulation.html    — interactive canvas sims (Simulation tab)
+
+  HOW IT WORKS:
+    The three tab panels are empty <div data-src="..."> elements.
+    js/section-loader.js fetches the matching fragment on first tab click
+    and inlines its <div id="embedded-content"> into the panel.
+
+  WHEN COPYING THIS TEMPLATE:
+    1. Replace TOPIC NAME, TOPIC-SLUG, and "Unit X" markers below
+    2. Copy cheatsheet.html / studyguide.html / simulation.html from
+       _template/ alongside this file
+    3. If the topic has its own simulations, add a sim script in this
+       folder (e.g. mysim.js) and reference it via <script src="mysim.js">
+       — section-loader will call window.initTopicSims() if defined
+       (see fluid-dynamics/index.html for the pattern)
+  ════════════════════════════════════════════════════════════════════
+-->
+
 <site-nav base="../../../" active="ap-physics-1"></site-nav>
 <script src="../../../js/nav.js" defer></script>
 <script src="../../../js/breadcrumb.js" defer></script>
 
 <main class="container page">
 
-  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="TOPIC NAME"></site-breadcrumb>  <!-- ← update topic-name -->
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="TOPIC NAME"></site-breadcrumb>
 
   <div style="display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem;">
-    <h1 class="section-title" style="margin-bottom:0;">TOPIC NAME</h1>  <!-- ← change this -->
-    <span class="card-tag tag-blue">Unit X</span>  <!-- ← change unit number -->
+    <h1 class="section-title" style="margin-bottom:0;">TOPIC NAME</h1>
+    <span class="card-tag tag-blue">Unit X</span>
   </div>
 
   <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;">
@@ -30,14 +57,14 @@
       <button class="tab-btn" onclick="switchTab('studyguide', this)">Study Guide</button>
       <button class="tab-btn" onclick="switchTab('simulation', this)">Simulation</button>
     </div>
-    <button class="print-btn" onclick="printCheatsheet()">
+    <button class="print-btn" id="printBtn" onclick="printCheatsheet()">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       Print Cheatsheet
     </button>
   </div>
   <div style="border-bottom:2px solid var(--border); margin-bottom:2rem;"></div>
 
-  <!-- Print-only header — update topic name and unit number -->
+  <!-- Print-only header — shown by @media print -->
   <div class="print-header" style="display:none;">
     <div>
       <h1>TOPIC NAME — Formula Cheatsheet</h1>
@@ -46,252 +73,7 @@
     <p>NikkiPhysics</p>
   </div>
 
-
-  <!-- ══════════════════════════════════════════
-       CHEATSHEET TAB
-       ─────────────────────────────────────────
-       HOW TO USE:
-       • Add one <div class="study-section"> per logical group of formulas
-         (e.g. "Kinematics Equations", "Vectors", "Free Fall")
-       • Copy formula-card blocks as needed — aim for 3 per row
-       • formula-eq: write the equation using Unicode (₁ ₂ ² ³ · √ ∆ θ ω α)
-       • formula-vars: one <span> per variable — symbol, name, unit
-  ══════════════════════════════════════════ -->
-  <div id="tab-cheatsheet" class="tab-panel active">
-
-    <!-- ── SECTION 1 ── -->
-    <div class="study-section">
-      <h3>SECTION TITLE</h3>  <!-- e.g. "Kinematic Equations" -->
-      <div class="formula-grid">
-
-        <!-- Formula card — copy this block for each equation -->
-        <div class="formula-card">
-          <div class="formula-name">Formula Name</div>
-          <div class="formula-eq">equation here</div>
-          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
-          <div class="formula-vars">
-            <span>x — variable name (unit)</span>
-            <span>x — variable name (unit)</span>
-            <span>x — variable name (unit)</span>
-          </div>
-        </div>
-
-        <div class="formula-card">
-          <div class="formula-name">Formula Name</div>
-          <div class="formula-eq">equation here</div>
-          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
-          <div class="formula-vars">
-            <span>x — variable name (unit)</span>
-            <span>x — variable name (unit)</span>
-          </div>
-        </div>
-
-        <div class="formula-card">
-          <div class="formula-name">Formula Name</div>
-          <div class="formula-eq">equation here</div>
-          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
-          <div class="formula-vars">
-            <span>x — variable name (unit)</span>
-            <span>x — variable name (unit)</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── SECTION 2 ── -->
-    <div class="study-section">
-      <h3>SECTION TITLE</h3>
-      <div class="formula-grid">
-
-        <div class="formula-card">
-          <div class="formula-name">Formula Name</div>
-          <div class="formula-eq">equation here</div>
-          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
-          <div class="formula-vars">
-            <span>x — variable name (unit)</span>
-            <span>x — variable name (unit)</span>
-          </div>
-        </div>
-
-        <div class="formula-card">
-          <div class="formula-name">Formula Name</div>
-          <div class="formula-eq">equation here</div>
-          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
-          <div class="formula-vars">
-            <span>x — variable name (unit)</span>
-            <span>x — variable name (unit)</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── KEY VALUES (always keep this section last) ── -->
-    <div class="study-section">
-      <h3>Key Values & Units</h3>
-      <div class="formula-grid">
-        <div class="formula-card">
-          <div class="formula-name">Constants</div>
-          <div class="formula-desc" style="line-height:2;">
-            g = 9.8 m/s² (gravitational acceleration)<br/>
-            <!-- add any topic-specific constants here -->
-          </div>
-        </div>
-        <div class="formula-card">
-          <div class="formula-name">SI Units for This Topic</div>
-          <div class="formula-desc" style="line-height:2;">
-            <!-- list the key SI units that appear in this topic -->
-            <!-- e.g. velocity: m/s | acceleration: m/s² | force: N -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- ══════════════════════════════════════════
-       STUDY GUIDE TAB
-       ─────────────────────────────────────────
-       HOW TO USE:
-       • "Big Ideas" — the 3–5 core concepts the AP exam tests conceptually
-       • "Common Traps" — mistakes you made in practice or from the book
-       • "Problem-Solving Framework" — your step-by-step approach to FRQs
-       • "Must-Know Scenarios" — specific setups that appear repeatedly on the exam
-       • Add/remove sections as needed for the topic
-  ══════════════════════════════════════════ -->
-  <div id="tab-studyguide" class="tab-panel">
-
-    <!-- ── WHAT THE EXAM TESTS ── -->
-    <div class="study-section">
-      <h3>What the AP Exam Tests</h3>
-
-      <div class="tip-box">
-        <strong>Focus area</strong>
-        Write 1–2 sentences here about what this topic emphasizes on the AP exam —
-        quantitative vs. conceptual, common FRQ types, etc.
-      </div>
-
-      <!-- Big Idea — copy for each core concept (use .green or .amber for variety) -->
-      <div class="concept-block">
-        <h4>Big Idea 1 — Title</h4>
-        <p>Explain the concept in plain English. What does it mean physically? How does it show up on the exam?</p>
-      </div>
-
-      <div class="concept-block green">
-        <h4>Big Idea 2 — Title</h4>
-        <p>Explain the concept in plain English.</p>
-      </div>
-
-      <div class="concept-block amber">
-        <h4>Big Idea 3 — Title</h4>
-        <p>Explain the concept in plain English.</p>
-      </div>
-
-      <div class="concept-block">
-        <h4>Big Idea 4 — Title</h4>
-        <p>Explain the concept in plain English.</p>
-      </div>
-
-    </div>
-
-    <!-- ── COMMON TRAPS ── -->
-    <div class="study-section">
-      <h3>Common Exam Traps</h3>
-
-      <!-- Copy warn-box for each trap you discover while studying -->
-      <div class="warn-box">
-        <strong>Trap 1</strong>
-        Describe the mistake clearly — what students assume vs. what's actually true.
-      </div>
-
-      <div class="warn-box">
-        <strong>Trap 2</strong>
-        Describe the mistake clearly.
-      </div>
-
-      <div class="warn-box">
-        <strong>Trap 3</strong>
-        Describe the mistake clearly.
-      </div>
-
-    </div>
-
-    <!-- ── PROBLEM-SOLVING FRAMEWORK ── -->
-    <div class="study-section">
-      <h3>Problem-Solving Framework</h3>
-
-      <!-- Add one <h4> + <div class="steps"> block per problem type -->
-      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">Problem Type 1</h4>
-      <div class="steps">
-        <ol>
-          <li><strong>Step 1 label</strong> — What to do and why.</li>
-          <li><strong>Step 2 label</strong> — What to do and why.</li>
-          <li><strong>Step 3 label</strong> — What to do and why.</li>
-          <li><strong>Step 4 label</strong> — What to do and why.</li>
-        </ol>
-      </div>
-
-      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Problem Type 2</h4>
-      <div class="steps">
-        <ol>
-          <li><strong>Step 1 label</strong> — What to do and why.</li>
-          <li><strong>Step 2 label</strong> — What to do and why.</li>
-          <li><strong>Step 3 label</strong> — What to do and why.</li>
-        </ol>
-      </div>
-    </div>
-
-    <!-- ── MUST-KNOW SCENARIOS ── -->
-    <div class="study-section">
-      <h3>Must-Know Scenarios</h3>
-
-      <!-- Copy concept-block for each scenario that appears repeatedly -->
-      <div class="concept-block">
-        <h4>Scenario Name</h4>
-        <p>Describe the setup and what to watch for. What equation applies? What cancels?</p>
-      </div>
-
-      <div class="concept-block green">
-        <h4>Scenario Name</h4>
-        <p>Describe the setup and what to watch for.</p>
-      </div>
-
-      <div class="concept-block amber">
-        <h4>Scenario Name</h4>
-        <p>Describe the setup and what to watch for.</p>
-      </div>
-
-    </div>
-
-    <!-- ── 5-POINT STRATEGY (keep this in every topic) ── -->
-    <div class="study-section">
-      <h3>5-Point FRQ Strategy</h3>
-
-      <div class="tip-box">
-        <strong>Free-response approach</strong>
-        AP FRQs award partial credit generously. Write the correct formula first,
-        substitute values second, solve third. A correct formula with an arithmetic
-        mistake still earns most of the points.
-      </div>
-
-      <div class="concept-block">
-        <h4>What earns full marks</h4>
-        <ul>
-          <li>State which principle or law you're using</li>
-          <li>Show the general equation before substituting numbers</li>
-          <li>Justify any simplifications or assumptions</li>
-          <li>Include units in your final answer</li>
-          <li>For qualitative questions: explain the direction of change AND the reason</li>
-          <!-- add topic-specific grading tips here -->
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-
+  <!-- Tab panels: each lazy-loads its fragment via data-src on first activation -->
   <div id="tab-cheatsheet" class="tab-panel active" data-src="cheatsheet.html"></div>
   <div id="tab-studyguide" class="tab-panel" data-src="studyguide.html"></div>
   <div id="tab-simulation" class="tab-panel" data-src="simulation.html"></div>
@@ -301,6 +83,9 @@
 <div id="site-footer"></div>
 <script src="../../../js/include-footer.js" defer></script>
 <script src="../../../js/section-loader.js"></script>
+<!-- If this topic has its own simulations, uncomment and rename: -->
+<!-- <script src="topic-sims.js" defer></script> -->
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     sectionLoader.loadActiveTab();
@@ -316,13 +101,12 @@
   }
 
   function printCheatsheet() {
+    // Switch to Cheatsheet tab so @media print picks it up as active
     const cheatBtn = document.querySelector('.tab-btn');
     switchTab('cheatsheet', cheatBtn);
     window.print();
   }
 </script>
-</body>
-</html>
 
 </body>
 </html>

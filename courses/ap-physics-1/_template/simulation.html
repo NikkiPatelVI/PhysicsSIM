@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPIC NAME Simulation — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="TOPIC NAME"></site-breadcrumb>
+
+  <!--
+    ════════════════════════════════════════════════════════════════
+    SIMULATION FRAGMENT
+    ────────────────────────────────────────────────────────────────
+    Each .sim-card holds one interactive simulation. The actual canvas
+    drawing + slider event wiring lives in a JS file in this folder
+    (e.g. topic-sims.js), exposing one init function per sim and an
+    initTopicSims() that runs them all.
+
+    section-loader.js auto-calls initFluidSims() for the fluid-dynamics
+    topic. For a new topic, either:
+      • name your init function similarly and add a hook in section-loader, OR
+      • have your script call its init from DOMContentLoaded with no-op
+        guards when the canvases aren't yet in the DOM, and re-run it
+        after the tab loads (see fluid-sims.js for the pattern).
+
+    Each .sim-control has:
+      • <label> with a live readout span
+      • <input type="range"> the JS listens to
+    Each .sim-readout shows derived values that update on slider input.
+    ════════════════════════════════════════════════════════════════
+  -->
+  <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Drag the sliders to change parameters and see the physics update in real time.
+      Each simulation maps to a "Must-Know Scenario" in the Study Guide tab.
+    </p>
+
+    <!-- ── SIM 1 ── -->
+    <div class="sim-card">
+      <h3>1. Simulation Name</h3>
+      <p class="sim-desc">One sentence: what concept this visualizes and why it matters on the exam.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-one" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Parameter A <span id="one-a-label">value</span></label>
+            <input type="range" id="one-a" min="0" max="100" step="1" value="50" />
+          </div>
+          <div class="sim-control">
+            <label>Parameter B <span id="one-b-label">value</span></label>
+            <input type="range" id="one-b" min="0" max="100" step="1" value="50" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Output X</span><span class="readout-value" id="one-out-x">—</span></div>
+            <div class="readout-item"><span class="readout-label">Output Y</span><span class="readout-value" id="one-out-y">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 2 ── -->
+    <div class="sim-card">
+      <h3>2. Simulation Name</h3>
+      <p class="sim-desc">One sentence describing the scenario.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-two" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Parameter <span id="two-a-label">value</span></label>
+            <input type="range" id="two-a" min="0" max="100" step="1" value="50" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Output</span><span class="readout-value" id="two-out">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+<!-- Reference your topic-specific sim script here when running this fragment standalone -->
+<!-- <script src="topic-sims.js" defer></script> -->
+
+</body>
+</html>

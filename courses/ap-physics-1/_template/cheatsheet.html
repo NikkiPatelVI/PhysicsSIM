@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOPIC NAME Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="TOPIC NAME"></site-breadcrumb>
+
+  <!--
+    ════════════════════════════════════════════════════════════════
+    CHEATSHEET FRAGMENT
+    ────────────────────────────────────────────────────────────────
+    Everything inside #embedded-content is what section-loader pulls
+    into the Cheatsheet tab on the topic index page. The wrapper div
+    only exists so this file is also viewable standalone (with nav).
+
+    HOW TO FILL THIS OUT:
+      • One <div class="study-section"> per logical group of formulas
+        (e.g. "Kinematic Equations", "Vectors", "Free Fall")
+      • 3 formula-cards per row reads best
+      • formula-eq: write equations in Unicode (₁ ₂ ² ³ · √ ∆ θ ω α)
+      • formula-vars: one <span> per variable — symbol, name, unit
+      • Keep "Key Values & Units" section LAST in every topic
+    ════════════════════════════════════════════════════════════════
+  -->
+  <div id="embedded-content">
+
+    <!-- ── SECTION 1 ── -->
+    <div class="study-section">
+      <h3>SECTION TITLE</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Formula Name</div>
+          <div class="formula-eq">equation here</div>
+          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
+          <div class="formula-vars">
+            <span>x — variable name (unit)</span>
+            <span>x — variable name (unit)</span>
+            <span>x — variable name (unit)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Formula Name</div>
+          <div class="formula-eq">equation here</div>
+          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
+          <div class="formula-vars">
+            <span>x — variable name (unit)</span>
+            <span>x — variable name (unit)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Formula Name</div>
+          <div class="formula-eq">equation here</div>
+          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
+          <div class="formula-vars">
+            <span>x — variable name (unit)</span>
+            <span>x — variable name (unit)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SECTION 2 ── -->
+    <div class="study-section">
+      <h3>SECTION TITLE</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Formula Name</div>
+          <div class="formula-eq">equation here</div>
+          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
+          <div class="formula-vars">
+            <span>x — variable name (unit)</span>
+            <span>x — variable name (unit)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Formula Name</div>
+          <div class="formula-eq">equation here</div>
+          <div class="formula-desc">One sentence: what this equation means and when to use it.</div>
+          <div class="formula-vars">
+            <span>x — variable name (unit)</span>
+            <span>x — variable name (unit)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── KEY VALUES (always keep this section last) ── -->
+    <div class="study-section">
+      <h3>Key Values & Units</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Constants</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (gravitational acceleration)<br/>
+            <!-- add any topic-specific constants here -->
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">SI Units for This Topic</div>
+          <div class="formula-desc" style="line-height:2;">
+            <!-- e.g. velocity: m/s | acceleration: m/s² | force: N -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+</body>
+</html>
