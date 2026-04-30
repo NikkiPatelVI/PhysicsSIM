@@ -44,6 +44,7 @@ const sectionLoader = (() => {
       if (panel.id === 'tab-simulation') {
         if (typeof initFluidSims === 'function') initFluidSims();
         if (typeof initKinematicsSims === 'function') initKinematicsSims();
+        if (typeof initDynamicsSims === 'function') initDynamicsSims();
       }
     } catch (error) {
       console.warn('Section load failed:', error);

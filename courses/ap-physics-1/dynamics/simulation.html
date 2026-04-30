@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Force &amp; Dynamics Simulation — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Drag the sliders to change parameters and see the physics update in real time.
+      Each simulation maps to a Must-Know Scenario in the Study Guide.
+    </p>
+
+    <!-- ── SIM 1: Block on Surface with FBD ── -->
+    <div class="sim-card">
+      <h3>1. Block on Surface — FBD &amp; Net Force</h3>
+      <p class="sim-desc">Adjust the applied force and friction coefficient. The FBD arrows scale with each force. Watch how static friction self-adjusts until the block breaks free.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-block" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Applied force F <span id="blk-f-label">20 N</span></label>
+            <input type="range" id="blk-f" min="0" max="80" step="1" value="20" />
+          </div>
+          <div class="sim-control">
+            <label>Mass m <span id="blk-m-label">5 kg</span></label>
+            <input type="range" id="blk-m" min="1" max="15" step="1" value="5" />
+          </div>
+          <div class="sim-control">
+            <label>μ_s / μ_k <span id="blk-mu-label">0.40 / 0.30</span></label>
+            <input type="range" id="blk-mu" min="0.05" max="0.90" step="0.05" value="0.40" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Normal N</span><span class="readout-value" id="blk-out-n">—</span></div>
+            <div class="readout-item"><span class="readout-label">Friction f</span><span class="readout-value" id="blk-out-f">—</span></div>
+            <div class="readout-item"><span class="readout-label">Acceleration a</span><span class="readout-value" id="blk-out-a">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 2: Inclined Plane ── -->
+    <div class="sim-card">
+      <h3>2. Inclined Plane</h3>
+      <p class="sim-desc">See how weight decomposes into slope-parallel and perpendicular components. Change the angle and friction coefficient to explore when the block slides vs. stays put.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-incline" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Slope angle θ <span id="inc-theta-label">30°</span></label>
+            <input type="range" id="inc-theta" min="5" max="75" step="1" value="30" />
+          </div>
+          <div class="sim-control">
+            <label>Mass m <span id="inc-m-label">3 kg</span></label>
+            <input type="range" id="inc-m" min="1" max="10" step="1" value="3" />
+          </div>
+          <div class="sim-control">
+            <label>μ_k (kinetic) <span id="inc-mu-label">0.20</span></label>
+            <input type="range" id="inc-mu" min="0" max="0.80" step="0.05" value="0.20" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">mg sinθ (down slope)</span><span class="readout-value" id="inc-out-para">—</span></div>
+            <div class="readout-item"><span class="readout-label">Normal N</span><span class="readout-value" id="inc-out-n">—</span></div>
+            <div class="readout-item"><span class="readout-label">Friction f_k</span><span class="readout-value" id="inc-out-fk">—</span></div>
+            <div class="readout-item"><span class="readout-label">Acceleration a</span><span class="readout-value" id="inc-out-a">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 3: Atwood Machine ── -->
+    <div class="sim-card">
+      <h3>3. Atwood Machine</h3>
+      <p class="sim-desc">Two masses hanging over a frictionless pulley. The heavier side accelerates downward. When masses are equal the system is in equilibrium and tension equals the weight of either mass.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-atwood" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Mass m₁ <span id="atw-m1-label">3 kg</span></label>
+            <input type="range" id="atw-m1" min="1" max="10" step="0.5" value="3" />
+          </div>
+          <div class="sim-control">
+            <label>Mass m₂ <span id="atw-m2-label">5 kg</span></label>
+            <input type="range" id="atw-m2" min="1" max="10" step="0.5" value="5" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Acceleration a</span><span class="readout-value" id="atw-out-a">—</span></div>
+            <div class="readout-item"><span class="readout-label">Tension T</span><span class="readout-value" id="atw-out-t">—</span></div>
+            <div class="readout-item"><span class="readout-label">m₁g</span><span class="readout-value" id="atw-out-w1">—</span></div>
+            <div class="readout-item"><span class="readout-label">m₂g</span><span class="readout-value" id="atw-out-w2">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 4: Table + Hanging Mass ── -->
+    <div class="sim-card">
+      <h3>4. Block on Table + Hanging Mass</h3>
+      <p class="sim-desc">The hanging mass drives the system; the table block provides inertia. Adding friction to the table reduces acceleration. Tension is always between zero and the hanging weight.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-table" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Table mass m_t <span id="tbl-mt-label">4 kg</span></label>
+            <input type="range" id="tbl-mt" min="1" max="12" step="0.5" value="4" />
+          </div>
+          <div class="sim-control">
+            <label>Hanging mass m_h <span id="tbl-mh-label">2 kg</span></label>
+            <input type="range" id="tbl-mh" min="0.5" max="8" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Table μ_k <span id="tbl-mu-label">0.00</span></label>
+            <input type="range" id="tbl-mu" min="0" max="0.60" step="0.05" value="0" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Acceleration a</span><span class="readout-value" id="tbl-out-a">—</span></div>
+            <div class="readout-item"><span class="readout-label">Tension T</span><span class="readout-value" id="tbl-out-t">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Force &amp; Dynamics Study Guide — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <!-- ── 1. WHAT THE EXAM TESTS ── -->
+    <div class="study-section">
+      <h3>What the AP Exam Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Unit 2 is the heaviest-weighted unit at 18–23% of the exam. Almost every
+        FRQ section includes a dynamics problem. Expect to draw FBDs, apply ΣF = ma
+        in two directions, and justify whether an object is in equilibrium or accelerating.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — ΣF = ma is the Master Equation</h4>
+        <p>Every dynamics problem reduces to: draw the FBD, write ΣF = ma in each direction, solve. There are no shortcuts. The equation applies to each object separately in multi-body systems — never mix forces from different objects in one equation.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — The FBD Must Be Correct First</h4>
+        <p>A wrong FBD guarantees a wrong answer. Every force must act on the object being analyzed (not a surface, not a pulley). For each force: what object exerts it, and in what direction? The FBD is not decoration — it is the physics.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Newton's 3rd Law Pairs Act on Different Objects</h4>
+        <p>If Earth pulls you down with 700 N, you pull Earth up with 700 N. These two forces never appear on the same FBD. The normal force is NOT the Newton's 3rd law pair of your weight — the pair of your weight on Earth is Earth's weight acting on you (gravitationally).</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 4 — Static Friction Self-Adjusts; Kinetic Friction Is Fixed</h4>
+        <p>Static friction can be anywhere from 0 to μ_s N — it's whatever value is needed to prevent motion. If someone pushes with 5 N on a block that needs 20 N to slide, static friction is exactly 5 N (not μ_s N). Kinetic friction is always exactly μ_k N once sliding.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 5 — Mass Cancels on Inclines and in Free Fall</h4>
+        <p>On a frictionless incline: a = g sinθ regardless of mass. With friction: a = g(sinθ − μ_k cosθ) — still no mass. This is why the AP exam loves asking "what happens if mass doubles?" on incline problems. The answer is always: acceleration unchanged.</p>
+      </div>
+    </div>
+
+    <!-- ── 2. COMMON TRAPS ── -->
+    <div class="study-section">
+      <h3>Common Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1 — Assuming N = mg always</strong>
+        The normal force equals mg only on a flat horizontal surface with no vertical applied forces. On an incline: N = mg cosθ. With a force pushing down: N = mg + F sinθ. With a force pulling up: N = mg − F sinθ. Always derive N from ΣF_y = 0 or ΣF_⊥ = 0.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2 — Using μ_s when the block is already moving</strong>
+        μ_s applies only to stationary objects about to slide. Once an object is moving, use μ_k. Since μ_k &lt; μ_s, using the wrong one gives a larger friction force than reality and a smaller (or wrong) acceleration.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3 — Forgetting to decompose weight on inclines</strong>
+        Weight acts straight down, not along the slope. You must split mg into components: mg sinθ along the slope and mg cosθ perpendicular. Never put mg directly into ΣF along the slope.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4 — Mixing forces from different objects in one equation</strong>
+        In an Atwood machine, the tension on m₁ is the same string as the tension on m₂, but you write separate ΣF = ma equations for each mass. Never add the weights of both masses into one equation without thinking about direction carefully.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Treating a system in equilibrium as having no forces</strong>
+        Equilibrium (a = 0) means the net force is zero — there are still individual forces present. An object resting on a table has weight down and normal force up: two real forces that cancel. ΣF = 0, not "no forces."
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 6 — The Newton's 3rd law "equal forces → equal accelerations" error</strong>
+        Action-reaction forces are equal in magnitude, but the accelerations are NOT equal unless masses are equal. a = F/m — a small mass given the same force as a large mass accelerates much more. Earth gets barely any acceleration from your weight.
+      </div>
+    </div>
+
+    <!-- ── 3. PROBLEM-SOLVING FRAMEWORK ── -->
+    <div class="study-section">
+      <h3>Problem-Solving Framework</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">Single Object — FBD Approach</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Draw the FBD</strong> — isolate the object, draw every force acting on it with arrows. Label each force (W, N, T, f_k, F_applied…).</li>
+          <li><strong>Choose axes</strong> — align one axis with the direction of acceleration (along the slope, or horizontal). This minimizes components.</li>
+          <li><strong>Write ΣF = ma for each axis</strong> — one equation per direction. The axis with no acceleration has ΣF = 0.</li>
+          <li><strong>Solve for unknowns</strong> — often N comes from the perpendicular equation, then goes into friction for the parallel equation.</li>
+          <li><strong>Check sign and units</strong> — acceleration direction must match the net force direction.</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Multi-Body System</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Treat as one system first</strong> — add all external forces, divide by total mass to get acceleration. Internal forces (tension) cancel and don't appear.</li>
+          <li><strong>Isolate one object</strong> — draw its FBD including tension T. Apply ΣF = ma using the acceleration already found.</li>
+          <li><strong>Solve for T</strong> — tension is the only unknown in the isolated equation.</li>
+          <li><strong>Verify with the other object</strong> — apply ΣF = ma to the second object; T should be consistent.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ── 4. MUST-KNOW SCENARIOS ── -->
+    <div class="study-section">
+      <h3>Must-Know Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Block on Horizontal Surface with Friction</h4>
+        <p>Applied force F horizontal, μ_k given. Normal force N = mg. Kinetic friction f_k = μ_k mg (opposite to motion). Net force = F − f_k. Acceleration a = (F − μ_k mg)/m. If F &lt; μ_s mg the block doesn't move and f_s = F exactly.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Block on Frictionless Incline</h4>
+        <p>Only component along slope drives motion: a = g sinθ. Normal force: N = mg cosθ. Mass cancels — acceleration is the same for any mass. Often used in "if mass doubles, what happens to acceleration?" questions: answer is nothing changes.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Block on Incline with Friction</h4>
+        <p>Friction acts up the slope (opposing downward motion). Net: ΣF = mg sinθ − μ_k mg cosθ = mg(sinθ − μ_k cosθ). Acceleration a = g(sinθ − μ_k cosθ). Object slides only if tanθ &gt; μ_s. If tanθ = μ_s, block is at the threshold of sliding.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Atwood Machine (Two Hanging Masses)</h4>
+        <p>Masses m₁ and m₂ over a frictionless pulley (m₂ &gt; m₁). System acceleration: a = (m₂ − m₁)g/(m₁ + m₂). Tension: T = 2m₁m₂g/(m₁ + m₂). Note: m₁g &lt; T &lt; m₂g. If masses are equal, a = 0 and T = mg.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Block on Table + Hanging Mass (Pulley at Edge)</h4>
+        <p>Hanging mass m_h pulls the system; table mass m_t resists (no friction unless stated). System: a = m_h g/(m_t + m_h). Tension from table block: T = m_t · a. Verify: for hanging block, m_h g − T = m_h a ✓. With friction on table: a = (m_h g − μ_k m_t g)/(m_t + m_h).</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Object in Equilibrium (Static)</h4>
+        <p>ΣF_x = 0 and ΣF_y = 0 simultaneously. Common setups: hanging sign with two cables, block on incline at rest, or object on a surface with multiple forces. Solve the two equations as a system. For angles, use sin and cos carefully — draw a triangle if unsure.</p>
+      </div>
+    </div>
+
+    <!-- ── 5. PRACTICE PROBLEMS ── -->
+    <div class="study-section">
+      <h3>Practice Problems</h3>
+
+      <div class="concept-block">
+        <h4>Problem 1 — Block with Friction</h4>
+        <p>A 6.0 kg block is pushed along a horizontal surface by a 40 N horizontal force. The coefficient of kinetic friction is μ_k = 0.25. Find the acceleration. (g = 9.8 m/s²)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>FBD forces:</strong> Weight = mg = 58.8 N down; N = 58.8 N up; F = 40 N right; f_k left.</p>
+          <p><strong>Normal force:</strong> N = mg = 6.0 × 9.8 = 58.8 N</p>
+          <p><strong>Friction:</strong> f_k = μ_k N = 0.25 × 58.8 = 14.7 N</p>
+          <p><strong>ΣF = ma:</strong> 40 − 14.7 = 6.0 × a → a = 25.3/6.0 = <strong>4.2 m/s²</strong></p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 2 — Incline with Friction</h4>
+        <p>A 4.0 kg block slides down a 37° incline with μ_k = 0.20. Find the acceleration. (sin 37° = 0.60, cos 37° = 0.80)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Normal force:</strong> N = mg cos37° = 4.0 × 9.8 × 0.80 = 31.36 N</p>
+          <p><strong>Friction (up slope):</strong> f_k = μ_k N = 0.20 × 31.36 = 6.27 N</p>
+          <p><strong>Net force down slope:</strong> mg sin37° − f_k = 4.0 × 9.8 × 0.60 − 6.27 = 23.52 − 6.27 = 17.25 N</p>
+          <p><strong>Acceleration:</strong> a = 17.25/4.0 ≈ <strong>4.3 m/s²</strong></p>
+          <p>Or use: a = g(sinθ − μ_k cosθ) = 9.8(0.60 − 0.20 × 0.80) = 9.8 × 0.44 = 4.3 m/s² ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 3 — Atwood Machine</h4>
+        <p>In an Atwood machine, m₁ = 3.0 kg and m₂ = 5.0 kg. Find (a) the acceleration of the system, and (b) the tension in the string.</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> a = (m₂ − m₁)g/(m₁ + m₂) = (5 − 3)(9.8)/(3 + 5) = 19.6/8 = <strong>2.45 m/s²</strong></p>
+          <p><strong>(b)</strong> T = 2m₁m₂g/(m₁ + m₂) = 2(3)(5)(9.8)/8 = 294/8 = <strong>36.75 N</strong></p>
+          <p><strong>Verify:</strong> For m₂: m₂g − T = m₂a → 49 − 36.75 = 5 × 2.45 = 12.25 ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 4 — Table + Hanging Mass</h4>
+        <p>A 4.0 kg block sits on a frictionless table connected by a string over a pulley to a 2.0 kg hanging mass. Find (a) the acceleration and (b) the tension.</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a) System:</strong> only m_h g drives the system. a = m_h g/(m_t + m_h) = (2.0 × 9.8)/(4.0 + 2.0) = 19.6/6 ≈ <strong>3.27 m/s²</strong></p>
+          <p><strong>(b) Isolate table block:</strong> T = m_t × a = 4.0 × 3.27 ≈ <strong>13.1 N</strong></p>
+          <p><strong>Verify with hanging block:</strong> m_h g − T = m_h a → 19.6 − 13.1 = 6.5 ≈ 2.0 × 3.27 = 6.54 ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 5 — Force at an Angle</h4>
+        <p>A 5.0 kg block on a horizontal surface (μ_k = 0.20) is pulled by a 30 N force at 37° above horizontal. Find the acceleration. (sin 37° = 0.60, cos 37° = 0.80)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Horizontal component of F:</strong> F_x = 30 cos37° = 30 × 0.80 = 24 N</p>
+          <p><strong>Vertical component of F:</strong> F_y = 30 sin37° = 30 × 0.60 = 18 N (upward)</p>
+          <p><strong>Normal force</strong> (ΣF_y = 0): N + F_y − mg = 0 → N = mg − F_y = 49 − 18 = 31 N</p>
+          <p><strong>Friction:</strong> f_k = μ_k N = 0.20 × 31 = 6.2 N</p>
+          <p><strong>ΣF_x = ma:</strong> 24 − 6.2 = 5.0 × a → a = 17.8/5.0 = <strong>3.56 m/s²</strong></p>
+          <p>Note: the upward component reduces N, which reduces friction, so the acceleration is higher than if F were purely horizontal.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── 6. ANNOTATED FRQ ── -->
+    <div class="study-section">
+      <h3>Annotated FRQ Example</h3>
+
+      <div class="concept-block">
+        <h4>Question Setup</h4>
+        <p>A 5.0 kg block rests on a horizontal surface. The coefficients of friction are μ_s = 0.40 and μ_k = 0.30. A horizontal force F is applied to the block. Use g = 9.8 m/s².</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (a) — Draw a FBD of the block while it is being pushed and is moving. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Four forces shown with correct directions: weight mg downward, normal force N upward, applied force F to the right, kinetic friction f_k to the left.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct relative magnitudes: N = mg (equal length vertical arrows); F &gt; f_k (net force is in the direction of motion). No extra forces invented.</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (b) — Find the minimum force needed to start the block moving. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct formula and normal force: f_s,max = μ_s N = μ_s mg = 0.40 × 5.0 × 9.8 = 19.6 N.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Conclusion: the minimum force to start moving is F = f_s,max = <strong>19.6 N</strong>. (Must use μ_s, not μ_k — the block is still static at this threshold.)</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (c) — With F = 30 N applied, find the block's acceleration. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Kinetic friction correctly calculated: f_k = μ_k mg = 0.30 × 5.0 × 9.8 = 14.7 N. (Must use μ_k because the block is now moving.)</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>ΣF = ma: 30 − 14.7 = 5.0 × a → a = 15.3/5.0 = <strong>3.06 m/s²</strong></p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (d) — If the mass of the block were doubled to 10 kg with the same F = 30 N, would the acceleration increase, decrease, or stay the same? Justify. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct prediction: the acceleration would <strong>decrease</strong>. Both the inertia (m) and friction force (f_k = μ_k mg) increase with mass, but friction grows faster relative to the fixed applied force F.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Calculation or clear reasoning: a = (F − μ_k mg)/m = F/m − μ_k g. As m doubles, F/m halves while μ_k g stays constant, so net acceleration decreases. With m = 10 kg: a = (30 − 29.4)/10 = <strong>0.06 m/s²</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. 5-POINT FRQ STRATEGY ── -->
+    <div class="study-section">
+      <h3>5-Point FRQ Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        Dynamics FRQs almost always ask for (1) an FBD, (2) a calculation using ΣF = ma,
+        and (3) a conceptual justification. The FBD earns its own points — draw it large,
+        label every force, and show correct relative lengths. A correct FBD with an arithmetic
+        error in part (b) still earns full FBD credit.
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>Draw FBD as a dot with labeled vectors (not a picture of the block)</li>
+          <li>Write ΣF = ma explicitly before substituting — show the sum of forces on the left side</li>
+          <li>For inclines: explicitly decompose weight into sinθ and cosθ components</li>
+          <li>State which friction coefficient you're using (static vs. kinetic) and why</li>
+          <li>For multi-body: show the system equation AND the isolated block equation</li>
+          <li>Include units (N for force, kg for mass, m/s² for acceleration)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

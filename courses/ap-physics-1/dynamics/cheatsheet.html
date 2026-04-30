@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Force &amp; Dynamics Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <!-- ── Newton's Laws ── -->
+    <div class="study-section">
+      <h3>Newton's Three Laws</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Newton's 1st Law — Inertia</div>
+          <div class="formula-eq">ΣF = 0 ↔ a = 0</div>
+          <div class="formula-desc">An object at rest stays at rest; an object in motion stays in motion at constant velocity — unless acted on by a net external force.</div>
+          <div class="formula-vars">
+            <span>ΣF — net (vector sum of all) forces (N)</span>
+            <span>a — acceleration (m/s²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Newton's 2nd Law</div>
+          <div class="formula-eq">ΣF = ma</div>
+          <div class="formula-desc">The master dynamics equation. Net force equals mass times acceleration. Apply separately in x and y directions.</div>
+          <div class="formula-vars">
+            <span>ΣF — net force (N)</span>
+            <span>m — mass (kg)</span>
+            <span>a — acceleration (m/s²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Newton's 3rd Law</div>
+          <div class="formula-eq">F₁₂ = −F₂₁</div>
+          <div class="formula-desc">Every force has an equal and opposite reaction force acting on a different object. The two forces are always equal in magnitude and opposite in direction.</div>
+          <div class="formula-vars">
+            <span>F₁₂ — force object 1 exerts on object 2 (N)</span>
+            <span>F₂₁ — force object 2 exerts on object 1 (N)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Common Forces ── -->
+    <div class="study-section">
+      <h3>Common Forces</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Weight</div>
+          <div class="formula-eq">W = mg</div>
+          <div class="formula-desc">Gravitational force on an object, always directed downward toward Earth's center. Weight is a force; mass is not.</div>
+          <div class="formula-vars">
+            <span>W — weight (N)</span>
+            <span>m — mass (kg)</span>
+            <span>g = 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Normal Force</div>
+          <div class="formula-eq">N ⊥ surface</div>
+          <div class="formula-desc">Contact force perpendicular to the surface. N = mg only on a horizontal surface with no vertical applied forces — always derive it from ΣF_y = 0.</div>
+          <div class="formula-vars">
+            <span>N — normal force (N)</span>
+            <span>Direction: perpendicular (outward) from surface</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Static Friction</div>
+          <div class="formula-eq">f_s ≤ μ_s N</div>
+          <div class="formula-desc">Prevents motion. Self-adjusts up to a maximum of μ_s N. Use f_s = μ_s N only at the instant of impending motion.</div>
+          <div class="formula-vars">
+            <span>f_s — static friction force (N)</span>
+            <span>μ_s — coefficient of static friction (unitless)</span>
+            <span>N — normal force (N)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Kinetic Friction</div>
+          <div class="formula-eq">f_k = μ_k N</div>
+          <div class="formula-desc">Opposes sliding motion. Constant once the object is moving. Always μ_k &lt; μ_s — it's easier to keep something moving than to start it.</div>
+          <div class="formula-vars">
+            <span>f_k — kinetic friction force (N)</span>
+            <span>μ_k — coefficient of kinetic friction (unitless)</span>
+            <span>N — normal force (N)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Hooke's Law (Spring)</div>
+          <div class="formula-eq">F_s = kx</div>
+          <div class="formula-desc">The spring force is proportional to the stretch or compression from equilibrium. The spring always pulls back toward equilibrium (restoring force).</div>
+          <div class="formula-vars">
+            <span>F_s — spring force (N)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>x — displacement from equilibrium (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Tension</div>
+          <div class="formula-eq">T along string (pulls)</div>
+          <div class="formula-desc">Tension acts along a string or rope, always pulling (never pushing). For a massless string, tension is the same at every point along it.</div>
+          <div class="formula-vars">
+            <span>T — tension (N)</span>
+            <span>Massless string: T is uniform throughout</span>
+            <span>Direction: along string, toward the string</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Inclined Planes ── -->
+    <div class="study-section">
+      <h3>Inclined Planes</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Weight Components</div>
+          <div class="formula-eq">F_∥ = mg sinθ &nbsp;·&nbsp; F_⊥ = mg cosθ</div>
+          <div class="formula-desc">Decompose weight along (∥) and perpendicular (⊥) to the slope. The perpendicular component equals the normal force on a frictionless incline.</div>
+          <div class="formula-vars">
+            <span>F_∥ — component down the slope (N)</span>
+            <span>F_⊥ — component into the surface (N)</span>
+            <span>θ — angle of incline from horizontal</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Frictionless Incline</div>
+          <div class="formula-eq">a = g sinθ &nbsp;·&nbsp; N = mg cosθ</div>
+          <div class="formula-desc">On a frictionless slope, only the parallel component of gravity drives acceleration. Mass cancels — every object accelerates at g sinθ regardless of mass.</div>
+          <div class="formula-vars">
+            <span>a — acceleration down slope (m/s²)</span>
+            <span>N — normal force (N)</span>
+            <span>θ — slope angle</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Incline with Friction</div>
+          <div class="formula-eq">a = g(sinθ − μ_k cosθ)</div>
+          <div class="formula-desc">Friction acts up the slope opposing motion. Net acceleration still independent of mass. Object slides if tanθ &gt; μ_s.</div>
+          <div class="formula-vars">
+            <span>a — acceleration down slope (m/s²)</span>
+            <span>μ_k — kinetic friction coefficient</span>
+            <span>θ — slope angle</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Multi-Body Systems ── -->
+    <div class="study-section">
+      <h3>Multi-Body Systems</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Atwood Machine</div>
+          <div class="formula-eq">a = (m₂−m₁)g / (m₁+m₂)</div>
+          <div class="formula-desc">Two masses over a frictionless pulley. Net force is the weight difference; total inertia is the sum. Heavier side accelerates downward.</div>
+          <div class="formula-vars">
+            <span>m₁ — lighter mass (kg)</span>
+            <span>m₂ — heavier mass (kg)</span>
+            <span>a — acceleration of system (m/s²)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Atwood Tension</div>
+          <div class="formula-eq">T = 2m₁m₂g / (m₁+m₂)</div>
+          <div class="formula-desc">Tension is between the two weight values (m₁g &lt; T &lt; m₂g). Verify: apply ΣF = ma to each mass separately using this T.</div>
+          <div class="formula-vars">
+            <span>T — string tension (N)</span>
+            <span>m₁, m₂ — the two masses (kg)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Block on Table + Hanging Mass</div>
+          <div class="formula-eq">a = m_h g / (m_t + m_h)</div>
+          <div class="formula-desc">The hanging mass drives the system; the table mass provides inertia. For tension: T = m_t · a (from the table block's equation).</div>
+          <div class="formula-vars">
+            <span>m_h — hanging mass (kg)</span>
+            <span>m_t — table mass (kg)</span>
+            <span>T — string tension = m_t · a (N)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Key Values ── -->
+    <div class="study-section">
+      <h3>Key Values &amp; Units</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Constants</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (gravitational acceleration)<br/>
+            μ_s &gt; μ_k always (static &gt; kinetic)<br/>
+            Typical μ_k (rubber on concrete) ≈ 0.7
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">SI Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Force: N = kg·m/s²<br/>
+            Mass: kg<br/>
+            Acceleration: m/s²<br/>
+            Spring constant k: N/m
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">FBD Checklist</div>
+          <div class="formula-desc" style="line-height:2;">
+            1. Draw the object as a dot<br/>
+            2. Weight: always downward<br/>
+            3. Normal: ⊥ to surface, outward<br/>
+            4. Friction: opposes motion or tendency<br/>
+            5. Tension: along string, toward string<br/>
+            6. Applied forces: direction given
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>
