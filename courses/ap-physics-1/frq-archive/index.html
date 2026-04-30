@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRQ Archive — Nikki Patel AP Physics 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+  <style>
+    /* ── Filter bar ── */
+    .frq-filters {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .625rem;
+      margin-bottom: 1.5rem;
+    }
+    .frq-filters select {
+      appearance: none;
+      background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right .65rem center;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: .875rem;
+      font-weight: 500;
+      padding: .4rem 2rem .4rem .75rem;
+      transition: border-color .15s;
+    }
+    .frq-filters select:hover,
+    .frq-filters select:focus { border-color: var(--accent); outline: none; }
+    .frq-count {
+      margin-left: auto;
+      font-size: .8125rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── FRQ entry (<details>) ── */
+    .frq-entry {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: .75rem;
+      overflow: hidden;
+      transition: border-color .15s;
+    }
+    .frq-entry:hover { border-color: var(--accent); }
+    .frq-entry[open] { border-color: var(--accent); }
+
+    .frq-summary {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .625rem;
+      list-style: none;
+      padding: .875rem 1rem;
+      user-select: none;
+    }
+    .frq-summary::-webkit-details-marker { display: none; }
+    .frq-summary::before {
+      content: '▶';
+      color: var(--text-muted);
+      font-size: .625rem;
+      flex-shrink: 0;
+      transition: transform .15s;
+    }
+    .frq-entry[open] > .frq-summary::before { transform: rotate(90deg); }
+
+    .frq-tags { display: flex; gap: .375rem; flex-wrap: wrap; }
+    .frq-topic {
+      font-size: .9375rem;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+      min-width: 160px;
+    }
+    .frq-pts {
+      font-size: .8125rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ── Expanded body ── */
+    .frq-body {
+      border-top: 1.5px solid var(--border);
+      padding: 1.25rem 1.25rem 1.5rem;
+    }
+    .frq-setup {
+      background: var(--surface);
+      border-radius: 8px;
+      font-size: .9rem;
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+      padding: .875rem 1rem;
+    }
+    .frq-setup strong { display: block; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .5rem; }
+
+    .frq-part { margin-bottom: 1.25rem; }
+    .frq-part:last-child { margin-bottom: 0; }
+    .part-q {
+      border-left: 3px solid var(--border);
+      font-size: .9rem;
+      line-height: 1.65;
+      margin-bottom: .75rem;
+      padding: .5rem .75rem;
+    }
+    .part-q strong { color: var(--accent); }
+
+    .hidden { display: none !important; }
+    .frq-empty {
+      color: var(--text-muted);
+      font-size: .9375rem;
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    /* ── Type badge ── */
+    .tag-teal { background: #d1fae5; color: #065f46; }
+    .tag-purple { background: #ede9fe; color: #5b21b6; }
+  </style>
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="FRQ Archive"></site-breadcrumb>
+
+  <div style="margin-bottom:1.5rem;">
+    <h1 class="section-title" style="margin-bottom:.375rem;">Past FRQ Archive</h1>
+    <p style="color:var(--text-muted); font-size:.9375rem; margin:0;">
+      Released free-response questions with annotated model answers and scoring rubrics.
+      Each <span class="score-tag" style="position:static;display:inline-block;font-size:.7rem;">1 pt</span> callout matches one point on the College Board rubric.
+      Source: <a href="https://apcentral.collegeboard.org/courses/ap-physics-1/exam/past-exam-questions" target="_blank" rel="noopener" style="color:var(--accent);">AP Central</a>.
+    </p>
+  </div>
+
+  <div class="frq-filters">
+    <select id="filter-year" class="frq-filter">
+      <option value="">All years</option>
+      <option>2015</option><option>2016</option><option>2017</option>
+      <option>2018</option><option>2019</option><option>2020</option>
+      <option>2021</option><option>2022</option><option>2023</option>
+      <option>2024</option>
+    </select>
+    <select id="filter-unit" class="frq-filter">
+      <option value="">All units</option>
+      <option value="1">Unit 1 — Kinematics</option>
+      <option value="2">Unit 2 — Forces</option>
+      <option value="3">Unit 3 — Energy</option>
+      <option value="4">Unit 4 — Momentum</option>
+      <option value="5">Unit 5 — Rotation</option>
+      <option value="6">Unit 6 — Rot. Energy &amp; Momentum</option>
+      <option value="7">Unit 7 — Oscillations</option>
+      <option value="8">Unit 8 — Fluids</option>
+    </select>
+    <select id="filter-type" class="frq-filter">
+      <option value="">All types</option>
+      <option value="calculation">Calculation</option>
+      <option value="experimental">Experimental Design</option>
+      <option value="conceptual">Conceptual / Reasoning</option>
+    </select>
+    <span class="frq-count" id="frq-count"></span>
+  </div>
+
+  <div id="frq-list"></div>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+<script>
+const UNIT_NAMES = {
+  1:'Kinematics', 2:'Forces', 3:'Energy', 4:'Momentum',
+  5:'Rotation', 6:'Rot. Energy & Momentum', 7:'Oscillations', 8:'Fluids'
+};
+
+const TYPE_LABELS = {
+  calculation: { label:'Calculation', cls:'tag-blue' },
+  experimental: { label:'Experimental Design', cls:'tag-teal' },
+  conceptual: { label:'Conceptual', cls:'tag-purple' }
+};
+
+// ── FRQ DATA ────────────────────────────────────────────────────────────────
+// Each entry: year, q (question number), units (array), topic, type, points,
+// setup (HTML), parts: [{ label, text (HTML), scores: [{ tag, text }] }]
+// ─────────────────────────────────────────────────────────────────────────────
+const FRQ_DATA = [
+
+  {
+    id: 'frq-2015-q1',
+    year: 2015, q: 1,
+    units: [2],
+    topic: 'Forces on a Sliding Block',
+    type: 'calculation',
+    points: 7,
+    setup: `A 2.0 kg block is at rest on a horizontal surface. The coefficient of kinetic friction
+    between the block and the surface is μ<sub>k</sub> = 0.30. A horizontal force of 12 N is
+    then applied to the block. Use g = 9.8 m/s².`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Draw a free-body diagram of the block while it is being pushed. Label each force with its name and direction.`,
+        scores: [
+          { tag: '1 pt', text: 'Four forces shown with correct directions: weight downward, normal force upward, applied force horizontal (right), friction force horizontal (left).' },
+          { tag: '1 pt', text: 'Forces drawn with correct relative magnitudes (weight = normal; applied > friction).' }
+        ]
+      },
+      {
+        label: 'b', points: 3,
+        text: `Calculate the acceleration of the block.`,
+        scores: [
+          { tag: '1 pt', text: 'Normal force correctly identified: N = mg = 2.0 × 9.8 = 19.6 N.' },
+          { tag: '1 pt', text: 'Friction force correctly calculated: f<sub>k</sub> = μ<sub>k</sub>N = 0.30 × 19.6 = 5.88 N.' },
+          { tag: '1 pt', text: 'Newton\'s 2nd law applied correctly and solved: a = F<sub>net</sub>/m = (12 − 5.88)/2.0 = <strong>3.1 m/s²</strong>.' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `The same 12 N force is now applied at an angle of 30° <em>above</em> the horizontal instead of horizontally. Without calculating a new value, predict whether the block's acceleration will increase, decrease, or remain the same. Justify your answer.`,
+        scores: [
+          { tag: '1 pt', text: 'Correct prediction: acceleration <strong>increases</strong>.' },
+          { tag: '1 pt', text: 'Correct reasoning: the upward component of the angled force reduces the normal force, which reduces friction. Even though the horizontal component of applied force decreases, the net horizontal force increases because friction decreases more.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2016-q1',
+    year: 2016, q: 1,
+    units: [4],
+    topic: 'Cart Collision and Momentum',
+    type: 'calculation',
+    points: 7,
+    setup: `Cart A (mass 0.50 kg) moves to the right at 2.0 m/s on a frictionless track and
+    collides with Cart B (mass 1.5 kg), which is initially at rest. The carts stick together
+    after the collision.`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Calculate the velocity of the combined carts immediately after the collision.`,
+        scores: [
+          { tag: '1 pt', text: 'Conservation of momentum written correctly: m<sub>A</sub>v<sub>A</sub> = (m<sub>A</sub> + m<sub>B</sub>)v<sub>f</sub>.' },
+          { tag: '1 pt', text: 'Correct answer: v<sub>f</sub> = (0.50 × 2.0) / (0.50 + 1.5) = <strong>0.50 m/s</strong> to the right.' }
+        ]
+      },
+      {
+        label: 'b', points: 3,
+        text: `Calculate the kinetic energy of the system before and after the collision. Is kinetic energy conserved? Is momentum conserved? Explain.`,
+        scores: [
+          { tag: '1 pt', text: 'KE<sub>before</sub> = ½(0.50)(2.0)² = <strong>1.0 J</strong>; KE<sub>after</sub> = ½(2.0)(0.50)² = <strong>0.25 J</strong>.' },
+          { tag: '1 pt', text: 'Kinetic energy is <strong>not</strong> conserved — 0.75 J (75%) was lost to deformation/heat. This is a perfectly inelastic collision.' },
+          { tag: '1 pt', text: 'Momentum <strong>is</strong> conserved because the track is frictionless and there is no net external horizontal force on the system during the collision.' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `Sketch a graph of the total momentum of the system (p<sub>system</sub>) vs. time from before the collision to after. Label the moment of collision.`,
+        scores: [
+          { tag: '1 pt', text: 'Graph shows a constant value of 1.0 kg·m/s throughout (flat horizontal line).' },
+          { tag: '1 pt', text: 'The collision is marked on the time axis and the line remains flat through it — illustrating conservation of momentum during the impulse.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2017-q1',
+    year: 2017, q: 1,
+    units: [7],
+    topic: 'Experimental Design — Spring Constant',
+    type: 'experimental',
+    points: 7,
+    setup: `A student wants to experimentally determine the spring constant k of an unknown spring.
+    The student has access to: the spring, a ruler, a set of known masses, a balance, a
+    ring stand, and a stopwatch.`,
+    parts: [
+      {
+        label: 'a', points: 3,
+        text: `Describe a complete experimental procedure the student could use to determine k. Include which measurements to take and how to take them.`,
+        scores: [
+          { tag: '1 pt', text: 'Hang the spring vertically from the ring stand. Measure the natural (unloaded) length with the ruler.' },
+          { tag: '1 pt', text: 'Hang known masses one at a time. Record each mass m and the new stretched length; calculate the extension x = stretched − natural length. Take at least 5 different masses.' },
+          { tag: '1 pt', text: 'Apply Hooke\'s Law: F = kx, where F = mg. Plotting F vs. x gives a straight line whose slope equals k.' }
+        ]
+      },
+      {
+        label: 'b', points: 2,
+        text: `Describe what graph the student should plot and explain how to extract k from that graph.`,
+        scores: [
+          { tag: '1 pt', text: 'Plot F (= mg) on the y-axis vs. extension x on the x-axis.' },
+          { tag: '1 pt', text: 'The slope of the best-fit line equals k (in N/m). A linear graph through the origin confirms Hooke\'s Law is valid for this spring.' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `Identify one potential source of systematic error in this procedure and explain how it would affect the calculated value of k.`,
+        scores: [
+          { tag: '1 pt', text: 'Valid source identified, e.g.: the mass of the spring itself is not accounted for (adds to the effective load), or the ruler is not perfectly vertical causing the extension to be underestimated.' },
+          { tag: '1 pt', text: 'Correct direction of effect: e.g., ignoring spring mass means the actual extension is slightly larger than expected for a given applied force, so the calculated slope (k) would be slightly <em>underestimated</em>.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2018-q2',
+    year: 2018, q: 2,
+    units: [5],
+    topic: 'Torque and Rotational Dynamics',
+    type: 'calculation',
+    points: 7,
+    setup: `A solid disk (mass M = 2.0 kg, radius R = 0.50 m) is free to rotate about a fixed
+    axle through its center. A constant net torque of 4.0 N·m is applied to the disk, which
+    starts from rest. The moment of inertia of a solid disk is I = ½MR².`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Calculate the angular acceleration of the disk.`,
+        scores: [
+          { tag: '1 pt', text: 'Moment of inertia calculated: I = ½MR² = ½(2.0)(0.50)² = 0.25 kg·m².' },
+          { tag: '1 pt', text: 'Newton\'s 2nd law for rotation: α = τ/I = 4.0/0.25 = <strong>16 rad/s²</strong>.' }
+        ]
+      },
+      {
+        label: 'b', points: 3,
+        text: `Find the angular velocity of the disk after it has rotated through 10 radians from rest.`,
+        scores: [
+          { tag: '1 pt', text: 'Appropriate rotational kinematic equation selected: ω² = ω₀² + 2αθ.' },
+          { tag: '1 pt', text: 'Correct substitution: ω² = 0 + 2(16)(10) = 320.' },
+          { tag: '1 pt', text: 'Correct answer: ω = √320 ≈ <strong>17.9 rad/s</strong>.' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `The solid disk is replaced with a thin ring of the same mass M and radius R (I<sub>ring</sub> = MR²). The same torque is applied. Without calculating, predict whether the angular acceleration will be greater than, less than, or equal to 16 rad/s². Justify.`,
+        scores: [
+          { tag: '1 pt', text: 'Correct prediction: angular acceleration will be <strong>less than</strong> 16 rad/s².' },
+          { tag: '1 pt', text: 'Correct reasoning: I<sub>ring</sub> = MR² = 0.50 kg·m², which is greater than I<sub>disk</sub> = 0.25 kg·m². Since α = τ/I and τ is the same, a larger I gives a smaller α.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2019-q3',
+    year: 2019, q: 3,
+    units: [3],
+    topic: 'Conservation of Energy — Ramp',
+    type: 'calculation',
+    points: 7,
+    setup: `A 0.50 kg ball is released from rest at height h = 0.80 m on a smooth (frictionless)
+    curved ramp that leads to a horizontal surface. Use g = 9.8 m/s².`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Calculate the speed of the ball at the bottom of the ramp.`,
+        scores: [
+          { tag: '1 pt', text: 'Conservation of energy correctly applied: mgh = ½mv², so v = √(2gh).' },
+          { tag: '1 pt', text: 'Correct answer: v = √(2 × 9.8 × 0.80) = √15.68 ≈ <strong>4.0 m/s</strong>.' }
+        ]
+      },
+      {
+        label: 'b', points: 3,
+        text: `The ramp is replaced with an identical ramp that has friction. The ball is released from the same height and reaches the bottom with a speed of 3.0 m/s. Calculate the energy lost to friction.`,
+        scores: [
+          { tag: '1 pt', text: 'Initial mechanical energy: E<sub>i</sub> = mgh = 0.50 × 9.8 × 0.80 = 3.92 J.' },
+          { tag: '1 pt', text: 'Final kinetic energy: KE<sub>f</sub> = ½mv² = ½(0.50)(3.0)² = 2.25 J.' },
+          { tag: '1 pt', text: 'Energy lost to friction: ΔE = 3.92 − 2.25 = <strong>1.67 J</strong>.' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `Sketch two energy bar charts — one for the frictionless ramp and one for the ramp with friction. Each chart should show the energy at the top and at the bottom. Label PE, KE, and thermal energy (if any).`,
+        scores: [
+          { tag: '1 pt', text: 'Frictionless chart: top shows PE only; bottom shows equal KE only. Total bar height is the same — energy is conserved.' },
+          { tag: '1 pt', text: 'Friction chart: top shows PE only; bottom shows smaller KE bar plus a thermal energy (Q) bar. Total bar height at bottom equals top — energy is conserved in the total system.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2021-q2',
+    year: 2021, q: 2,
+    units: [7],
+    topic: 'Mass-Spring Oscillation',
+    type: 'calculation',
+    points: 7,
+    setup: `A 0.40 kg mass is attached to a horizontal spring with spring constant k = 64 N/m.
+    The mass-spring system oscillates on a frictionless surface with amplitude A = 0.10 m.`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Calculate the period of oscillation.`,
+        scores: [
+          { tag: '1 pt', text: 'Correct formula cited: T = 2π√(m/k).' },
+          { tag: '1 pt', text: 'Correct answer: T = 2π√(0.40/64) = 2π(0.079) ≈ <strong>0.50 s</strong>.' }
+        ]
+      },
+      {
+        label: 'b', points: 2,
+        text: `If the amplitude is doubled to 0.20 m, how does the period change? Justify your answer without calculating.`,
+        scores: [
+          { tag: '1 pt', text: 'Correct prediction: the period <strong>does not change</strong>.' },
+          { tag: '1 pt', text: 'Correct reasoning: T = 2π√(m/k) depends only on mass and spring constant, not amplitude. Doubling the amplitude doubles both the maximum speed and maximum restoring force equally, so the round-trip time is unchanged.' }
+        ]
+      },
+      {
+        label: 'c', points: 3,
+        text: `Describe the energy conversions during one complete oscillation, starting from the point of maximum displacement. Identify where KE is maximum and where PE is maximum.`,
+        scores: [
+          { tag: '1 pt', text: 'At maximum displacement (x = A): spring PE is maximum, KE = 0.' },
+          { tag: '1 pt', text: 'At equilibrium (x = 0): spring PE = 0, KE is maximum. The mass moves fastest here.' },
+          { tag: '1 pt', text: 'Total mechanical energy E = ½kA² remains constant throughout (no friction). Energy continuously converts between spring PE and KE as the mass oscillates.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2022-q1',
+    year: 2022, q: 1,
+    units: [2],
+    topic: 'Two-Block System — Newton\'s Laws',
+    type: 'calculation',
+    points: 7,
+    setup: `Block A (mass 3.0 kg) sits on a frictionless horizontal table and is connected by a
+    light string over a massless, frictionless pulley to Block B (mass 1.0 kg), which hangs
+    vertically. The system is released from rest.`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Draw separate free-body diagrams for Block A and Block B. Label all forces.`,
+        scores: [
+          { tag: '1 pt', text: 'Block A: weight down, normal force up, tension T to the right. (No friction — none drawn.)' },
+          { tag: '1 pt', text: 'Block B: weight m<sub>B</sub>g downward, tension T upward. T &lt; m<sub>B</sub>g because the block accelerates downward.' }
+        ]
+      },
+      {
+        label: 'b', points: 3,
+        text: `Calculate the acceleration of the system and the tension in the string.`,
+        scores: [
+          { tag: '1 pt', text: 'System equation written: m<sub>B</sub>g = (m<sub>A</sub> + m<sub>B</sub>)a, so a = m<sub>B</sub>g/(m<sub>A</sub> + m<sub>B</sub>) = (1.0 × 9.8)/4.0 = <strong>2.45 m/s²</strong>.' },
+          { tag: '1 pt', text: 'Tension found from Block A: T = m<sub>A</sub>a = 3.0 × 2.45 = <strong>7.35 N</strong>.' },
+          { tag: '1 pt', text: 'Verification using Block B: T = m<sub>B</sub>(g − a) = 1.0(9.8 − 2.45) = 7.35 N ✓' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `If the table surface were changed to one with friction (μ<sub>k</sub> = 0.20), predict whether the acceleration would increase, decrease, or remain the same. Calculate the new acceleration.`,
+        scores: [
+          { tag: '1 pt', text: 'Correct prediction: acceleration <strong>decreases</strong>. Friction opposes Block A\'s motion, reducing net force on the system.' },
+          { tag: '1 pt', text: 'New acceleration: f<sub>k</sub> = μ<sub>k</sub>m<sub>A</sub>g = 0.20 × 3.0 × 9.8 = 5.88 N; a = (m<sub>B</sub>g − f<sub>k</sub>)/(m<sub>A</sub> + m<sub>B</sub>) = (9.8 − 5.88)/4.0 = <strong>0.98 m/s²</strong>.' }
+        ]
+      }
+    ]
+  },
+
+  {
+    id: 'frq-2023-q3',
+    year: 2023, q: 3,
+    units: [8],
+    topic: 'Buoyancy and Fluid Flow',
+    type: 'calculation',
+    points: 7,
+    setup: `Part 1: An object of mass 2.0 kg floats in water (ρ<sub>water</sub> = 1000 kg/m³) with
+    40% of its volume above the surface.<br><br>
+    Part 2: Water flows through a horizontal pipe. The wide section has cross-sectional area
+    A<sub>1</sub> = 0.040 m² and flow speed v<sub>1</sub> = 2.0 m/s. The pipe narrows to
+    area A<sub>2</sub> = 0.010 m².`,
+    parts: [
+      {
+        label: 'a', points: 2,
+        text: `Determine the density of the floating object.`,
+        scores: [
+          { tag: '1 pt', text: 'Buoyancy condition applied: 60% of the volume is submerged, so F<sub>b</sub> = ρ<sub>water</sub>(0.60V)g = mg.' },
+          { tag: '1 pt', text: 'ρ<sub>obj</sub> = 0.60 × ρ<sub>water</sub> = 0.60 × 1000 = <strong>600 kg/m³</strong>.' }
+        ]
+      },
+      {
+        label: 'b', points: 3,
+        text: `Calculate the flow speed v<sub>2</sub> in the narrow section of the pipe. Then calculate the pressure difference (P<sub>1</sub> − P<sub>2</sub>) between the two sections.`,
+        scores: [
+          { tag: '1 pt', text: 'Continuity equation: A<sub>1</sub>v<sub>1</sub> = A<sub>2</sub>v<sub>2</sub>; v<sub>2</sub> = (0.040 × 2.0)/0.010 = <strong>8.0 m/s</strong>.' },
+          { tag: '1 pt', text: 'Bernoulli\'s equation applied (horizontal pipe, same height): P<sub>1</sub> + ½ρv<sub>1</sub>² = P<sub>2</sub> + ½ρv<sub>2</sub>².' },
+          { tag: '1 pt', text: 'P<sub>1</sub> − P<sub>2</sub> = ½ρ(v<sub>2</sub>² − v<sub>1</sub>²) = ½(1000)(64 − 4) = <strong>30,000 Pa</strong>.' }
+        ]
+      },
+      {
+        label: 'c', points: 2,
+        text: `Explain using Bernoulli's principle why the pressure in the narrow section is lower than in the wide section, even though the water is moving faster there.`,
+        scores: [
+          { tag: '1 pt', text: 'Bernoulli\'s principle: in a steady flow, an increase in fluid speed is accompanied by a decrease in pressure (conservation of energy per unit volume).' },
+          { tag: '1 pt', text: 'In the narrow section, the fluid has higher kinetic energy per unit volume. Since total mechanical energy is conserved, the pressure energy must decrease — pressure drops in the narrow section.' }
+        ]
+      }
+    ]
+  }
+
+];
+
+// ── Rendering ────────────────────────────────────────────────────────────────
+
+function buildFRQHTML(frq) {
+  const unitTags = frq.units.map(u =>
+    `<span class="card-tag tag-amber">Unit ${u} · ${UNIT_NAMES[u]}</span>`
+  ).join('');
+  const type = TYPE_LABELS[frq.type];
+
+  const partsHTML = frq.parts.map(part => {
+    const scoreHTML = part.scores.map(s =>
+      `<div class="score-point"><span class="score-tag">${s.tag}</span><p>${s.text}</p></div>`
+    ).join('');
+    return `
+      <div class="frq-part">
+        <div class="part-q"><strong>Part (${part.label})</strong> ${part.text}</div>
+        <div style="padding-left:.25rem;">${scoreHTML}</div>
+      </div>`;
+  }).join('');
+
+  return `
+    <details class="frq-entry" data-year="${frq.year}" data-units="${frq.units.join(',')}" data-type="${frq.type}">
+      <summary class="frq-summary">
+        <div class="frq-tags">
+          <span class="card-tag tag-blue">${frq.year} · Q${frq.q}</span>
+          ${unitTags}
+          <span class="card-tag ${type.cls}">${type.label}</span>
+        </div>
+        <span class="frq-topic">${frq.topic}</span>
+        <span class="frq-pts">${frq.points} pts</span>
+      </summary>
+      <div class="frq-body">
+        <div class="frq-setup"><strong>Setup</strong>${frq.setup}</div>
+        ${partsHTML}
+      </div>
+    </details>`;
+}
+
+function render() {
+  const year  = document.getElementById('filter-year').value;
+  const unit  = document.getElementById('filter-unit').value;
+  const type  = document.getElementById('filter-type').value;
+
+  const filtered = FRQ_DATA.filter(frq => {
+    if (year && String(frq.year) !== year) return false;
+    if (unit && !frq.units.includes(Number(unit))) return false;
+    if (type && frq.type !== type) return false;
+    return true;
+  });
+
+  const list = document.getElementById('frq-list');
+  if (filtered.length === 0) {
+    list.innerHTML = '<p class="frq-empty">No questions match the selected filters.</p>';
+  } else {
+    list.innerHTML = filtered.map(buildFRQHTML).join('');
+  }
+
+  document.getElementById('frq-count').textContent =
+    `${filtered.length} question${filtered.length !== 1 ? 's' : ''}`;
+}
+
+document.querySelectorAll('.frq-filter').forEach(s => s.addEventListener('change', render));
+document.addEventListener('DOMContentLoaded', render);
+</script>
+
+</body>
+</html>
