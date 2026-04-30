@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinematics Simulation — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Drag the sliders to change parameters and see the physics update in real time.
+      Each simulation maps to a Must-Know Scenario in the Study Guide.
+    </p>
+
+    <!-- ── SIM 1: Projectile Launcher ── -->
+    <div class="sim-card">
+      <h3>1. Projectile Motion</h3>
+      <p class="sim-desc">Launch a projectile at any angle and speed. Watch the parabolic arc, range, and max height update live. Complementary angles (e.g. 30° and 60°) give equal ranges.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-projectile" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Launch angle θ <span id="proj-angle-label">45°</span></label>
+            <input type="range" id="proj-angle" min="5" max="85" step="1" value="45" />
+          </div>
+          <div class="sim-control">
+            <label>Launch speed v₀ <span id="proj-speed-label">30 m/s</span></label>
+            <input type="range" id="proj-speed" min="10" max="60" step="1" value="30" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Range R</span><span class="readout-value" id="proj-out-range">—</span></div>
+            <div class="readout-item"><span class="readout-label">Max height h</span><span class="readout-value" id="proj-out-height">—</span></div>
+            <div class="readout-item"><span class="readout-label">Air time t</span><span class="readout-value" id="proj-out-time">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 2: 1D Motion Graphs ── -->
+    <div class="sim-card">
+      <h3>2. Motion Graphs (1D)</h3>
+      <p class="sim-desc">Set initial velocity and acceleration to see how x-t, v-t, and a-t graphs change together. The area under v-t equals displacement; the slope of v-t equals acceleration.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-graphs" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Initial velocity v₀ <span id="graph-v0-label">5 m/s</span></label>
+            <input type="range" id="graph-v0" min="-20" max="20" step="1" value="5" />
+          </div>
+          <div class="sim-control">
+            <label>Acceleration a <span id="graph-a-label">−2 m/s²</span></label>
+            <input type="range" id="graph-a" min="-10" max="10" step="0.5" value="-2" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">v = 0 at t</span><span class="readout-value" id="graph-out-tzero">—</span></div>
+            <div class="readout-item"><span class="readout-label">Δx at t = 5 s</span><span class="readout-value" id="graph-out-dx">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 3: Free Fall / Vertical Throw ── -->
+    <div class="sim-card">
+      <h3>3. Free Fall &amp; Vertical Throw</h3>
+      <p class="sim-desc">Drop or throw a ball vertically. Adjust the initial height and launch velocity (positive = upward). See position and velocity update as it falls. At the peak, v = 0.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-freefall" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Initial height h₀ <span id="ff-h-label">40 m</span></label>
+            <input type="range" id="ff-h" min="5" max="80" step="5" value="40" />
+          </div>
+          <div class="sim-control">
+            <label>Initial velocity v₀ <span id="ff-v0-label">0 m/s</span></label>
+            <input type="range" id="ff-v0" min="-20" max="20" step="1" value="0" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Max height</span><span class="readout-value" id="ff-out-hmax">—</span></div>
+            <div class="readout-item"><span class="readout-label">Time to ground</span><span class="readout-value" id="ff-out-t">—</span></div>
+            <div class="readout-item"><span class="readout-label">Impact speed</span><span class="readout-value" id="ff-out-v">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 4: Cliff Launch ── -->
+    <div class="sim-card">
+      <h3>4. Horizontal Cliff Launch</h3>
+      <p class="sim-desc">A ball launched horizontally from a cliff (v_y₀ = 0). Horizontal speed doesn't change fall time — only cliff height determines when it lands. Horizontal speed only changes the range.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-cliff" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Cliff height h <span id="cliff-h-label">40 m</span></label>
+            <input type="range" id="cliff-h" min="10" max="80" step="5" value="40" />
+          </div>
+          <div class="sim-control">
+            <label>Horizontal speed v_x <span id="cliff-vx-label">15 m/s</span></label>
+            <input type="range" id="cliff-vx" min="5" max="40" step="1" value="15" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Air time t</span><span class="readout-value" id="cliff-out-t">—</span></div>
+            <div class="readout-item"><span class="readout-label">Range x</span><span class="readout-value" id="cliff-out-x">—</span></div>
+            <div class="readout-item"><span class="readout-label">Impact speed</span><span class="readout-value" id="cliff-out-v">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

@@ -41,8 +41,9 @@ const sectionLoader = (() => {
       const embedded = doc.querySelector('#embedded-content');
       panel.innerHTML = embedded ? embedded.innerHTML : html;
       panel.dataset.loaded = 'true';
-      if (panel.id === 'tab-simulation' && typeof initFluidSims === 'function') {
-        initFluidSims();
+      if (panel.id === 'tab-simulation') {
+        if (typeof initFluidSims === 'function') initFluidSims();
+        if (typeof initKinematicsSims === 'function') initKinematicsSims();
       }
     } catch (error) {
       console.warn('Section load failed:', error);

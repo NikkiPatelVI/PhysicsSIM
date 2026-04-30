@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinematics Study Guide — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <!-- ── 1. WHAT THE EXAM TESTS ── -->
+    <div class="study-section">
+      <h3>What the AP Exam Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Kinematics questions split evenly between calculation and conceptual reasoning.
+        Expect motion graphs (x-t, v-t, a-t) in multiple-choice and a projectile or
+        free-fall FRQ almost every year. Unit 1 is ~10–15% of the exam.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — Displacement ≠ Distance</h4>
+        <p>Displacement is a vector (direction matters); distance is a scalar (total path length). An object that goes 5 m right then 5 m back has zero displacement but 10 m of distance. AP questions exploit this distinction constantly — watch for "how far from the starting point?" vs. "how far did it travel?"</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — Acceleration ≠ Speeding Up</h4>
+        <p>Acceleration means velocity is changing — that includes slowing down, changing direction, or both. An object with velocity and acceleration pointing opposite is decelerating. A car moving left that slows down has a rightward (positive) acceleration.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Kinematic Equations Require Constant Acceleration</h4>
+        <p>The four kinematic equations only apply when acceleration is constant over the interval. For free fall and projectile motion, a = −g is constant. If acceleration changes, the equations give wrong answers — use graphs or break the problem into constant-acceleration segments.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 4 — Projectile Axes Are Independent</h4>
+        <p>Horizontal and vertical motions don't affect each other. A ball dropped and a ball thrown horizontally from the same height hit the ground simultaneously — horizontal speed has zero effect on fall time. Time is the only variable shared between the two axes.</p>
+      </div>
+    </div>
+
+    <!-- ── 2. READING MOTION GRAPHS ── -->
+    <div class="study-section">
+      <h3>Reading Motion Graphs</h3>
+
+      <div class="concept-block">
+        <h4>Position-Time (x vs. t)</h4>
+        <ul>
+          <li><strong>Slope = velocity</strong> (steep slope → fast; flat → at rest)</li>
+          <li>Horizontal line → object at rest (v = 0)</li>
+          <li>Straight line (non-zero slope) → constant velocity (a = 0)</li>
+          <li>Curve → changing velocity (acceleration present)</li>
+          <li>Object returns to start when x returns to its initial value</li>
+        </ul>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Velocity-Time (v vs. t)</h4>
+        <ul>
+          <li><strong>Slope = acceleration</strong></li>
+          <li><strong>Area under curve = displacement</strong> (signed — below axis is negative)</li>
+          <li>Horizontal line → constant velocity (a = 0)</li>
+          <li>Crosses zero → object momentarily at rest, then reverses direction</li>
+          <li>Total distance = sum of absolute areas above and below the axis</li>
+        </ul>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Acceleration-Time (a vs. t)</h4>
+        <ul>
+          <li>Horizontal line → constant acceleration (kinematic equations apply)</li>
+          <li>Flat line at zero → constant velocity</li>
+          <li><strong>Area under curve = Δv</strong> (change in velocity)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 3. COMMON TRAPS ── -->
+    <div class="study-section">
+      <h3>Common Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1 — Sign errors</strong>
+        Always define a positive direction at the start and write it down. If up is positive, then g = −9.8 m/s², downward velocity is negative, and downward displacement is negative. Mixing signs mid-problem is the #1 kinematics mistake.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2 — "At maximum height" ≠ total velocity = 0</strong>
+        For a projectile, v_y = 0 at the peak, but v_x is still nonzero. Total speed at the peak = v_x = v₀cosθ. Only a straight vertical throw has zero total velocity at the top.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3 — Picking the wrong kinematic equation</strong>
+        Each equation is missing exactly one variable. List what you know and what you need before choosing. If you have v₀, a, and t and need Δx — use Δx = v₀t + ½at². Don't just grab the first equation you remember.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4 — Average velocity ≠ instantaneous velocity</strong>
+        v_avg = Δx/Δt gives the average over an interval. Instantaneous velocity is the slope of the x-t graph at a single point. "What is the velocity at t = 3 s?" means instantaneous — read the v-t graph directly at that point.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Horizontal acceleration in projectile problems</strong>
+        There is zero horizontal acceleration once a projectile is airborne (no air resistance). a_x = 0 always. Only gravity acts, and it acts only vertically.
+      </div>
+    </div>
+
+    <!-- ── 4. PROBLEM-SOLVING FRAMEWORK ── -->
+    <div class="study-section">
+      <h3>Problem-Solving Framework</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">1D Kinematics (straight-line motion)</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Define positive direction</strong> — write it down. Usually up or right is positive.</li>
+          <li><strong>List variables</strong> — write v₀, v, a, Δx, t and fill in what you know. Mark the unknown with "?".</li>
+          <li><strong>Choose the equation</strong> — pick the one containing your unknown and all your knowns (the equation missing the unused variable).</li>
+          <li><strong>Solve algebraically first</strong>, then substitute numbers with units.</li>
+          <li><strong>Check sign and reasonableness</strong> — does the direction make sense? Is the magnitude plausible?</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Projectile Motion (2D)</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Decompose at launch</strong>: v_x = v₀cosθ (constant), v_y₀ = v₀sinθ.</li>
+          <li><strong>Horizontal</strong>: a_x = 0, so x = v_x · t. One equation, one unknown.</li>
+          <li><strong>Vertical</strong>: a_y = −g. Apply kinematic equations with v_y₀ and a = −9.8 m/s².</li>
+          <li><strong>Time connects the axes</strong> — solve for t using the axis where you have more information, then substitute into the other.</li>
+          <li><strong>Final speed</strong>: v = √(v_x² + v_y²). Direction: θ = arctan(|v_y|/v_x) below horizontal.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ── 5. MUST-KNOW SCENARIOS ── -->
+    <div class="study-section">
+      <h3>Must-Know Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Ball Thrown Upward from Ground</h4>
+        <p>v₀ upward, a = −g. At peak: v = 0; use v² = v₀² − 2gh. Time to peak = v₀/g; total air time = 2v₀/g. Lands with the same speed it was launched (symmetric). If launched from a height, it's no longer symmetric — use Δx = v₀t + ½at² for total displacement including the height.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Projectile Off a Cliff (Horizontal Launch)</h4>
+        <p>Launched horizontally (v_y₀ = 0) from height h. Vertical: h = ½gt² → t = √(2h/g). Horizontal range: x = v_x · t. Final speed: combine v_x (unchanged) and v_y = gt at impact using v = √(v_x² + v_y²).</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Two Objects Meeting</h4>
+        <p>Write a position equation for each object as a function of time: x₁(t) and x₂(t). Set them equal and solve for t. Works for chasing problems, objects thrown toward each other, or one dropped and one thrown upward simultaneously from different positions.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Finding Displacement from a v-t Graph</h4>
+        <p>Displacement = area under the v-t curve. Triangle: ½ · base · height. Trapezoid: ½(b₁ + b₂) · h. Area below the t-axis counts as negative displacement. Total distance = sum of the absolute areas of all regions.</p>
+      </div>
+    </div>
+
+    <!-- ── 6. PRACTICE PROBLEMS ── -->
+    <div class="study-section">
+      <h3>Practice Problems</h3>
+
+      <div class="concept-block">
+        <h4>Problem 1 — Constant Acceleration</h4>
+        <p>A car starts from rest and accelerates uniformly to 25 m/s in 10 s. (a) Find the acceleration. (b) Find the distance traveled.</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> a = Δv/Δt = (25 − 0)/10 = <strong>2.5 m/s²</strong></p>
+          <p><strong>(b)</strong> Use Δx = v₀t + ½at² = 0 + ½(2.5)(100) = <strong>125 m</strong></p>
+          <p>Alternatively: Δx = ½(v₀ + v)t = ½(0 + 25)(10) = 125 m ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 2 — Vertical Throw</h4>
+        <p>A ball is thrown straight upward with an initial speed of 20 m/s from the ground. (a) Find the maximum height. (b) Find the total time in the air. (g = 9.8 m/s²)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> At the peak, v = 0. Use v² = v₀² − 2gh: 0 = 400 − 2(9.8)h → h = 400/19.6 ≈ <strong>20.4 m</strong></p>
+          <p><strong>(b)</strong> Time to peak: t_up = v₀/g = 20/9.8 ≈ 2.04 s. Symmetric flight, so total time = 2 × 2.04 ≈ <strong>4.1 s</strong></p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 3 — Cliff Drop</h4>
+        <p>A stone is dropped (v₀ = 0) from a 45 m cliff. (a) How long does it take to reach the ground? (b) What is its speed at impact? (g = 9.8 m/s²)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> Use Δx = ½gt² (taking down as positive): 45 = ½(9.8)t² → t² = 9.18 → t ≈ <strong>3.03 s</strong></p>
+          <p><strong>(b)</strong> v = gt = 9.8 × 3.03 ≈ <strong>29.7 m/s</strong></p>
+          <p>Check with v² = 2gΔx = 2(9.8)(45) = 882 → v = 29.7 m/s ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 4 — Projectile Range</h4>
+        <p>A projectile is launched from the ground at v₀ = 40 m/s at an angle of 30° above horizontal. Find the horizontal range. (g = 9.8 m/s²)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Method 1 (range formula):</strong> R = v₀²sin(2θ)/g = (1600 × sin 60°)/9.8 = (1600 × 0.866)/9.8 ≈ <strong>141 m</strong></p>
+          <p><strong>Method 2 (from components):</strong> v_x = 40cos30° = 34.6 m/s; v_y₀ = 40sin30° = 20 m/s</p>
+          <p>Time of flight = 2v_y₀/g = 40/9.8 ≈ 4.08 s. Range = v_x × t = 34.6 × 4.08 ≈ 141 m ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 5 — v-t Graph Area</h4>
+        <p>A v-t graph shows a car accelerating from rest (v = 0) to v = 12 m/s at t = 4 s, then decelerating back to v = 0 at t = 10 s. Find the total displacement.</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p>Displacement = area under the v-t graph.</p>
+          <p><strong>Phase 1 (0–4 s):</strong> Triangle with base = 4 s, height = 12 m/s → area = ½(4)(12) = 24 m</p>
+          <p><strong>Phase 2 (4–10 s):</strong> Triangle with base = 6 s, height = 12 m/s → area = ½(6)(12) = 36 m</p>
+          <p>Total displacement = 24 + 36 = <strong>60 m</strong></p>
+          <p>(Both areas are positive because v never goes negative — the car always moves in the same direction.)</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── 7. ANNOTATED FRQ ── -->
+    <div class="study-section">
+      <h3>Annotated FRQ Example</h3>
+
+      <div class="concept-block">
+        <h4>Question Setup</h4>
+        <p>A ball is launched from ground level at v₀ = 30 m/s at an angle of 53° above the horizontal. Use g = 9.8 m/s² and sin 53° = 0.80, cos 53° = 0.60.</p>
+        <p><em>This is a 4-part, 8-point FRQ covering decomposition, max height, time of flight, and range — the canonical projectile question.</em></p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (a) — Find the horizontal and vertical components of the initial velocity. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>v_x = v₀cosθ = 30 × 0.60 = <strong>18 m/s</strong> (horizontal, constant throughout flight)</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>v_y₀ = v₀sinθ = 30 × 0.80 = <strong>24 m/s</strong> (initial vertical component, upward)</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (b) — Find the maximum height reached by the ball. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct equation cited with v_y = 0 at peak: v_y² = v_y₀² − 2gh → 0 = (24)² − 2(9.8)h</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>h = 576 / 19.6 ≈ <strong>29.4 m</strong></p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (c) — Find the total time the ball is in the air. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Time to peak: t_up = v_y₀/g = 24/9.8 ≈ 2.45 s. By symmetry, total time = 2 × t_up.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Total time = 2 × 2.45 ≈ <strong>4.9 s</strong></p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (d) — Find the horizontal range. (2 pts)</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Horizontal range equation stated: R = v_x × t_total (using constant horizontal velocity)</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>R = 18 × 4.9 ≈ <strong>88 m</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 8. 5-POINT FRQ STRATEGY ── -->
+    <div class="study-section">
+      <h3>5-Point FRQ Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        Kinematics FRQs often ask you to (1) find a quantity, (2) sketch or interpret a graph, and (3) justify a conceptual claim. Each part is scored independently — a wrong answer in part (a) doesn't block credit in parts (b) or (c).
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>Write the general kinematic equation before substituting numbers</li>
+          <li>Show your list of knowns and unknowns for full method credit</li>
+          <li>For graph questions: label axes, mark key points (peak, zero-crossing), show correct shape (linear vs. curved)</li>
+          <li>Justify claims with physics: "because acceleration is constant, the v-t graph is a straight line"</li>
+          <li>Include units on every numerical answer</li>
+          <li>For projectile problems: explicitly state "horizontal and vertical motions are independent"</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

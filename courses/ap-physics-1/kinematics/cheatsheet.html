@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinematics Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <div class="study-section">
+      <h3>Core Definitions</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Displacement</div>
+          <div class="formula-eq">Δx = x_f − x_i</div>
+          <div class="formula-desc">Change in position — a vector. Direction matters. Not the same as distance traveled.</div>
+          <div class="formula-vars">
+            <span>Δx — displacement (m)</span>
+            <span>x_f — final position (m)</span>
+            <span>x_i — initial position (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Average Velocity</div>
+          <div class="formula-eq">v_avg = Δx / Δt</div>
+          <div class="formula-desc">Displacement divided by time — a vector. Positive or negative depending on direction.</div>
+          <div class="formula-vars">
+            <span>v_avg — average velocity (m/s)</span>
+            <span>Δx — displacement (m)</span>
+            <span>Δt — time interval (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Average Acceleration</div>
+          <div class="formula-eq">a_avg = Δv / Δt</div>
+          <div class="formula-desc">Rate of change of velocity — a vector. An object can accelerate while slowing down.</div>
+          <div class="formula-vars">
+            <span>a_avg — average acceleration (m/s²)</span>
+            <span>Δv — change in velocity (m/s)</span>
+            <span>Δt — time interval (s)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>The Four Kinematic Equations</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Velocity — no Δx</div>
+          <div class="formula-eq">v = v₀ + at</div>
+          <div class="formula-desc">Use when displacement is not needed. Missing variable: Δx.</div>
+          <div class="formula-vars">
+            <span>v — final velocity (m/s)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Displacement — no v</div>
+          <div class="formula-eq">Δx = v₀t + ½at²</div>
+          <div class="formula-desc">Use when final velocity is unknown. Missing variable: v.</div>
+          <div class="formula-vars">
+            <span>Δx — displacement (m)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Velocity² — no t</div>
+          <div class="formula-eq">v² = v₀² + 2aΔx</div>
+          <div class="formula-desc">Use when time is not given or needed. Missing variable: t.</div>
+          <div class="formula-vars">
+            <span>v — final velocity (m/s)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>Δx — displacement (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Displacement — no a</div>
+          <div class="formula-eq">Δx = ½(v₀ + v)t</div>
+          <div class="formula-desc">Averages initial and final velocity. Use when acceleration is unknown. Missing variable: a.</div>
+          <div class="formula-vars">
+            <span>Δx — displacement (m)</span>
+            <span>v₀ — initial velocity (m/s)</span>
+            <span>v — final velocity (m/s)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Free Fall</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Free-Fall Acceleration</div>
+          <div class="formula-eq">a = −g = −9.8 m/s²</div>
+          <div class="formula-desc">Acceleration is always downward. Apply kinematic equations with a = −9.8 m/s² when up is positive.</div>
+          <div class="formula-vars">
+            <span>g = 9.8 m/s² (gravitational acceleration)</span>
+            <span>Sign depends on chosen positive direction</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Max Height (thrown upward)</div>
+          <div class="formula-eq">h = v₀² / (2g)</div>
+          <div class="formula-desc">At maximum height v = 0. Derived from v² = v₀² − 2gh setting v = 0.</div>
+          <div class="formula-vars">
+            <span>h — max height above launch (m)</span>
+            <span>v₀ — initial upward speed (m/s)</span>
+            <span>g = 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Time to Max Height</div>
+          <div class="formula-eq">t_up = v₀ / g</div>
+          <div class="formula-desc">Time up equals time down for symmetric trajectories. Total air time = 2v₀/g.</div>
+          <div class="formula-vars">
+            <span>t_up — time to reach max height (s)</span>
+            <span>v₀ — initial upward speed (m/s)</span>
+            <span>g = 9.8 m/s²</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Projectile Motion</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Launch Components</div>
+          <div class="formula-eq">v_x = v₀cosθ &nbsp;·&nbsp; v_y₀ = v₀sinθ</div>
+          <div class="formula-desc">Decompose launch velocity into independent horizontal and vertical components at the start.</div>
+          <div class="formula-vars">
+            <span>v₀ — launch speed (m/s)</span>
+            <span>θ — launch angle above horizontal</span>
+            <span>v_x — horizontal component (constant)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Horizontal Motion</div>
+          <div class="formula-eq">x = v_x · t &nbsp;(a_x = 0)</div>
+          <div class="formula-desc">No horizontal force → no horizontal acceleration. Horizontal velocity stays constant throughout the flight.</div>
+          <div class="formula-vars">
+            <span>x — horizontal displacement (m)</span>
+            <span>v_x = v₀cosθ (m/s, constant)</span>
+            <span>t — time (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Vertical Motion</div>
+          <div class="formula-eq">v_y = v_y₀ − gt</div>
+          <div class="formula-desc">Vertical component is pure free fall. v_y = 0 at the peak; apply all four kinematic equations vertically.</div>
+          <div class="formula-vars">
+            <span>v_y — vertical velocity (m/s)</span>
+            <span>v_y₀ = v₀sinθ (initial vertical speed)</span>
+            <span>g = 9.8 m/s²</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Range (level ground)</div>
+          <div class="formula-eq">R = v₀²sin(2θ) / g</div>
+          <div class="formula-desc">Maximum range at θ = 45°. Complementary angles (e.g. 30° and 60°) give the same range.</div>
+          <div class="formula-vars">
+            <span>R — horizontal range (m)</span>
+            <span>v₀ — launch speed (m/s)</span>
+            <span>θ — launch angle</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Final Speed (any point)</div>
+          <div class="formula-eq">v = √(v_x² + v_y²)</div>
+          <div class="formula-desc">Combine components with the Pythagorean theorem. Direction: θ = arctan(v_y / v_x) below horizontal.</div>
+          <div class="formula-vars">
+            <span>v — speed at any point (m/s)</span>
+            <span>v_x — horizontal component (m/s)</span>
+            <span>v_y — vertical component at that instant (m/s)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Key Values &amp; Units</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Constants</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (use 10 for quick estimates)<br/>
+            Free fall: a = −9.8 m/s² (up positive)
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">SI Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Position / displacement: m<br/>
+            Velocity / speed: m/s<br/>
+            Acceleration: m/s²<br/>
+            Time: s
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Scalars vs. Vectors</div>
+          <div class="formula-desc" style="line-height:2;">
+            <strong>Vectors</strong> (have direction): displacement, velocity, acceleration<br/>
+            <strong>Scalars</strong> (magnitude only): distance, speed, time
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>
