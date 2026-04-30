@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work, Energy &amp; Power — Nikki Patel AP Physics 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Work, Energy &amp; Power"></site-breadcrumb>
+
+  <div style="display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+    <h1 class="section-title" style="margin-bottom:0;">Work, Energy &amp; Power</h1>
+    <span class="card-tag tag-red">Unit 3</span>
+  </div>
+
+  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.75rem;">
+    <div class="tabs" style="margin-bottom:0; border-bottom:none;">
+      <button class="tab-btn active" onclick="switchTab('cheatsheet', this)">Cheatsheet</button>
+      <button class="tab-btn" onclick="switchTab('studyguide', this)">Study Guide</button>
+      <button class="tab-btn" onclick="switchTab('simulation', this)">Simulation</button>
+    </div>
+    <button class="print-btn" id="printBtn" onclick="printCheatsheet()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Cheatsheet
+    </button>
+  </div>
+  <div style="border-bottom:2px solid var(--border); margin-bottom:2rem;"></div>
+
+  <div class="print-header" style="display:none;">
+    <div>
+      <h1>Work, Energy &amp; Power — Formula Cheatsheet</h1>
+      <p>AP Physics 1 · Unit 3</p>
+    </div>
+    <p>NikkiPhysics</p>
+  </div>
+
+  <div id="tab-cheatsheet" class="tab-panel active" data-src="cheatsheet.html"></div>
+  <div id="tab-studyguide" class="tab-panel" data-src="studyguide.html"></div>
+  <div id="tab-simulation" class="tab-panel" data-src="simulation.html"></div>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+<script src="../../../js/section-loader.js"></script>
+<script src="work-energy-sims.js" defer></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    sectionLoader.loadActiveTab();
+  });
+
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    const panel = document.getElementById('tab-' + id);
+    panel.classList.add('active');
+    btn.classList.add('active');
+    sectionLoader.loadPanel(panel);
+  }
+
+  function printCheatsheet() {
+    const cheatBtn = document.querySelector('.tab-btn');
+    switchTab('cheatsheet', cheatBtn);
+    window.print();
+  }
+</script>
+
+</body>
+</html>

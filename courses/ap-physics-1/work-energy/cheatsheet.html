@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work, Energy &amp; Power Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <!-- ── Work ── -->
+    <div class="study-section">
+      <h3>Work</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Work by a Constant Force</div>
+          <div class="formula-eq">W = Fd cosθ</div>
+          <div class="formula-desc">Work equals force times displacement times the cosine of the angle between them. Only the component of force parallel to displacement does work.</div>
+          <div class="formula-vars">
+            <span>W — work (J)</span>
+            <span>F — force magnitude (N)</span>
+            <span>d — displacement magnitude (m)</span>
+            <span>θ — angle between F and d</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Work Signs</div>
+          <div class="formula-eq">W &gt; 0 (same dir) &nbsp;·&nbsp; W &lt; 0 (opposite)</div>
+          <div class="formula-desc">Force and displacement in same direction → positive work (energy added). Opposite → negative work (energy removed). Perpendicular → zero work.</div>
+          <div class="formula-vars">
+            <span>θ = 0° → W = Fd (max positive)</span>
+            <span>θ = 90° → W = 0 (normal force, circular)</span>
+            <span>θ = 180° → W = −Fd (friction, braking)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Work by Friction</div>
+          <div class="formula-eq">W_f = −f_k · d</div>
+          <div class="formula-desc">Kinetic friction always opposes motion (θ = 180°), so work by friction is always negative — it removes mechanical energy from the system.</div>
+          <div class="formula-vars">
+            <span>W_f — work done by friction (J, always ≤ 0)</span>
+            <span>f_k = μ_k N — kinetic friction force (N)</span>
+            <span>d — sliding distance (m)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Kinetic & Potential Energy ── -->
+    <div class="study-section">
+      <h3>Kinetic &amp; Potential Energy</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Kinetic Energy</div>
+          <div class="formula-eq">KE = ½mv²</div>
+          <div class="formula-desc">Energy of motion. Always ≥ 0. Depends on speed squared — doubling speed quadruples KE. Mass and speed are the only variables.</div>
+          <div class="formula-vars">
+            <span>KE — kinetic energy (J)</span>
+            <span>m — mass (kg)</span>
+            <span>v — speed (m/s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Gravitational PE</div>
+          <div class="formula-eq">PE_g = mgh</div>
+          <div class="formula-desc">Gravitational potential energy relative to a chosen reference height (h = 0). Only changes in PE_g matter — the reference point cancels.</div>
+          <div class="formula-vars">
+            <span>PE_g — gravitational PE (J)</span>
+            <span>m — mass (kg)</span>
+            <span>g = 9.8 m/s²</span>
+            <span>h — height above reference (m)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Spring (Elastic) PE</div>
+          <div class="formula-eq">PE_s = ½kx²</div>
+          <div class="formula-desc">Energy stored in a compressed or stretched spring. Always ≥ 0 regardless of whether stretched or compressed (x is squared).</div>
+          <div class="formula-vars">
+            <span>PE_s — spring potential energy (J)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>x — displacement from equilibrium (m)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Work-Energy Theorem & Conservation ── -->
+    <div class="study-section">
+      <h3>Work-Energy Theorem &amp; Conservation</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Work-Energy Theorem</div>
+          <div class="formula-eq">W_net = ΔKE</div>
+          <div class="formula-desc">The net work done on an object equals its change in kinetic energy. This is the most powerful single-object energy equation on the AP exam.</div>
+          <div class="formula-vars">
+            <span>W_net — total work by all forces (J)</span>
+            <span>ΔKE = KE_f − KE_i (J)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Mechanical Energy</div>
+          <div class="formula-eq">E_mech = KE + PE</div>
+          <div class="formula-desc">The total mechanical energy is the sum of kinetic and all potential energies. For gravity + spring systems: E = ½mv² + mgh + ½kx².</div>
+          <div class="formula-vars">
+            <span>E_mech — mechanical energy (J)</span>
+            <span>KE = ½mv² (J)</span>
+            <span>PE = mgh or ½kx² (J)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Conservation of Mechanical Energy</div>
+          <div class="formula-eq">KE_i + PE_i = KE_f + PE_f</div>
+          <div class="formula-desc">Holds when only conservative forces act (no friction, no air resistance). Total mechanical energy is constant throughout the motion.</div>
+          <div class="formula-vars">
+            <span>Applies when: no friction, no air drag</span>
+            <span>KE + PE = constant at every point</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">With Non-Conservative Forces</div>
+          <div class="formula-eq">KE_i + PE_i + W_nc = KE_f + PE_f</div>
+          <div class="formula-desc">When friction or other non-conservative forces act, they change the total mechanical energy. W_nc is negative for friction — it removes energy.</div>
+          <div class="formula-vars">
+            <span>W_nc — work by non-conservative forces (J)</span>
+            <span>W_nc = −f_k · d for kinetic friction</span>
+            <span>ΔE_mech = W_nc (energy lost to heat)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Power ── -->
+    <div class="study-section">
+      <h3>Power</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Average Power</div>
+          <div class="formula-eq">P = W / t</div>
+          <div class="formula-desc">Rate of doing work or transferring energy. The same work done in half the time requires twice the power. Power is a scalar.</div>
+          <div class="formula-vars">
+            <span>P — power (W = J/s)</span>
+            <span>W — work done (J)</span>
+            <span>t — time elapsed (s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Instantaneous Power</div>
+          <div class="formula-eq">P = Fv</div>
+          <div class="formula-desc">Power delivered by a constant force equals force times velocity (when F is parallel to v). Useful when speed, not displacement, is given.</div>
+          <div class="formula-vars">
+            <span>P — power (W)</span>
+            <span>F — force along direction of motion (N)</span>
+            <span>v — speed (m/s)</span>
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Efficiency</div>
+          <div class="formula-eq">e = W_out / W_in × 100%</div>
+          <div class="formula-desc">Ratio of useful output energy to total input energy. Real machines are always less than 100% efficient — some energy is lost to friction and heat.</div>
+          <div class="formula-vars">
+            <span>e — efficiency (%)</span>
+            <span>W_out — useful work output (J)</span>
+            <span>W_in — total work input (J)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Energy Bar Charts ── -->
+    <div class="study-section">
+      <h3>Energy Bar Charts (LOL Diagrams)</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Reading a Bar Chart</div>
+          <div class="formula-desc" style="line-height:2;">
+            Each bar represents one energy type (KE, PE_g, PE_s, E_thermal).<br/>
+            Heights represent relative magnitudes.<br/>
+            <strong>Frictionless:</strong> total bar height stays constant (KE + PE = same).<br/>
+            <strong>With friction:</strong> total decreases; a +E_thermal bar appears.
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Common Conversions</div>
+          <div class="formula-desc" style="line-height:2;">
+            Ball falling: PE_g → KE<br/>
+            Ball thrown up: KE → PE_g<br/>
+            Spring launching block: PE_s → KE<br/>
+            Block compressing spring: KE → PE_s<br/>
+            Friction: E_mech → E_thermal (heat)
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Key Values &amp; Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Energy &amp; Work: J (joule) = N·m = kg·m²/s²<br/>
+            Power: W (watt) = J/s<br/>
+            g = 9.8 m/s²<br/>
+            1 kW = 1000 W
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

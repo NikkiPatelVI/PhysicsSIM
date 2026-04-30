@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work, Energy &amp; Power Simulation — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Drag the sliders and watch energy convert in real time. Bar charts show live KE, PE, and thermal energy.
+    </p>
+
+    <!-- ── SIM 1: Conservation on a Ramp ── -->
+    <div class="sim-card">
+      <h3>1. Conservation of Energy — Frictionless Ramp</h3>
+      <p class="sim-desc">A ball slides down from height h. Watch PE_g convert to KE as height drops. Toggle friction to see mechanical energy leave the system as thermal energy.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-ramp" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Height h <span id="ramp-h-label">4.0 m</span></label>
+            <input type="range" id="ramp-h" min="1" max="8" step="0.5" value="4" />
+          </div>
+          <div class="sim-control">
+            <label>Mass m <span id="ramp-m-label">2 kg</span></label>
+            <input type="range" id="ramp-m" min="1" max="8" step="1" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Friction μ_k <span id="ramp-mu-label">0.00</span></label>
+            <input type="range" id="ramp-mu" min="0" max="0.50" step="0.05" value="0" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">KE</span><span class="readout-value" id="ramp-out-ke">—</span></div>
+            <div class="readout-item"><span class="readout-label">PE_g</span><span class="readout-value" id="ramp-out-pe">—</span></div>
+            <div class="readout-item"><span class="readout-label">E_thermal</span><span class="readout-value" id="ramp-out-eth">—</span></div>
+            <div class="readout-item"><span class="readout-label">Speed v</span><span class="readout-value" id="ramp-out-v">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 2: Work-Energy Theorem ── -->
+    <div class="sim-card">
+      <h3>2. Work-Energy Theorem — W_net = ΔKE</h3>
+      <p class="sim-desc">Apply a constant force over a distance. The net work (W_applied − W_friction) equals the change in kinetic energy. Increase friction to see less final KE for the same applied force.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-wet" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Applied force F <span id="wet-f-label">30 N</span></label>
+            <input type="range" id="wet-f" min="5" max="80" step="5" value="30" />
+          </div>
+          <div class="sim-control">
+            <label>Mass m <span id="wet-m-label">3 kg</span></label>
+            <input type="range" id="wet-m" min="1" max="10" step="1" value="3" />
+          </div>
+          <div class="sim-control">
+            <label>Distance d <span id="wet-d-label">5 m</span></label>
+            <input type="range" id="wet-d" min="1" max="10" step="1" value="5" />
+          </div>
+          <div class="sim-control">
+            <label>Friction μ_k <span id="wet-mu-label">0.10</span></label>
+            <input type="range" id="wet-mu" min="0" max="0.60" step="0.05" value="0.10" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">W_applied</span><span class="readout-value" id="wet-out-wa">—</span></div>
+            <div class="readout-item"><span class="readout-label">W_friction</span><span class="readout-value" id="wet-out-wf">—</span></div>
+            <div class="readout-item"><span class="readout-label">W_net = ΔKE</span><span class="readout-value" id="wet-out-wnet">—</span></div>
+            <div class="readout-item"><span class="readout-label">Final speed v</span><span class="readout-value" id="wet-out-v">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 3: Spring Launch ── -->
+    <div class="sim-card">
+      <h3>3. Spring Launch — PE_s → KE</h3>
+      <p class="sim-desc">Compress the spring and release. All spring PE converts to kinetic energy. See how compression and spring constant control the launch speed.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-spring" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Spring constant k <span id="spr-k-label">400 N/m</span></label>
+            <input type="range" id="spr-k" min="100" max="1200" step="100" value="400" />
+          </div>
+          <div class="sim-control">
+            <label>Compression x <span id="spr-x-label">0.20 m</span></label>
+            <input type="range" id="spr-x" min="0.05" max="0.40" step="0.05" value="0.20" />
+          </div>
+          <div class="sim-control">
+            <label>Block mass m <span id="spr-m-label">1 kg</span></label>
+            <input type="range" id="spr-m" min="0.5" max="5" step="0.5" value="1" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">PE_spring</span><span class="readout-value" id="spr-out-pe">—</span></div>
+            <div class="readout-item"><span class="readout-label">Launch KE</span><span class="readout-value" id="spr-out-ke">—</span></div>
+            <div class="readout-item"><span class="readout-label">Launch speed v</span><span class="readout-value" id="spr-out-v">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 4: Power ── -->
+    <div class="sim-card">
+      <h3>4. Power — P = W/t = Fv</h3>
+      <p class="sim-desc">A motor lifts a mass at constant speed. Adjust the mass and speed to see how power scales. At constant speed, F = mg exactly — all power goes into gravitational PE.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-power" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Mass m <span id="pwr-m-label">10 kg</span></label>
+            <input type="range" id="pwr-m" min="1" max="50" step="1" value="10" />
+          </div>
+          <div class="sim-control">
+            <label>Lift speed v <span id="pwr-v-label">2.0 m/s</span></label>
+            <input type="range" id="pwr-v" min="0.5" max="8" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Height lifted h <span id="pwr-h-label">4 m</span></label>
+            <input type="range" id="pwr-h" min="1" max="10" step="1" value="4" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Force F = mg</span><span class="readout-value" id="pwr-out-f">—</span></div>
+            <div class="readout-item"><span class="readout-label">Work W = mgh</span><span class="readout-value" id="pwr-out-w">—</span></div>
+            <div class="readout-item"><span class="readout-label">Time t = h/v</span><span class="readout-value" id="pwr-out-t">—</span></div>
+            <div class="readout-item"><span class="readout-label">Power P = Fv</span><span class="readout-value" id="pwr-out-p">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

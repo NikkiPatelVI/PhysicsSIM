@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work, Energy &amp; Power Study Guide — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <!-- ── Big Ideas ── -->
+    <div class="study-section">
+      <h3>5 Big Ideas for Unit 3</h3>
+      <div class="big-ideas-list">
+
+        <div class="big-idea">
+          <div class="big-idea-num">1</div>
+          <div>
+            <strong>Work requires displacement in the direction of force.</strong>
+            A force perpendicular to motion (like normal force on level ground, or centripetal force in circular motion) does zero work — no matter how large it is.
+          </div>
+        </div>
+
+        <div class="big-idea">
+          <div class="big-idea-num">2</div>
+          <div>
+            <strong>W_net = ΔKE — the work-energy theorem is everything.</strong>
+            You don't need kinematics when you have energies. If you know KE_i and all the work done, you know KE_f instantly.
+          </div>
+        </div>
+
+        <div class="big-idea">
+          <div class="big-idea-num">3</div>
+          <div>
+            <strong>Conservation of energy is the fastest path in frictionless problems.</strong>
+            Set KE_i + PE_i = KE_f + PE_f and solve. No need to find time, acceleration, or forces separately.
+          </div>
+        </div>
+
+        <div class="big-idea">
+          <div class="big-idea-num">4</div>
+          <div>
+            <strong>Friction converts mechanical energy into thermal energy — it doesn't destroy energy.</strong>
+            ΔE_thermal = f_k · d. Total energy (mechanical + thermal) is always conserved; mechanical energy is not.
+          </div>
+        </div>
+
+        <div class="big-idea">
+          <div class="big-idea-num">5</div>
+          <div>
+            <strong>Power = rate of energy transfer.</strong>
+            Two motors doing the same work are not equivalent if one takes twice as long. P = W/t and P = Fv — both show up on the exam.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Common Traps ── -->
+    <div class="study-section">
+      <h3>6 Common Traps</h3>
+      <div class="traps-list">
+
+        <div class="trap-item">
+          <span class="trap-label">TRAP</span>
+          <div>
+            <strong>"The block moves 5 m, so friction does 5 J of work."</strong>
+            Wrong — you need f_k, not just d. Also check: is W_friction = −f_k · d (negative), not +f_k · d.
+          </div>
+        </div>
+
+        <div class="trap-item">
+          <span class="trap-label">TRAP</span>
+          <div>
+            <strong>Setting h = 0 at the wrong place.</strong>
+            You can set the reference anywhere, but you must be consistent within the same problem. PE is relative — only ΔPE matters.
+          </div>
+        </div>
+
+        <div class="trap-item">
+          <span class="trap-label">TRAP</span>
+          <div>
+            <strong>Using conservation of energy when friction is present.</strong>
+            The simple KE_i + PE_i = KE_f + PE_f form only works with no friction. Add W_nc to the left side: KE_i + PE_i + W_nc = KE_f + PE_f.
+          </div>
+        </div>
+
+        <div class="trap-item">
+          <span class="trap-label">TRAP</span>
+          <div>
+            <strong>Confusing mass doubling effects on KE vs PE.</strong>
+            KE = ½mv² — doubling mass doubles KE (for same v). PE = mgh — doubling mass doubles PE. But doubling v quadruples KE. These are different.
+          </div>
+        </div>
+
+        <div class="trap-item">
+          <span class="trap-label">TRAP</span>
+          <div>
+            <strong>Thinking normal force does work on an inclined block.</strong>
+            Normal force is always perpendicular to displacement along the slope → W_N = 0. Only gravity and friction components do work along the slope.
+          </div>
+        </div>
+
+        <div class="trap-item">
+          <span class="trap-label">TRAP</span>
+          <div>
+            <strong>Forgetting PE_s = ½kx², not kx.</strong>
+            Spring PE is quadratic in displacement, not linear. Hooke's law F = kx is linear; the energy stored is the area under that force-displacement graph = ½kx².
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Must-Know Scenarios ── -->
+    <div class="study-section">
+      <h3>6 Must-Know Scenarios</h3>
+
+      <div class="scenario-block">
+        <h4>Scenario 1 — Frictionless Ramp</h4>
+        <p>A ball of mass m starts at height h from rest and slides down a frictionless ramp.</p>
+        <p><strong>At the bottom:</strong> All PE_g has converted to KE. Set h_ref = bottom.</p>
+        <p style="font-family:monospace; background:var(--surface); padding:.5rem .75rem; border-radius:6px; margin:.5rem 0;">
+          mgh = ½mv² → v = √(2gh)
+        </p>
+        <p>Mass cancels — every object reaches the same speed regardless of mass. Speed depends only on height dropped.</p>
+      </div>
+
+      <div class="scenario-block">
+        <h4>Scenario 2 — Ramp with Friction</h4>
+        <p>Same ramp but with kinetic friction coefficient μ_k over horizontal distance d.</p>
+        <p><strong>Use the extended conservation equation:</strong></p>
+        <p style="font-family:monospace; background:var(--surface); padding:.5rem .75rem; border-radius:6px; margin:.5rem 0;">
+          mgh − f_k · d = ½mv² &nbsp;where f_k = μ_k · mg cosθ
+        </p>
+        <p>The friction term subtracts from the available energy. More friction or more distance → less final KE.</p>
+      </div>
+
+      <div class="scenario-block">
+        <h4>Scenario 3 — Spring Launch</h4>
+        <p>A spring (constant k) compressed by x launches a block of mass m on a frictionless surface.</p>
+        <p><strong>All spring PE converts to KE:</strong></p>
+        <p style="font-family:monospace; background:var(--surface); padding:.5rem .75rem; border-radius:6px; margin:.5rem 0;">
+          ½kx² = ½mv² → v = x√(k/m)
+        </p>
+        <p>Doubling compression x doubles the launch speed. Doubling mass reduces speed by √2.</p>
+      </div>
+
+      <div class="scenario-block">
+        <h4>Scenario 4 — Block Sliding to a Stop</h4>
+        <p>A block with initial speed v slides on a surface with friction coefficient μ_k until it stops.</p>
+        <p><strong>All KE lost to friction:</strong></p>
+        <p style="font-family:monospace; background:var(--surface); padding:.5rem .75rem; border-radius:6px; margin:.5rem 0;">
+          ½mv² = f_k · d = μ_k mg · d → d = v²/(2μ_k g)
+        </p>
+        <p>Stopping distance goes as v² — doubling initial speed quadruples stopping distance.</p>
+      </div>
+
+      <div class="scenario-block">
+        <h4>Scenario 5 — Vertical Spring-Mass</h4>
+        <p>A block dropped onto a vertical spring. At maximum compression x, the block has momentarily stopped.</p>
+        <p><strong>From release height h to max compression (set h_ref at compressed position):</strong></p>
+        <p style="font-family:monospace; background:var(--surface); padding:.5rem .75rem; border-radius:6px; margin:.5rem 0;">
+          mg(h + x) = ½kx²
+        </p>
+        <p>The block falls an extra distance x into the spring, so total height drop is (h + x).</p>
+      </div>
+
+      <div class="scenario-block">
+        <h4>Scenario 6 — Power Up a Ramp</h4>
+        <p>A motor lifts mass m a vertical height h in time t at constant speed.</p>
+        <p><strong>Constant speed means no ΔKE — all work goes into PE_g:</strong></p>
+        <p style="font-family:monospace; background:var(--surface); padding:.5rem .75rem; border-radius:6px; margin:.5rem 0;">
+          P = W/t = mgh/t &nbsp;(or P = Fv = mgv)
+        </p>
+        <p>At constant speed the motor force equals mg exactly. P = mgv is the cleaner form when speed is given.</p>
+      </div>
+
+    </div>
+
+    <!-- ── Practice Problems ── -->
+    <div class="study-section">
+      <h3>Practice Problems</h3>
+
+      <details class="answer-toggle">
+        <summary>1. A 2 kg block slides from rest down a frictionless ramp of height 3.2 m. What is its speed at the bottom?</summary>
+        <div class="answer-body">
+          <p><strong>Use conservation of energy (no friction):</strong></p>
+          <p>mgh = ½mv² → v = √(2gh) = √(2 × 9.8 × 3.2) = √(62.72) ≈ <strong>7.9 m/s</strong></p>
+          <p class="score-point">Mass cancels — the 2 kg is irrelevant here.</p>
+        </div>
+      </details>
+
+      <details class="answer-toggle">
+        <summary>2. A 5 kg block moving at 6 m/s slides 4 m across a surface with μ_k = 0.30 before stopping. How much work did friction do?</summary>
+        <div class="answer-body">
+          <p><strong>W_friction = −f_k · d = −μ_k mg · d</strong></p>
+          <p>W_f = −(0.30)(5)(9.8)(4) = −<strong>58.8 J</strong></p>
+          <p><strong>Check with work-energy theorem:</strong> ΔKE = 0 − ½(5)(6²) = −90 J. The 58.8 J removed by friction is less than 90 J — the block doesn't stop in 4 m. Let's find the actual stopping distance:</p>
+          <p>d = v²/(2μ_k g) = 36/(2 × 0.30 × 9.8) = 36/5.88 ≈ <strong>6.1 m</strong></p>
+        </div>
+      </details>
+
+      <details class="answer-toggle">
+        <summary>3. A spring with k = 800 N/m is compressed 0.15 m and launches a 0.5 kg ball on a frictionless track. What is the ball's speed when it leaves the spring?</summary>
+        <div class="answer-body">
+          <p><strong>PE_s = KE:</strong> ½kx² = ½mv²</p>
+          <p>v = x√(k/m) = 0.15 × √(800/0.5) = 0.15 × √1600 = 0.15 × 40 = <strong>6.0 m/s</strong></p>
+        </div>
+      </details>
+
+      <details class="answer-toggle">
+        <summary>4. A 70 kg person runs up a 4 m staircase in 3 s. What is their average power output?</summary>
+        <div class="answer-body">
+          <p><strong>P = W/t = mgh/t</strong></p>
+          <p>P = (70)(9.8)(4)/3 = 2744/3 ≈ <strong>915 W</strong> (about 1.2 horsepower)</p>
+        </div>
+      </details>
+
+      <details class="answer-toggle">
+        <summary>5. A 3 kg block starts at rest at height 5 m on a ramp (θ = 30°) with μ_k = 0.20. What is its speed at the bottom?</summary>
+        <div class="answer-body">
+          <p><strong>Find the ramp length:</strong> L = h/sinθ = 5/sin30° = 5/0.5 = 10 m</p>
+          <p><strong>Friction force along ramp:</strong> f_k = μ_k · mg cosθ = 0.20 × 3 × 9.8 × cos30° = 0.20 × 3 × 9.8 × 0.866 ≈ 5.09 N</p>
+          <p><strong>Work by friction:</strong> W_f = −5.09 × 10 = −50.9 J</p>
+          <p><strong>Energy equation:</strong> mgh + W_f = ½mv²</p>
+          <p>(3)(9.8)(5) − 50.9 = ½(3)v² → 147 − 50.9 = 1.5v² → v² = 64.1 → v ≈ <strong>8.0 m/s</strong></p>
+          <p class="score-point">Without friction: v = √(2×9.8×5) = 9.9 m/s — friction cost about 1.9 m/s.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ── Annotated FRQ ── -->
+    <div class="study-section">
+      <h3>Annotated FRQ — Spring Launch + Ramp</h3>
+      <div class="frq-block">
+        <p class="frq-setup">
+          A 0.4 kg block is held against a horizontal spring (k = 500 N/m) compressed 0.20 m on a frictionless surface. The spring is released and the block travels along the surface and then up a ramp (height 1.5 m) with μ_k = 0.25 over a ramp length of 3.0 m. (g = 9.8 m/s²)
+        </p>
+
+        <div class="frq-part">
+          <p><strong>(a)</strong> What is the block's speed immediately after leaving the spring?</p>
+          <details class="answer-toggle">
+            <summary>Show answer</summary>
+            <div class="answer-body">
+              <p>½kx² = ½mv² → v = x√(k/m) = 0.20 × √(500/0.4) = 0.20 × √1250 = 0.20 × 35.36 ≈ <strong>7.07 m/s</strong></p>
+              <span class="score-tag">1 pt — correct formula</span>
+              <span class="score-tag">1 pt — correct answer with units</span>
+            </div>
+          </details>
+        </div>
+
+        <div class="frq-part">
+          <p><strong>(b)</strong> How much work does friction do on the block as it travels up the 3.0 m ramp?</p>
+          <details class="answer-toggle">
+            <summary>Show answer</summary>
+            <div class="answer-body">
+              <p>Normal force on ramp: N = mg cosθ, where sinθ = h/L = 1.5/3.0 = 0.5 → θ = 30°</p>
+              <p>N = 0.4 × 9.8 × cos30° = 0.4 × 9.8 × 0.866 ≈ 3.39 N</p>
+              <p>W_f = −μ_k · N · L = −0.25 × 3.39 × 3.0 ≈ <strong>−2.54 J</strong></p>
+              <span class="score-tag">1 pt — correct normal force on slope</span>
+              <span class="score-tag">1 pt — correct sign and magnitude</span>
+            </div>
+          </details>
+        </div>
+
+        <div class="frq-part">
+          <p><strong>(c)</strong> What is the block's speed at the top of the ramp?</p>
+          <details class="answer-toggle">
+            <summary>Show answer</summary>
+            <div class="answer-body">
+              <p>KE_i + W_f = KE_f + ΔPE_g</p>
+              <p>½mv₀² + W_f = ½mv_f² + mgh</p>
+              <p>½(0.4)(7.07²) + (−2.54) = ½(0.4)v_f² + (0.4)(9.8)(1.5)</p>
+              <p>9.99 − 2.54 = 0.2v_f² + 5.88</p>
+              <p>0.2v_f² = 9.99 − 2.54 − 5.88 = 1.57</p>
+              <p>v_f = √(1.57/0.2) = √7.85 ≈ <strong>2.80 m/s</strong></p>
+              <span class="score-tag">1 pt — correct energy equation with friction</span>
+              <span class="score-tag">1 pt — correct speed</span>
+            </div>
+          </details>
+        </div>
+
+        <div class="frq-part">
+          <p><strong>(d)</strong> Compare the block's final KE at the top to its initial spring PE. Explain the difference using energy conservation.</p>
+          <details class="answer-toggle">
+            <summary>Show answer</summary>
+            <div class="answer-body">
+              <p>Initial PE_s = ½kx² = ½(500)(0.20²) = <strong>10.0 J</strong></p>
+              <p>Final KE = ½(0.4)(2.80²) ≈ <strong>1.57 J</strong></p>
+              <p>The remaining 8.43 J was transferred to: gravitational PE_g = mgh = 5.88 J, and thermal energy via friction = 2.54 J.</p>
+              <p>Total: 1.57 + 5.88 + 2.54 = 9.99 ≈ 10.0 J ✓ (total energy conserved)</p>
+              <span class="score-tag">1 pt — identifies PE_g and E_thermal as recipients</span>
+              <span class="score-tag">1 pt — shows total energy is conserved</span>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── 5-Point Strategy ── -->
+    <div class="study-section">
+      <h3>5-Point Strategy for Energy Problems</h3>
+      <div class="strategy-list">
+        <div class="strategy-step"><span class="step-num">1</span><div><strong>Identify initial and final states.</strong> Label what you know at each: speed, height, spring compression.</div></div>
+        <div class="strategy-step"><span class="step-num">2</span><div><strong>Choose your reference height</strong> (h = 0). The bottom of the path is usually cleanest — it zeroes out the final PE_g.</div></div>
+        <div class="strategy-step"><span class="step-num">3</span><div><strong>Check for friction.</strong> If yes, compute W_nc = −f_k · d and use the extended equation. If no friction, use the simple KE_i + PE_i = KE_f + PE_f.</div></div>
+        <div class="strategy-step"><span class="step-num">4</span><div><strong>Write one equation.</strong> Plug in all known terms on both sides, then solve for the unknown.</div></div>
+        <div class="strategy-step"><span class="step-num">5</span><div><strong>Sanity check.</strong> With friction, final KE + PE should be less than initial. Without friction, it should be equal. Energy is never created.</div></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>
