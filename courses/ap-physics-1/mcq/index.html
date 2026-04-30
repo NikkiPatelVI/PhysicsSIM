@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCQ Practice — Nikki Patel AP Physics 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+  <style>
+    /* ── Mode toggle ── */
+    .mode-toggle { display:flex; gap:.5rem; margin-bottom:1.5rem; }
+    .mode-btn {
+      border:1.5px solid var(--border); border-radius:8px; cursor:pointer;
+      font-family:inherit; font-size:.875rem; font-weight:600;
+      padding:.45rem 1.1rem; background:var(--surface); color:var(--text-muted);
+      transition:all .15s;
+    }
+    .mode-btn.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+
+    /* ── Timer ── */
+    .timer-bar {
+      align-items:center; background:var(--surface); border:1.5px solid var(--border);
+      border-radius:8px; display:flex; gap:.75rem; justify-content:space-between;
+      margin-bottom:1.25rem; padding:.6rem 1rem;
+    }
+    .timer-value { font-size:1.25rem; font-weight:700; font-variant-numeric:tabular-nums; }
+    .timer-value.urgent { color:#ef4444; }
+    .timer-progress { background:var(--border); border-radius:99px; flex:1; height:6px; overflow:hidden; }
+    .timer-fill { background:var(--accent); border-radius:99px; height:100%; transition:width .5s linear; }
+
+    /* ── Filter row ── */
+    .mcq-filters { align-items:center; display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.25rem; }
+    .mcq-filters select {
+      appearance:none;
+      background:var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E") no-repeat right .65rem center;
+      border:1.5px solid var(--border); border-radius:6px; color:var(--text);
+      cursor:pointer; font-family:inherit; font-size:.875rem; font-weight:500;
+      padding:.4rem 2rem .4rem .75rem; transition:border-color .15s;
+    }
+    .mcq-filters select:focus { border-color:var(--accent); outline:none; }
+
+    /* ── Progress dots ── */
+    .progress-dots { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:1.25rem; }
+    .pdot {
+      border-radius:50%; cursor:pointer; flex-shrink:0;
+      height:10px; width:10px; background:var(--border); transition:background .15s;
+    }
+    .pdot.current { background:var(--accent); }
+    .pdot.correct { background:#22c55e; }
+    .pdot.wrong   { background:#ef4444; }
+
+    /* ── Question card ── */
+    .q-card {
+      border:1.5px solid var(--border); border-radius:12px;
+      overflow:hidden; margin-bottom:1rem;
+    }
+    .q-header {
+      align-items:center; background:var(--surface);
+      border-bottom:1.5px solid var(--border);
+      display:flex; gap:.625rem; padding:.75rem 1rem;
+    }
+    .q-num { color:var(--text-muted); font-size:.8125rem; font-weight:600; }
+    .q-stem { font-size:.9375rem; line-height:1.7; padding:1rem 1.125rem 1.125rem; }
+
+    /* ── Choices ── */
+    .choices { display:flex; flex-direction:column; gap:.5rem; padding:0 1.125rem 1.125rem; }
+    .choice-btn {
+      align-items:flex-start; background:var(--surface); border:1.5px solid var(--border);
+      border-radius:8px; cursor:pointer; display:flex; font-family:inherit;
+      font-size:.9rem; gap:.75rem; padding:.65rem .875rem; text-align:left;
+      transition:border-color .15s, background .15s; width:100%;
+    }
+    .choice-btn:not([disabled]):hover { border-color:var(--accent); }
+    .choice-btn[disabled] { cursor:default; }
+    .choice-btn.selected-correct { background:#dcfce7; border-color:#22c55e; }
+    .choice-btn.selected-wrong   { background:#fee2e2; border-color:#ef4444; }
+    .choice-btn.reveal-correct   { background:#dcfce7; border-color:#22c55e; }
+    .choice-lbl {
+      background:var(--border); border-radius:4px; color:var(--text-muted);
+      flex-shrink:0; font-size:.75rem; font-weight:700;
+      height:20px; line-height:20px; margin-top:1px; text-align:center; width:20px;
+    }
+    .choice-btn.selected-correct .choice-lbl,
+    .choice-btn.reveal-correct   .choice-lbl { background:#22c55e; color:#fff; }
+    .choice-btn.selected-wrong   .choice-lbl { background:#ef4444; color:#fff; }
+
+    /* ── Explanation panel ── */
+    .explanation-panel {
+      border:1.5px solid var(--border); border-radius:10px; display:none;
+      margin-bottom:1rem; overflow:hidden;
+    }
+    .explanation-panel.visible { display:block; }
+    .exp-header {
+      background:var(--surface); border-bottom:1.5px solid var(--border);
+      font-size:.8125rem; font-weight:700; letter-spacing:.05em;
+      padding:.5rem 1rem; text-transform:uppercase; color:var(--text-muted);
+    }
+    .exp-item { border-bottom:1px solid var(--border); display:flex; gap:.75rem; padding:.75rem 1rem; }
+    .exp-item:last-child { border-bottom:none; }
+    .exp-lbl {
+      border-radius:4px; flex-shrink:0; font-size:.75rem; font-weight:700;
+      height:20px; line-height:20px; margin-top:1px; text-align:center; width:20px;
+    }
+    .exp-lbl.correct { background:#22c55e; color:#fff; }
+    .exp-lbl.wrong   { background:#ef4444; color:#fff; }
+    .exp-text { font-size:.875rem; line-height:1.6; }
+
+    /* ── Nav bar ── */
+    .q-nav { align-items:center; display:flex; gap:.625rem; flex-wrap:wrap; }
+    .nav-btn {
+      border:1.5px solid var(--border); border-radius:8px; cursor:pointer;
+      font-family:inherit; font-size:.875rem; font-weight:600;
+      padding:.45rem 1rem; background:var(--surface); color:var(--text);
+      transition:all .15s;
+    }
+    .nav-btn:hover:not([disabled]) { border-color:var(--accent); }
+    .nav-btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    .nav-btn[disabled] { opacity:.4; cursor:default; }
+    .q-nav-info { color:var(--text-muted); font-size:.875rem; margin-left:auto; }
+
+    /* ── Stats panel ── */
+    .stats-panel { margin-top:2.5rem; }
+    .stats-grid { display:grid; gap:.625rem; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); }
+    .stat-card {
+      border:1.5px solid var(--border); border-radius:10px;
+      padding:.75rem .875rem; background:var(--surface);
+    }
+    .stat-unit { color:var(--text-muted); font-size:.75rem; font-weight:600;
+      letter-spacing:.04em; margin-bottom:.25rem; text-transform:uppercase; }
+    .stat-pct { font-size:1.25rem; font-weight:700; }
+    .stat-pct.good   { color:#22c55e; }
+    .stat-pct.ok     { color:#f59e0b; }
+    .stat-pct.poor   { color:#ef4444; }
+    .stat-pct.none   { color:var(--text-muted); }
+    .stat-sub { color:var(--text-muted); font-size:.75rem; margin-top:.125rem; }
+
+    /* ── End screen ── */
+    .end-screen { display:none; }
+    .end-screen.visible { display:block; }
+    .end-score {
+      border:1.5px solid var(--border); border-radius:12px;
+      margin-bottom:1.5rem; padding:1.5rem; text-align:center; background:var(--surface);
+    }
+    .end-score .score-big { font-size:3rem; font-weight:800; }
+    .end-score .score-label { color:var(--text-muted); font-size:.9rem; }
+    .end-review { list-style:none; padding:0; margin:0; }
+    .end-review-item {
+      border-bottom:1px solid var(--border); display:flex;
+      gap:.75rem; padding:.75rem 0; align-items:baseline; font-size:.875rem;
+    }
+    .end-review-item:last-child { border-bottom:none; }
+    .end-dot { border-radius:50%; flex-shrink:0; height:8px; width:8px; margin-top:6px; }
+    .end-dot.correct { background:#22c55e; }
+    .end-dot.wrong   { background:#ef4444; }
+  </style>
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="MCQ Practice"></site-breadcrumb>
+
+  <div style="margin-bottom:1.25rem;">
+    <h1 class="section-title" style="margin-bottom:.375rem;">MCQ Practice</h1>
+    <p style="color:var(--text-muted); font-size:.9375rem; margin:0;">
+      32 questions across all 8 units. <strong>Practice mode</strong> gives instant feedback.
+      <strong>Timed mode</strong> simulates the real exam (45 min). Progress is saved automatically.
+    </p>
+  </div>
+
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="btn-practice" onclick="setMode('practice')">Practice</button>
+    <button class="mode-btn" id="btn-timed" onclick="setMode('timed')">Timed (45 min)</button>
+  </div>
+
+  <!-- Timer (timed mode only) -->
+  <div class="timer-bar" id="timer-bar" style="display:none;">
+    <div>
+      <div style="font-size:.75rem;color:var(--text-muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.1rem;">Time remaining</div>
+      <div class="timer-value" id="timer-value">45:00</div>
+    </div>
+    <div class="timer-progress" style="flex:1;">
+      <div class="timer-fill" id="timer-fill" style="width:100%;"></div>
+    </div>
+    <button class="nav-btn" onclick="endTimed()">End &amp; Review</button>
+  </div>
+
+  <!-- Practice filters -->
+  <div class="mcq-filters" id="practice-filters">
+    <select id="filter-unit" onchange="applyFilters()">
+      <option value="">All units</option>
+      <option value="1">Unit 1 — Kinematics</option>
+      <option value="2">Unit 2 — Forces</option>
+      <option value="3">Unit 3 — Energy</option>
+      <option value="4">Unit 4 — Momentum</option>
+      <option value="5">Unit 5 — Rotation</option>
+      <option value="6">Unit 6 — Rot. Energy &amp; Momentum</option>
+      <option value="7">Unit 7 — Oscillations</option>
+      <option value="8">Unit 8 — Fluids</option>
+    </select>
+    <span style="color:var(--text-muted);font-size:.8125rem;" id="q-pool-count"></span>
+  </div>
+
+  <!-- Progress dots -->
+  <div class="progress-dots" id="progress-dots"></div>
+
+  <!-- Question area -->
+  <div id="question-area">
+    <div class="q-card" id="q-card">
+      <div class="q-header">
+        <span class="q-num" id="q-num">Question 1</span>
+        <span id="q-unit-tag"></span>
+      </div>
+      <div class="q-stem" id="q-stem"></div>
+      <div class="choices" id="choices"></div>
+    </div>
+
+    <div class="explanation-panel" id="explanation-panel">
+      <div class="exp-header">Why each answer is right or wrong</div>
+      <div id="exp-items"></div>
+    </div>
+
+    <div class="q-nav">
+      <button class="nav-btn" id="btn-prev" onclick="navigate(-1)">← Prev</button>
+      <button class="nav-btn" id="btn-next" onclick="navigate(1)">Next →</button>
+      <button class="nav-btn primary" id="btn-submit" onclick="endTimed()" style="display:none;">Submit Exam</button>
+      <span class="q-nav-info" id="q-nav-info"></span>
+    </div>
+  </div>
+
+  <!-- End screen (timed mode) -->
+  <div class="end-screen" id="end-screen">
+    <div class="end-score">
+      <div class="score-big" id="end-score-big"></div>
+      <div class="score-label">correct in timed session</div>
+      <div style="margin-top:.75rem;color:var(--text-muted);font-size:.875rem;" id="end-score-sub"></div>
+    </div>
+    <div style="margin-bottom:.75rem;font-weight:700;">Review</div>
+    <ul class="end-review" id="end-review-list"></ul>
+    <button class="nav-btn primary" style="margin-top:1.25rem;" onclick="restartTimed()">Retry Timed Mode</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-panel" id="stats-panel">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+      <h3 style="margin:0;font-size:1rem;">Your progress</h3>
+      <button class="nav-btn" style="font-size:.8125rem;padding:.3rem .75rem;" onclick="resetStats()">Reset stats</button>
+    </div>
+    <div class="stats-grid" id="stats-grid"></div>
+  </div>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+<script>
+// ── MCQ DATA ──────────────────────────────────────────────────────────────────
+// Each question: id, unit, topic, stem (HTML), choices [{label,text,correct,explanation}]
+// ─────────────────────────────────────────────────────────────────────────────
+const MCQ = [
+  // ── UNIT 1: KINEMATICS ────────────────────────────────────────────────────
+  { id:'u1-1', unit:1, topic:'Average Speed',
+    stem:'A car travels 60 m in 4.0 s, then 40 m in 6.0 s. What is its average speed over the entire trip?',
+    choices:[
+      { label:'A', text:'7.5 m/s', correct:false, explanation:'This is the speed during only the first segment (60/4 = 15 m/s is the first segment speed — 7.5 is half of that with no physical basis).' },
+      { label:'B', text:'10 m/s', correct:true,  explanation:'Average speed = total distance / total time = (60 + 40) / (4 + 6) = 100 / 10 = 10 m/s.' },
+      { label:'C', text:'11 m/s', correct:false, explanation:'This incorrectly averages the two segment speeds: (15 + 6.7)/2 ≈ 10.8 m/s. You cannot average speeds — you must use total distance over total time.' },
+      { label:'D', text:'6.7 m/s', correct:false, explanation:'This is the speed during only the second segment (40/6 = 6.67 m/s). It ignores the first segment entirely.' }
+    ]
+  },
+  { id:'u1-2', unit:1, topic:'Free Fall',
+    stem:'A ball is thrown straight upward with an initial speed of 20 m/s. What is the maximum height it reaches? (g = 9.8 m/s²)',
+    choices:[
+      { label:'A', text:'10 m', correct:false, explanation:'This applies the formula incorrectly. h = v₀²/(2g) = 400/19.6 ≈ 20 m, not 10 m.' },
+      { label:'B', text:'20 m', correct:true,  explanation:'Using v² = v₀² − 2gh with v = 0 at the top: h = v₀²/(2g) = (20)²/(2 × 9.8) = 400/19.6 ≈ 20.4 m.' },
+      { label:'C', text:'40 m', correct:false, explanation:'This forgets to divide by 2 in the formula, giving h = v₀²/g = 400/9.8 ≈ 40.8 m. The factor of 2 comes from the kinematic equation.' },
+      { label:'D', text:'2.0 m', correct:false, explanation:'This divides by g but uses v₀ instead of v₀², giving a very small result with no physical meaning.' }
+    ]
+  },
+  { id:'u1-3', unit:1, topic:'Velocity–Time Graphs',
+    stem:'Which of the following velocity-time graphs represents an object moving in the positive direction with constant acceleration?',
+    choices:[
+      { label:'A', text:'A horizontal line at v = 5 m/s', correct:false, explanation:'A horizontal v-t line means velocity is constant, so acceleration = slope = 0. This describes constant velocity, not acceleration.' },
+      { label:'B', text:'A straight line with a positive slope starting from rest', correct:true,  explanation:'A straight line on a v-t graph has constant slope = constant acceleration. Starting from rest at v = 0 and increasing in the positive direction is constant positive acceleration.' },
+      { label:'C', text:'A curved (parabolic) line', correct:false, explanation:'A curve on a v-t graph means the slope (acceleration) is changing — this represents changing acceleration, not constant acceleration.' },
+      { label:'D', text:'A straight line with a negative slope', correct:false, explanation:'A negative slope means the acceleration is negative (deceleration if moving in the positive direction). The question asks for positive direction with positive acceleration.' }
+    ]
+  },
+  { id:'u1-4', unit:1, topic:'Projectile Motion',
+    stem:'A ball is launched horizontally from the top of a cliff. Which of the following is true while it is in the air? (Ignore air resistance.)',
+    choices:[
+      { label:'A', text:'The horizontal component of velocity decreases due to gravity', correct:false, explanation:'Gravity acts only vertically. With no air resistance, there is no horizontal force, so horizontal velocity stays constant throughout the flight.' },
+      { label:'B', text:'The horizontal acceleration is zero', correct:true,  explanation:'With no air resistance, no force acts in the horizontal direction. By Newton\'s 2nd law, a = F/m = 0. Horizontal velocity is constant.' },
+      { label:'C', text:'The time of flight depends on the launch speed', correct:false, explanation:'Time of flight for a horizontal launch depends only on the height of the cliff and g: t = √(2h/g). Launch speed determines horizontal range but not fall time.' },
+      { label:'D', text:'Vertical velocity is constant', correct:false, explanation:'Gravity accelerates the ball downward at 9.8 m/s² the entire time. Vertical velocity increases continuously — it\'s the horizontal velocity that stays constant.' }
+    ]
+  },
+
+  // ── UNIT 2: FORCES ────────────────────────────────────────────────────────
+  { id:'u2-1', unit:2, topic:'Newton\'s 2nd Law with Friction',
+    stem:'A 5.0 kg block is pushed by a 30 N horizontal force on a surface with μ<sub>k</sub> = 0.20. What is the block\'s acceleration? (g = 9.8 m/s²)',
+    choices:[
+      { label:'A', text:'4.0 m/s²', correct:true,  explanation:'N = mg = 49 N; friction = μₖN = 0.20 × 49 = 9.8 N; Fₙₑₜ = 30 − 9.8 = 20.2 N; a = 20.2/5.0 = 4.04 ≈ 4.0 m/s².' },
+      { label:'B', text:'6.0 m/s²', correct:false, explanation:'This forgets friction: a = F/m = 30/5 = 6.0 m/s². Friction must be subtracted from the applied force before dividing by mass.' },
+      { label:'C', text:'2.0 m/s²', correct:false, explanation:'This over-estimates friction or uses the wrong formula. Check: Fₙₑₜ = 30 − μmg = 30 − 9.8 = 20.2 N → a = 4.0 m/s², not 2.0.' },
+      { label:'D', text:'3.0 m/s²', correct:false, explanation:'No common calculation produces this value. This may result from using μₖ × F (applied) instead of μₖ × N for friction.' }
+    ]
+  },
+  { id:'u2-2', unit:2, topic:'Inclined Plane',
+    stem:'A 2.0 kg block slides down a frictionless 30° incline. What is its acceleration?',
+    choices:[
+      { label:'A', text:'9.8 m/s²', correct:false, explanation:'9.8 m/s² is free-fall acceleration — it applies only when the surface is vertical. On a 30° incline, only the component of gravity parallel to the surface acts: g sin 30°.' },
+      { label:'B', text:'4.9 m/s²', correct:true,  explanation:'The component of gravity along the incline is g sin θ = 9.8 × sin 30° = 9.8 × 0.5 = 4.9 m/s². Mass cancels in F = ma, so the answer is independent of the block\'s mass.' },
+      { label:'C', text:'8.5 m/s²', correct:false, explanation:'This uses g cos 30° ≈ 8.5 m/s², which is the component perpendicular to the surface (what determines the normal force), not the acceleration along the slope.' },
+      { label:'D', text:'2.45 m/s²', correct:false, explanation:'This is g sin 30° / 2 = 4.9 / 2. There\'s no reason to divide by 2 — mass cancels out of Newton\'s 2nd law on a frictionless incline.' }
+    ]
+  },
+  { id:'u2-3', unit:2, topic:'Newton\'s 3rd Law',
+    stem:'Earth pulls you downward with a gravitational force of 600 N. According to Newton\'s 3rd law, which statement is correct?',
+    choices:[
+      { label:'A', text:'You pull Earth upward with 600 N', correct:true,  explanation:'Newton\'s 3rd law: action-reaction pairs are equal in magnitude, opposite in direction, and act on different objects. You exert a 600 N gravitational force on Earth directed toward you.' },
+      { label:'B', text:'The normal force from the floor on you is the reaction to gravity', correct:false, explanation:'The normal force is not the Newton\'s 3rd law pair of gravity. Gravity acts between you and Earth; the normal force acts between you and the floor — a different object.' },
+      { label:'C', text:'The net force on the Earth-you system is 1200 N', correct:false, explanation:'These forces are internal to the Earth-you system and cancel. The net external force on the system depends on other forces, not these equal-and-opposite internal ones.' },
+      { label:'D', text:'You pull Earth with less force because Earth is more massive', correct:false, explanation:'Newton\'s 3rd law forces are always equal in magnitude regardless of mass. Earth accelerates much less than you only because of its enormous mass (a = F/m), not because the force is smaller.' }
+    ]
+  },
+  { id:'u2-4', unit:2, topic:'Atwood Machine',
+    stem:'In an Atwood machine (frictionless pulley), m₁ = 3.0 kg and m₂ = 5.0 kg hang on either side. What is the acceleration of the system?',
+    choices:[
+      { label:'A', text:'9.8 m/s²', correct:false, explanation:'9.8 m/s² would only occur if one mass were in free fall with nothing opposing it. Here both masses are connected, so the net force is spread over the total mass.' },
+      { label:'B', text:'2.45 m/s²', correct:true,  explanation:'a = (m₂ − m₁)g / (m₁ + m₂) = (5 − 3)(9.8) / (3 + 5) = 19.6 / 8 = 2.45 m/s². The net force is the weight difference; total mass is the sum.' },
+      { label:'C', text:'4.9 m/s²', correct:false, explanation:'This applies g × (difference/sum) incorrectly, or confuses it with a simpler formula. The correct substitution gives 2 × 9.8 / 8 = 2.45 m/s², not 4.9.' },
+      { label:'D', text:'1.23 m/s²', correct:false, explanation:'This is half the correct answer. One common error is using only m₁ or m₂ (not the sum) in the denominator, or dividing by 2 without justification.' }
+    ]
+  },
+
+  // ── UNIT 3: ENERGY ────────────────────────────────────────────────────────
+  { id:'u3-1', unit:3, topic:'Conservation of Energy — Free Fall',
+    stem:'A 2.0 kg block is dropped from rest at a height of 5.0 m. What is its speed just before it hits the ground? (g = 9.8 m/s², no air resistance)',
+    choices:[
+      { label:'A', text:'7.0 m/s', correct:false, explanation:'Check the formula: v = √(2gh) = √(2 × 9.8 × 5) = √98 ≈ 9.9 m/s. Squaring 7.0 gives 49, but 2gh = 98.' },
+      { label:'B', text:'9.9 m/s', correct:true,  explanation:'Energy conservation: mgh = ½mv² → v = √(2gh) = √(2 × 9.8 × 5.0) = √98 ≈ 9.9 m/s. Mass cancels.' },
+      { label:'C', text:'14 m/s', correct:false, explanation:'This appears to use v = 2gh/something incorrectly. √(2 × 9.8 × 5) ≠ 14. Ensure you take the square root after computing 2gh.' },
+      { label:'D', text:'5.0 m/s', correct:false, explanation:'v = 5 m/s would mean KE = ½(2)(25) = 25 J, but PE at 5 m = mgh = 2 × 9.8 × 5 = 98 J. Energy is not conserved at this speed.' }
+    ]
+  },
+  { id:'u3-2', unit:3, topic:'Spring Potential Energy',
+    stem:'A spring (k = 200 N/m) is compressed 0.10 m. A 0.50 kg block rests against it on a frictionless surface and is released. What is the block\'s maximum speed?',
+    choices:[
+      { label:'A', text:'2.0 m/s', correct:true,  explanation:'½kx² = ½mv² → v = x√(k/m) = 0.10 × √(200/0.50) = 0.10 × √400 = 0.10 × 20 = 2.0 m/s.' },
+      { label:'B', text:'4.0 m/s', correct:false, explanation:'This forgets to take the square root: using v = kx²/m gives 200 × 0.01 / 0.5 = 4.0, but that\'s v², not v. The correct speed is √4 = 2.0 m/s.' },
+      { label:'C', text:'1.0 m/s', correct:false, explanation:'This may result from v = kx/m = 200 × 0.10 / 0.50 = 40 (wrong formula entirely). Energy, not force, determines maximum speed.' },
+      { label:'D', text:'0.20 m/s', correct:false, explanation:'This omits the √(k/m) factor. Always use energy conservation: ½kx² = ½mv² is the correct starting point.' }
+    ]
+  },
+  { id:'u3-3', unit:3, topic:'Power',
+    stem:'A 60 kg person climbs 3.0 m in 6.0 s at constant speed. What is the power output of the person?',
+    choices:[
+      { label:'A', text:'90 W', correct:false, explanation:'This uses P = mgt where t is time instead of dividing. Correct: W = mgh = 1764 J, P = 1764/6 ≈ 294 W.' },
+      { label:'B', text:'294 W', correct:true,  explanation:'Work done against gravity: W = mgh = 60 × 9.8 × 3.0 = 1764 J. Power = W/t = 1764/6.0 = 294 W.' },
+      { label:'C', text:'180 W', correct:false, explanation:'This may come from using g = 10 m/s² × 3/0.5 without proper formula. The correct calculation with g = 9.8 gives 294 W.' },
+      { label:'D', text:'1764 W', correct:false, explanation:'1764 J is the work done — not the power. Power = work/time. Forgetting to divide by time gives the total energy, not the rate.' }
+    ]
+  },
+  { id:'u3-4', unit:3, topic:'Energy with Friction',
+    stem:'A ball rolls down a hill with friction present. Which best describes the total mechanical energy (KE + PE) of the ball?',
+    choices:[
+      { label:'A', text:'It increases as the ball gains speed', correct:false, explanation:'Mechanical energy can only increase if an external agent does positive work on the system. Friction removes energy; it cannot add it.' },
+      { label:'B', text:'It decreases because friction converts some energy to thermal energy', correct:true,  explanation:'Friction is a non-conservative force. It converts mechanical energy to thermal energy, so KE + PE decreases. Total energy (including thermal) is still conserved.' },
+      { label:'C', text:'It remains constant, just like a frictionless ramp', correct:false, explanation:'This is true only on a frictionless surface. Friction converts mechanical energy to heat, so total mechanical energy decreases.' },
+      { label:'D', text:'It first increases then decreases', correct:false, explanation:'There is no mechanism to increase the ball\'s mechanical energy as it rolls. Friction only removes mechanical energy — it never adds it.' }
+    ]
+  },
+
+  // ── UNIT 4: MOMENTUM ─────────────────────────────────────────────────────
+  { id:'u4-1', unit:4, topic:'Impulse',
+    stem:'A 0.20 kg ball hits a wall at 10 m/s and bounces back at 8.0 m/s in the opposite direction. What is the magnitude of the impulse exerted by the wall on the ball?',
+    choices:[
+      { label:'A', text:'0.40 N·s', correct:false, explanation:'This calculates |Δv| = 10 − 8 = 2 m/s, treating both velocities as positive. You must account for the direction reversal: |Δp| = m|v_f − v_i| = 0.20 × |−8 − 10| = 3.6 N·s.' },
+      { label:'B', text:'3.6 N·s', correct:true,  explanation:'Taking toward the wall as positive: v_i = +10, v_f = −8. Impulse = mΔv = 0.20 × (−8 − 10) = −3.6 N·s. Magnitude = 3.6 N·s.' },
+      { label:'C', text:'1.6 N·s', correct:false, explanation:'This calculates only mv_f = 0.20 × 8 = 1.6 N·s (the final momentum alone). Impulse requires the change in momentum, not just the final value.' },
+      { label:'D', text:'2.0 N·s', correct:false, explanation:'This uses m(v_i − v_f)/2 or some averaged value. There is no averaging in the impulse formula: J = Δp = m(v_f − v_i).' }
+    ]
+  },
+  { id:'u4-2', unit:4, topic:'Perfectly Inelastic Collision',
+    stem:'Cart A (2.0 kg) moves at 4.0 m/s and collides with Cart B (2.0 kg) at rest. They stick together. What is the final velocity?',
+    choices:[
+      { label:'A', text:'4.0 m/s', correct:false, explanation:'This assumes all momentum is transferred without mass change — it ignores that B\'s mass is added. The combined mass is doubled, so speed is halved.' },
+      { label:'B', text:'2.0 m/s', correct:true,  explanation:'Conservation of momentum: m_A v_A = (m_A + m_B)v_f → v_f = (2.0 × 4.0)/(2.0 + 2.0) = 8.0/4.0 = 2.0 m/s.' },
+      { label:'C', text:'1.0 m/s', correct:false, explanation:'This may result from dividing by 4 instead of 2, or computing v_f = m_A v_A / (4 × m_A). The total mass after collision is m_A + m_B = 4.0 kg, not 8.0 kg.' },
+      { label:'D', text:'3.0 m/s', correct:false, explanation:'No standard formula gives 3.0 m/s here. This may come from averaging the initial speeds: (4 + 0)/2 = 2 m/s is the correct answer, but "averaging" that way only works when masses are equal (which they are here — yet gives 2, not 3).' }
+    ]
+  },
+  { id:'u4-3', unit:4, topic:'Types of Collisions',
+    stem:'Which type of collision conserves both kinetic energy and momentum?',
+    choices:[
+      { label:'A', text:'Perfectly inelastic', correct:false, explanation:'In a perfectly inelastic collision, objects stick together. Momentum is conserved, but maximum kinetic energy is lost — this is the most inelastic type of collision.' },
+      { label:'B', text:'Elastic', correct:true,  explanation:'An elastic collision conserves both total momentum and total kinetic energy. Examples: billiard balls, ideal gas molecule collisions.' },
+      { label:'C', text:'Inelastic (objects separate)', correct:false, explanation:'In any inelastic collision, kinetic energy is not conserved — some is converted to heat, sound, or deformation. Only elastic collisions conserve KE.' },
+      { label:'D', text:'All collisions conserve both quantities', correct:false, explanation:'All collisions conserve momentum (no net external force), but only elastic collisions conserve kinetic energy. In real collisions some KE is always lost.' }
+    ]
+  },
+  { id:'u4-4', unit:4, topic:'Impulse-Momentum Theorem',
+    stem:'A 1500 kg car moving at 20 m/s brakes to a complete stop in 4.0 s. What is the magnitude of the average braking force?',
+    choices:[
+      { label:'A', text:'3750 N', correct:false, explanation:'This divides the mass by time instead of momentum by time: 1500/4 = 375. The correct formula is F = Δp/t = mv/t = (1500 × 20)/4.' },
+      { label:'B', text:'7500 N', correct:true,  explanation:'F = Δp/t = m|Δv|/t = 1500 × 20 / 4.0 = 30000/4 = 7500 N. The car goes from 20 m/s to 0, so |Δv| = 20 m/s.' },
+      { label:'C', text:'30000 N', correct:false, explanation:'30000 N = mΔv = the total impulse (change in momentum), but this is not force. Force requires dividing by time: 30000/4 = 7500 N.' },
+      { label:'D', text:'1500 N', correct:false, explanation:'1500 N equals the mass numerically but has no physical connection to this problem. Always use F = Δp/t, not F = mass alone.' }
+    ]
+  },
+
+  // ── UNIT 5: ROTATION ──────────────────────────────────────────────────────
+  { id:'u5-1', unit:5, topic:'Net Torque',
+    stem:'A disk with moment of inertia I = 0.50 kg·m² experiences an angular acceleration of α = 4.0 rad/s². What is the net torque on the disk?',
+    choices:[
+      { label:'A', text:'1.0 N·m', correct:false, explanation:'This divides instead of multiplying: 0.5/4 = 0.125, not 1.0. Or it may come from halving the correct answer without justification. Use τ = Iα.' },
+      { label:'B', text:'2.0 N·m', correct:true,  explanation:'Newton\'s 2nd law for rotation: τ = Iα = 0.50 × 4.0 = 2.0 N·m.' },
+      { label:'C', text:'4.0 N·m', correct:false, explanation:'This uses τ = α alone, ignoring the moment of inertia. The rotational analog of F = ma is τ = Iα — I must be included.' },
+      { label:'D', text:'8.0 N·m', correct:false, explanation:'This may come from multiplying I × α × 4, or using I = 2 × 0.5 incorrectly. The straightforward application is τ = 0.50 × 4.0 = 2.0 N·m.' }
+    ]
+  },
+  { id:'u5-2', unit:5, topic:'Moment of Inertia',
+    stem:'A 5.0 kg point mass is located 2.0 m from a rotation axis. What is its moment of inertia?',
+    choices:[
+      { label:'A', text:'10 kg·m²', correct:false, explanation:'This uses I = mr instead of I = mr². The distance must be squared: I = 5.0 × (2.0)² = 5.0 × 4.0 = 20 kg·m².' },
+      { label:'B', text:'20 kg·m²', correct:true,  explanation:'For a point mass: I = mr² = 5.0 × (2.0)² = 5.0 × 4.0 = 20 kg·m².' },
+      { label:'C', text:'40 kg·m²', correct:false, explanation:'This uses I = 2mr² or makes an error squaring 2.0 as 4 then doubling. The formula for a point mass is I = mr² with no additional factors.' },
+      { label:'D', text:'5.0 kg·m²', correct:false, explanation:'This uses I = m, ignoring the radius entirely. Moment of inertia always depends on how mass is distributed relative to the axis: I = mr².' }
+    ]
+  },
+  { id:'u5-3', unit:5, topic:'Rolling Down a Ramp',
+    stem:'A solid sphere and a hollow sphere of equal mass and radius are released from rest at the top of the same ramp. Which reaches the bottom first?',
+    choices:[
+      { label:'A', text:'Hollow sphere', correct:false, explanation:'The hollow sphere has more rotational inertia (I = 2/3 mr²) than the solid sphere (I = 2/5 mr²). More inertia means more energy goes into rotation and less into translation — it\'s actually slower.' },
+      { label:'B', text:'They arrive at the same time', correct:false, explanation:'Only if they slid without rolling would they tie. Rolling objects have different fractions of energy in rotation based on their moment of inertia, so they accelerate differently.' },
+      { label:'C', text:'Solid sphere', correct:true,  explanation:'The solid sphere (I = 2/5 mr²) has less rotational inertia than the hollow sphere (I = 2/3 mr²). A smaller fraction of its kinetic energy goes into rotation, so it moves faster translationally.' },
+      { label:'D', text:'Depends on the slope angle', correct:false, explanation:'The ratio of translational to rotational KE depends only on the object\'s geometry (its moment of inertia coefficient), not the slope angle. The solid sphere always wins regardless of angle.' }
+    ]
+  },
+  { id:'u5-4', unit:5, topic:'Rotational Inertia',
+    stem:'A disk is spinning at 10 rad/s when the net torque on it becomes zero. What happens to its rotation?',
+    choices:[
+      { label:'A', text:'It gradually decelerates to rest', correct:false, explanation:'Deceleration requires a net torque opposing the spin. With zero net torque, there is no angular acceleration — the disk maintains its current angular velocity.' },
+      { label:'B', text:'It continues spinning at 10 rad/s', correct:true,  explanation:'Newton\'s 1st law for rotation: a rotating object maintains constant angular velocity unless acted on by a net torque. Zero torque → zero angular acceleration → constant ω = 10 rad/s.' },
+      { label:'C', text:'It accelerates', correct:false, explanation:'Acceleration requires a net torque (τ = Iα). With τ = 0, α = 0, so the angular velocity cannot change.' },
+      { label:'D', text:'It reverses direction', correct:false, explanation:'Reversing direction requires a sustained torque opposite to the spin. With zero net torque, nothing acts to change the direction of rotation.' }
+    ]
+  },
+
+  // ── UNIT 6: ROTATIONAL ENERGY & MOMENTUM ─────────────────────────────────
+  { id:'u6-1', unit:6, topic:'Conservation of Angular Momentum',
+    stem:'A figure skater is spinning with her arms extended. She pulls her arms in close to her body. What happens to her angular momentum?',
+    choices:[
+      { label:'A', text:'It increases because her speed increases', correct:false, explanation:'Angular momentum L = Iω. When she pulls her arms in, I decreases and ω increases, but their product stays constant. L is conserved, not increased.' },
+      { label:'B', text:'It decreases because her radius decreases', correct:false, explanation:'Pulling arms in reduces I but angular momentum is not the same as moment of inertia. L = Iω is conserved when there is no external torque.' },
+      { label:'C', text:'It remains the same', correct:true,  explanation:'With no external torques acting on the skater, angular momentum is conserved: L = Iω = constant. Pulling arms in reduces I, which increases ω proportionally, keeping L the same.' },
+      { label:'D', text:'It becomes zero', correct:false, explanation:'Angular momentum becomes zero only if an external torque brings the skater to rest. Simply moving arms (an internal force) cannot change the total angular momentum of the system.' }
+    ]
+  },
+  { id:'u6-2', unit:6, topic:'Rolling Kinetic Energy',
+    stem:'A solid cylinder (m = 2.0 kg, r = 0.10 m, I = ½mr²) rolls without slipping at v = 4.0 m/s. What is its total kinetic energy?',
+    choices:[
+      { label:'A', text:'16 J', correct:false, explanation:'16 J is only the translational KE: ½mv² = ½(2)(16) = 16 J. Rolling objects also have rotational KE: ½Iω² = ½(½mr²)(v/r)² = ¼mv² = 8 J. Total = 24 J.' },
+      { label:'B', text:'24 J', correct:true,  explanation:'KE_trans = ½mv² = ½(2)(16) = 16 J. KE_rot = ½Iω² = ½(½mr²)(v/r)² = ¼mv² = ¼(2)(16) = 8 J. Total = 16 + 8 = 24 J.' },
+      { label:'C', text:'32 J', correct:false, explanation:'32 J = 2 × ½mv². This incorrectly doubles the translational KE instead of adding the (smaller) rotational KE. For a solid cylinder, KE_rot = ½ KE_trans.' },
+      { label:'D', text:'8 J', correct:false, explanation:'8 J is only the rotational KE. Total KE for a rolling object includes both translational and rotational contributions.' }
+    ]
+  },
+  { id:'u6-3', unit:6, topic:'Angular Momentum — Collision',
+    stem:'A disk (I = 2.0 kg·m²) spins at 6.0 rad/s. An identical disk dropped on top of it at rest. What is the new angular velocity?',
+    choices:[
+      { label:'A', text:'6.0 rad/s', correct:false, explanation:'This ignores the added rotational inertia. The second disk doubles the total I, so ω must halve to conserve L = Iω.' },
+      { label:'B', text:'3.0 rad/s', correct:true,  explanation:'L is conserved: I₁ω₁ = (I₁ + I₂)ω₂ → 2.0 × 6.0 = (2.0 + 2.0) × ω₂ → ω₂ = 12/4 = 3.0 rad/s.' },
+      { label:'C', text:'12 rad/s', correct:false, explanation:'This doubles ω instead of halving it. Adding inertia slows the system — it does not speed it up. More mass to spin means slower rotation for the same angular momentum.' },
+      { label:'D', text:'2.0 rad/s', correct:false, explanation:'This may come from dividing L by 3I instead of 2I. The total moment of inertia after the drop is I₁ + I₂ = 4.0 kg·m², not 6.0.' }
+    ]
+  },
+  { id:'u6-4', unit:6, topic:'Rolling Without Slipping Condition',
+    stem:'Which relationship correctly describes rolling without slipping, where v<sub>cm</sub> is the center-of-mass speed, r is the radius, and ω is the angular velocity?',
+    choices:[
+      { label:'A', text:'v<sub>cm</sub> = rω', correct:true,  explanation:'This is the rolling-without-slipping condition. The contact point is instantaneously at rest, meaning the translational speed of the center equals r times the angular velocity.' },
+      { label:'B', text:'v<sub>cm</sub> = r/ω', correct:false, explanation:'This would give units of m·s (not m/s) and has no physical meaning. The correct relation is v = rω, which comes from arc length s = rθ differentiated with respect to time.' },
+      { label:'C', text:'v<sub>cm</sub> = 2rω', correct:false, explanation:'The factor of 2 appears in the speed of the top of a rolling object (v_top = 2v_cm), not the center. The center moves at v_cm = rω.' },
+      { label:'D', text:'ω = v<sub>cm</sub> × r', correct:false, explanation:'This gives ω in units of m²/s, not rad/s. The correct rearrangement is ω = v_cm/r.' }
+    ]
+  },
+
+  // ── UNIT 7: OSCILLATIONS ──────────────────────────────────────────────────
+  { id:'u7-1', unit:7, topic:'Mass-Spring on the Moon',
+    stem:'A mass-spring system has a period of T = 2.0 s on Earth. What is its period on the Moon, where g = 1.6 m/s²?',
+    choices:[
+      { label:'A', text:'2.0 s (unchanged)', correct:true,  explanation:'The period of a mass-spring system is T = 2π√(m/k). It depends only on mass and spring constant — not on gravitational acceleration. Gravity does not affect horizontal spring oscillations.' },
+      { label:'B', text:'7.8 s', correct:false, explanation:'This applies the pendulum formula T ∝ 1/√g, not the mass-spring formula. Pendulums depend on g; mass-spring systems do not.' },
+      { label:'C', text:'0.80 s', correct:false, explanation:'This scales T by √(g_Moon/g_Earth) — the ratio that applies to pendulums, not springs. For springs: T = 2π√(m/k) has no g.' },
+      { label:'D', text:'Cannot be determined without knowing the mass', correct:false, explanation:'While mass does affect the period, knowing the Earth period already encodes the ratio m/k. Since T = 2π√(m/k) has no g, the Moon period equals the Earth period — no additional information is needed.' }
+    ]
+  },
+  { id:'u7-2', unit:7, topic:'Pendulum Length',
+    stem:'A simple pendulum has a period of 2.0 s. What is its length? (g = 9.8 m/s²)',
+    choices:[
+      { label:'A', text:'0.50 m', correct:false, explanation:'Check: T = 2π√(L/g) → L = g(T/2π)² = 9.8 × (2/2π)² = 9.8 × (0.318)² = 9.8 × 0.101 ≈ 0.99 m ≈ 1.0 m.' },
+      { label:'B', text:'1.0 m', correct:true,  explanation:'T = 2π√(L/g) → solving for L: L = g(T/2π)² = 9.8 × (2.0/6.28)² = 9.8 × 0.101 ≈ 0.99 m ≈ 1.0 m.' },
+      { label:'C', text:'2.0 m', correct:false, explanation:'This might come from L = gT/(2π) (missing the square). You must square the T/2π factor: L = g × (T/2π)², not L = gT/2π.' },
+      { label:'D', text:'4.0 m', correct:false, explanation:'This uses L = gT²/something ≈ 9.8 × 4 / some_factor. A 4 m pendulum would have T = 2π√(4/9.8) ≈ 4.0 s, not 2.0 s.' }
+    ]
+  },
+  { id:'u7-3', unit:7, topic:'SHM — Maximum Speed Location',
+    stem:'In a mass-spring system oscillating in simple harmonic motion, where is the speed of the mass greatest?',
+    choices:[
+      { label:'A', text:'At maximum displacement (the amplitude)', correct:false, explanation:'At maximum displacement, all energy is stored as spring potential energy and KE = 0. The mass momentarily stops here before reversing direction.' },
+      { label:'B', text:'At the equilibrium position', correct:true,  explanation:'At equilibrium, spring PE = 0 and all energy is kinetic. This is where speed is maximum: v_max = Aω = A√(k/m).' },
+      { label:'C', text:'At half the amplitude', correct:false, explanation:'At x = A/2, some energy is still stored as spring PE. Maximum KE (and maximum speed) occurs only where PE = 0, which is at the equilibrium position.' },
+      { label:'D', text:'Speed is constant throughout the oscillation', correct:false, explanation:'Speed varies continuously in SHM. It is zero at the turning points (maximum displacement) and maximum at equilibrium. Only uniform circular motion has constant speed.' }
+    ]
+  },
+  { id:'u7-4', unit:7, topic:'Pendulum Period — Length Scaling',
+    stem:'A pendulum\'s length is quadrupled. How does its period change?',
+    choices:[
+      { label:'A', text:'The period doubles', correct:true,  explanation:'T = 2π√(L/g). If L → 4L, then T → 2π√(4L/g) = 2 × 2π√(L/g) = 2T. Period scales as √L, so quadrupling L doubles T.' },
+      { label:'B', text:'The period quadruples', correct:false, explanation:'T ∝ √L, not L. Quadrupling L multiplies T by √4 = 2, not 4. Period and length are not proportional — only √L and T are.' },
+      { label:'C', text:'The period is halved', correct:false, explanation:'A longer pendulum always has a longer period, not a shorter one. T increases with length because the restoring force is proportionally weaker for longer arcs.' },
+      { label:'D', text:'The period is unchanged', correct:false, explanation:'The period depends on length: T = 2π√(L/g). Only mass (not affecting T) and g are the other factors. Changing L always changes T.' }
+    ]
+  },
+
+  // ── UNIT 8: FLUIDS ────────────────────────────────────────────────────────
+  { id:'u8-1', unit:8, topic:'Buoyancy — Floating Object',
+    stem:'A wooden block with density 600 kg/m³ floats in water (ρ = 1000 kg/m³). What fraction of the block is submerged?',
+    choices:[
+      { label:'A', text:'40%', correct:false, explanation:'40% is the fraction above water. For a floating object, the submerged fraction equals ρ_object/ρ_fluid = 600/1000 = 0.60 = 60%.' },
+      { label:'B', text:'60%', correct:true,  explanation:'At equilibrium, buoyant force = weight: ρ_water × V_sub × g = ρ_obj × V × g → V_sub/V = ρ_obj/ρ_water = 600/1000 = 0.60 = 60%.' },
+      { label:'C', text:'100%', correct:false, explanation:'100% submerged means the object is fully underwater. Since ρ_obj (600) < ρ_water (1000), the object floats with part above the surface.' },
+      { label:'D', text:'50%', correct:false, explanation:'50% submerged would require ρ_obj = 500 kg/m³. Here ρ_obj = 600 kg/m³, so more than half must be submerged to generate enough buoyant force to balance weight.' }
+    ]
+  },
+  { id:'u8-2', unit:8, topic:'Continuity Equation',
+    stem:'Water flows through a pipe. The cross-sectional area of the pipe narrows to one-half its original value. How does the flow speed change in the narrow section?',
+    choices:[
+      { label:'A', text:'It halves', correct:false, explanation:'The continuity equation is A₁v₁ = A₂v₂. If A₂ = ½A₁, then v₂ = A₁v₁/A₂ = 2v₁. Smaller area → faster speed, not slower.' },
+      { label:'B', text:'It remains the same', correct:false, explanation:'Speed only stays the same if the area is unchanged. The continuity equation requires A₁v₁ = A₂v₂ — if A decreases, v must increase to conserve volume flow rate.' },
+      { label:'C', text:'It doubles', correct:true,  explanation:'Continuity equation: A₁v₁ = A₂v₂. With A₂ = A₁/2: v₂ = A₁v₁/A₂ = 2v₁. Halving the area doubles the speed to maintain constant volume flow rate.' },
+      { label:'D', text:'It quadruples', correct:false, explanation:'Quadrupling would require the area to decrease to one-quarter. Here the area halves, so speed only doubles (inverse relationship, not square relationship).' }
+    ]
+  },
+  { id:'u8-3', unit:8, topic:'Pressure with Depth',
+    stem:'A submarine dives to a greater depth in the ocean. The absolute water pressure on the hull...',
+    choices:[
+      { label:'A', text:'Decreases', correct:false, explanation:'Pressure increases with depth: P = P₀ + ρgh. Greater depth means greater h, which increases pressure. Pressure decreases with altitude (going up), not depth.' },
+      { label:'B', text:'Increases', correct:true,  explanation:'P = P₀ + ρgh. As depth h increases, pressure increases linearly. This is why submarines have a crush depth — pressure eventually exceeds structural limits.' },
+      { label:'C', text:'Remains the same', correct:false, explanation:'Pressure would only be constant if depth were constant. Since the submarine is diving (increasing h), pressure must increase according to P = P₀ + ρgh.' },
+      { label:'D', text:'Depends on the submarine\'s speed', correct:false, explanation:'Hydrostatic pressure (the pressure from the weight of water above) depends on depth, not speed. Speed affects dynamic pressure (Bernoulli), which is negligible for a submarine\'s structural loads.' }
+    ]
+  },
+  { id:'u8-4', unit:8, topic:'Bernoulli\'s Principle',
+    stem:'According to Bernoulli\'s principle, what happens to the pressure of a fluid as its flow speed increases (at the same height)?',
+    choices:[
+      { label:'A', text:'Pressure increases', correct:false, explanation:'This is the opposite of Bernoulli\'s principle. Higher speed corresponds to lower pressure, not higher. This is why airplane wings generate lift — fast air over the top, lower pressure on top.' },
+      { label:'B', text:'Pressure decreases', correct:true,  explanation:'Bernoulli\'s equation: P + ½ρv² + ρgh = constant. At constant height, if v increases, P must decrease to keep the sum constant (energy conservation per unit volume).' },
+      { label:'C', text:'Pressure stays constant', correct:false, explanation:'Pressure is constant only in a static fluid (Pascal\'s law for enclosed fluids). In flowing fluids, Bernoulli\'s equation shows pressure and speed are inversely related.' },
+      { label:'D', text:'Pressure depends only on fluid density, not speed', correct:false, explanation:'The full Bernoulli equation is P + ½ρv² + ρgh = const. Pressure depends on all three terms — density, speed, and height. Speed is a key factor.' }
+    ]
+  }
+];
+
+// ── UNIT NAMES ───────────────────────────────────────────────────────────────
+const UNIT_NAMES = {
+  1:'Kinematics', 2:'Forces', 3:'Energy', 4:'Momentum',
+  5:'Rotation', 6:'Rot. Energy & Momentum', 7:'Oscillations', 8:'Fluids'
+};
+
+// ── LOCALSTORAGE ─────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'nikki-mcq-stats';
+function loadStats() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function saveStats(stats) { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); }
+function recordAnswer(id, correct) {
+  const stats = loadStats();
+  if (!stats[id]) stats[id] = { attempts:0, correct:0 };
+  stats[id].attempts++;
+  if (correct) stats[id].correct++;
+  saveStats(stats);
+  renderStats();
+}
+
+// ── STATE ────────────────────────────────────────────────────────────────────
+let mode = 'practice';         // 'practice' | 'timed'
+let pool = [];                  // questions in current session
+let idx  = 0;                   // current question index
+let answers = {};               // { qId: 'A' | 'B' | 'C' | 'D' } for timed
+let timerInterval = null;
+let timerSeconds = 0;
+const TIMED_DURATION = 45 * 60;
+
+// ── MODE ─────────────────────────────────────────────────────────────────────
+function setMode(m) {
+  mode = m;
+  document.getElementById('btn-practice').classList.toggle('active', m === 'practice');
+  document.getElementById('btn-timed').classList.toggle('active', m === 'timed');
+  document.getElementById('practice-filters').style.display = m === 'practice' ? '' : 'none';
+  document.getElementById('timer-bar').style.display = m === 'timed' ? '' : 'none';
+  document.getElementById('btn-submit').style.display = m === 'timed' ? '' : 'none';
+  document.getElementById('stats-panel').style.display = m === 'practice' ? '' : 'none';
+  document.getElementById('end-screen').classList.remove('visible');
+  document.getElementById('question-area').style.display = '';
+
+  if (m === 'timed') startTimed();
+  else { stopTimer(); applyFilters(); }
+}
+
+// ── PRACTICE MODE ────────────────────────────────────────────────────────────
+function applyFilters() {
+  const unit = document.getElementById('filter-unit').value;
+  pool = MCQ.filter(q => !unit || String(q.unit) === unit);
+  document.getElementById('q-pool-count').textContent = pool.length + ' question' + (pool.length !== 1 ? 's' : '');
+  idx = 0;
+  answers = {};
+  renderQuestion();
+}
+
+// ── TIMED MODE ───────────────────────────────────────────────────────────────
+function startTimed() {
+  answers = {};
+  pool = [...MCQ].sort(() => Math.random() - 0.5);
+  idx = 0;
+  stopTimer();
+  timerSeconds = TIMED_DURATION;
+  updateTimer();
+  timerInterval = setInterval(() => {
+    timerSeconds--;
+    updateTimer();
+    if (timerSeconds <= 0) endTimed();
+  }, 1000);
+  renderQuestion();
+}
+
+function updateTimer() {
+  const m = Math.floor(timerSeconds / 60);
+  const s = timerSeconds % 60;
+  const el = document.getElementById('timer-value');
+  el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  el.classList.toggle('urgent', timerSeconds <= 300);
+  const pct = (timerSeconds / TIMED_DURATION) * 100;
+  document.getElementById('timer-fill').style.width = pct + '%';
+}
+
+function stopTimer() {
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+}
+
+function endTimed() {
+  stopTimer();
+  document.getElementById('question-area').style.display = 'none';
+  document.getElementById('timer-bar').style.display = 'none';
+
+  let correct = 0;
+  pool.forEach(q => {
+    const chosen = answers[q.id];
+    const rightChoice = q.choices.find(c => c.correct);
+    if (chosen === rightChoice.label) correct++;
+  });
+
+  const total = pool.length;
+  const pct = Math.round((correct / total) * 100);
+  document.getElementById('end-score-big').textContent = correct + '/' + total;
+  document.getElementById('end-score-sub').textContent = pct + '% — ' + apScore(pct);
+
+  // Review list
+  const list = document.getElementById('end-review-list');
+  list.innerHTML = pool.map((q, i) => {
+    const chosen = answers[q.id];
+    const right = q.choices.find(c => c.correct).label;
+    const isCorrect = chosen === right;
+    const chosenText = chosen ? q.choices.find(c => c.label === chosen).text : 'No answer';
+    const rightText = q.choices.find(c => c.correct).text;
+    return `<li class="end-review-item">
+      <div class="end-dot ${isCorrect ? 'correct' : 'wrong'}"></div>
+      <div>
+        <div style="font-weight:600;margin-bottom:.2rem;">Q${i+1}: ${q.topic}</div>
+        <div>${q.stem}</div>
+        <div style="margin-top:.3rem;">
+          ${isCorrect
+            ? `<span style="color:#22c55e;font-weight:600;">✓ ${chosen}: ${chosenText}</span>`
+            : `<span style="color:#ef4444;">✗ You chose ${chosen || '—'}: ${chosenText}</span>
+               &nbsp;<span style="color:#22c55e;font-weight:600;">Correct: ${right}: ${rightText}</span>`}
+        </div>
+        ${!isCorrect && chosen ? `<div style="color:var(--text-muted);font-size:.8125rem;margin-top:.25rem;">${q.choices.find(c=>c.label===chosen)?.explanation || ''}</div>` : ''}
+      </div>
+    </li>`;
+  }).join('');
+
+  document.getElementById('end-screen').classList.add('visible');
+
+  // Save to localStorage
+  pool.forEach(q => {
+    const chosen = answers[q.id];
+    if (chosen) {
+      const isCorrect = chosen === q.choices.find(c => c.correct).label;
+      recordAnswer(q.id, isCorrect);
+    }
+  });
+}
+
+function restartTimed() {
+  document.getElementById('end-screen').classList.remove('visible');
+  document.getElementById('question-area').style.display = '';
+  startTimed();
+}
+
+function apScore(pct) {
+  if (pct >= 75) return 'On track for a 5';
+  if (pct >= 60) return 'On track for a 4';
+  if (pct >= 45) return 'Targeting a 3';
+  return 'Keep practicing';
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function renderQuestion() {
+  if (!pool.length) {
+    document.getElementById('q-card').innerHTML = '<div style="padding:1.5rem;color:var(--text-muted);">No questions match this filter.</div>';
+    document.getElementById('progress-dots').innerHTML = '';
+    document.getElementById('explanation-panel').classList.remove('visible');
+    return;
+  }
+
+  const q = pool[idx];
+  document.getElementById('q-num').textContent = 'Question ' + (idx + 1) + ' of ' + pool.length;
+  document.getElementById('q-unit-tag').innerHTML =
+    `<span class="card-tag tag-amber" style="font-size:.75rem;">Unit ${q.unit} · ${UNIT_NAMES[q.unit]}</span>`;
+  document.getElementById('q-stem').innerHTML = q.stem;
+
+  // Choices
+  const stats = loadStats();
+  const qStats = stats[q.id];
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = q.choices.map(c => {
+    const isPracticeAnswered = mode === 'practice' && qStats && qStats.attempts > 0;
+    return `<button class="choice-btn ${isPracticeAnswered && c.correct ? 'reveal-correct' : ''}"
+      onclick="selectChoice('${c.label}')"
+      ${isPracticeAnswered ? 'disabled' : ''}>
+      <span class="choice-lbl">${c.label}</span>
+      <span>${c.text}</span>
+    </button>`;
+  }).join('');
+
+  // Explanation
+  if (mode === 'practice' && qStats && qStats.attempts > 0) {
+    showExplanation(q, null);
+  } else {
+    document.getElementById('explanation-panel').classList.remove('visible');
+  }
+
+  // In timed mode restore previously selected answer styling
+  if (mode === 'timed' && answers[q.id]) {
+    highlightTimedChoice(answers[q.id]);
+  }
+
+  renderDots();
+  renderNav();
+}
+
+function selectChoice(label) {
+  const q = pool[idx];
+  const chosen = q.choices.find(c => c.label === label);
+  const correct = chosen.correct;
+
+  if (mode === 'practice') {
+    // Disable all, highlight
+    document.querySelectorAll('.choice-btn').forEach(btn => {
+      btn.disabled = true;
+      const btnLabel = btn.querySelector('.choice-lbl').textContent;
+      const btnChoice = q.choices.find(c => c.label === btnLabel);
+      if (btnLabel === label) btn.classList.add(correct ? 'selected-correct' : 'selected-wrong');
+      if (!correct && btnChoice.correct) btn.classList.add('reveal-correct');
+    });
+    recordAnswer(q.id, correct);
+    showExplanation(q, label);
+    renderDots();
+  } else {
+    // Timed: record but no feedback
+    answers[q.id] = label;
+    highlightTimedChoice(label);
+  }
+}
+
+function highlightTimedChoice(label) {
+  document.querySelectorAll('.choice-btn').forEach(btn => {
+    btn.classList.remove('selected-correct','selected-wrong','reveal-correct');
+    const btnLabel = btn.querySelector('.choice-lbl').textContent;
+    if (btnLabel === label) btn.style.borderColor = 'var(--accent)';
+    else btn.style.borderColor = '';
+  });
+}
+
+function showExplanation(q, chosenLabel) {
+  const panel = document.getElementById('explanation-panel');
+  document.getElementById('exp-items').innerHTML = q.choices.map(c => `
+    <div class="exp-item">
+      <span class="exp-lbl ${c.correct ? 'correct' : 'wrong'}">${c.label}</span>
+      <div class="exp-text">${c.explanation}</div>
+    </div>`).join('');
+  panel.classList.add('visible');
+}
+
+function renderDots() {
+  const stats = loadStats();
+  const dots = document.getElementById('progress-dots');
+  dots.innerHTML = pool.map((q, i) => {
+    const qStats = stats[q.id];
+    let cls = '';
+    if (mode === 'timed') {
+      cls = answers[q.id] ? 'current' : '';
+    } else {
+      if (qStats && qStats.attempts > 0) {
+        const lastCorrect = qStats.correct > 0;
+        cls = lastCorrect ? 'correct' : 'wrong';
+      }
+    }
+    if (i === idx) cls = (cls || '') + ' current';
+    return `<div class="pdot ${cls}" onclick="goTo(${i})" title="Q${i+1}: ${q.topic}"></div>`;
+  }).join('');
+}
+
+function renderNav() {
+  document.getElementById('btn-prev').disabled = idx === 0;
+  document.getElementById('btn-next').disabled = idx === pool.length - 1;
+  document.getElementById('q-nav-info').textContent =
+    mode === 'timed' ? Object.keys(answers).length + ' of ' + pool.length + ' answered' : '';
+}
+
+function navigate(dir) {
+  idx = Math.max(0, Math.min(pool.length - 1, idx + dir));
+  renderQuestion();
+}
+
+function goTo(i) { idx = i; renderQuestion(); }
+
+// ── STATS ─────────────────────────────────────────────────────────────────────
+function renderStats() {
+  const stats = loadStats();
+  const units = [1,2,3,4,5,6,7,8];
+  document.getElementById('stats-grid').innerHTML = units.map(u => {
+    const unitQs = MCQ.filter(q => q.unit === u);
+    const attempted = unitQs.filter(q => stats[q.id]?.attempts > 0);
+    const correct   = unitQs.filter(q => stats[q.id]?.correct > 0);
+    if (!attempted.length) {
+      return `<div class="stat-card">
+        <div class="stat-unit">Unit ${u} · ${UNIT_NAMES[u]}</div>
+        <div class="stat-pct none">—</div>
+        <div class="stat-sub">Not started</div>
+      </div>`;
+    }
+    const pct = Math.round((correct.length / attempted.length) * 100);
+    const cls = pct >= 80 ? 'good' : pct >= 60 ? 'ok' : 'poor';
+    return `<div class="stat-card">
+      <div class="stat-unit">Unit ${u} · ${UNIT_NAMES[u]}</div>
+      <div class="stat-pct ${cls}">${pct}%</div>
+      <div class="stat-sub">${correct.length}/${attempted.length} correct</div>
+    </div>`;
+  }).join('');
+}
+
+function resetStats() {
+  if (!confirm('Reset all MCQ progress?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  renderStats();
+  applyFilters();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  applyFilters();
+  renderStats();
+});
+</script>
+
+</body>
+</html>
