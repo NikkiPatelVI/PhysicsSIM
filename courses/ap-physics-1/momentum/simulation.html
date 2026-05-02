@@ -12,217 +12,159 @@
 <body>
 <site-nav base="../../../" active="ap-physics-1"></site-nav>
 <script src="../../../js/nav.js" defer></script>
-<script src="../../../js/breadcrumb.js" defer></script>
 <main class="container page">
-  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Linear Momentum"></site-breadcrumb>
-
-  <!-- Matter.js from CDN — must load before momentum-sims.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 
   <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Live physics simulations. Momentum readouts update every frame — watch conservation hold even through collisions and explosions.
+    </p>
 
-    <div class="study-section">
-      <h3>Simulations</h3>
-      <p class="section-intro">Interactive physics simulations powered by Matter.js. Watch momentum conservation in real-time — the readouts update every frame using actual body velocities from the physics engine.</p>
-
-      <!-- SIM 1: 1D Collision Lab -->
-      <div class="sim-card" id="sim-collision">
-        <div class="sim-header">
-          <div class="sim-title">1D Collision Lab</div>
-          <div class="sim-tags">
-            <span class="card-tag tag-green">Elastic</span>
-            <span class="card-tag tag-amber">Inelastic</span>
-          </div>
+    <!-- ── SIM 1: 1D Collision Lab ── -->
+    <div class="sim-card">
+      <h3>1. 1D Collision Lab</h3>
+      <p class="sim-desc">Two carts on a frictionless track. Toggle elastic / perfectly-inelastic and press Launch. Momentum is always conserved; kinetic energy is only conserved in the elastic case.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-collision" width="500" height="200"></canvas>
         </div>
-        <div class="sim-desc">Two carts collide on a frictionless track. Toggle between elastic (no KE loss) and perfectly inelastic (they stick). Watch how momentum is conserved in both cases while kinetic energy is only conserved in elastic collisions.</div>
-
         <div class="sim-controls">
-          <div class="control-group">
-            <label>Cart A mass (kg)</label>
-            <input type="range" id="collision-m1" min="1" max="5" step="0.5" value="2" />
-            <span class="control-val" id="collision-m1-val">2.0</span>
+          <div class="sim-control">
+            <label>Cart A mass <span id="lbl-coll-m1">2.0 kg</span></label>
+            <input type="range" id="sl-coll-m1" min="1" max="5" step="0.5" value="2" />
           </div>
-          <div class="control-group">
-            <label>Cart B mass (kg)</label>
-            <input type="range" id="collision-m2" min="1" max="5" step="0.5" value="3" />
-            <span class="control-val" id="collision-m2-val">3.0</span>
+          <div class="sim-control">
+            <label>Cart B mass <span id="lbl-coll-m2">3.0 kg</span></label>
+            <input type="range" id="sl-coll-m2" min="1" max="5" step="0.5" value="3" />
           </div>
-          <div class="control-group">
-            <label>Cart A speed (m/s)</label>
-            <input type="range" id="collision-v1" min="1" max="8" step="0.5" value="4" />
-            <span class="control-val" id="collision-v1-val">4.0</span>
+          <div class="sim-control">
+            <label>Cart A speed <span id="lbl-coll-v1">4.0 m/s</span></label>
+            <input type="range" id="sl-coll-v1" min="1" max="8" step="0.5" value="4" />
           </div>
-          <div class="control-row">
-            <label class="toggle-label">
-              <input type="checkbox" id="collision-elastic" checked />
+          <div class="sim-control">
+            <label style="justify-content:flex-start; gap:.5rem;">
+              <input type="checkbox" id="chk-coll-elastic" checked style="margin:0;" />
               Elastic collision
             </label>
-            <button class="sim-btn" id="collision-launch">Launch →</button>
-            <button class="sim-btn secondary" id="collision-reset">Reset</button>
           </div>
-        </div>
-
-        <canvas id="canvas-collision" width="680" height="180"></canvas>
-
-        <div class="sim-readout" id="readout-collision">
-          <div class="readout-row">
-            <span class="readout-label">p_A</span><span class="readout-val" id="r-coll-pa">—</span>
-            <span class="readout-label">p_B</span><span class="readout-val" id="r-coll-pb">—</span>
-            <span class="readout-label">p_total</span><span class="readout-val" id="r-coll-ptot">—</span>
+          <div style="display:flex; gap:.5rem;">
+            <button id="btn-coll-launch" class="btn btn-primary" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Launch →</button>
+            <button id="btn-coll-reset" class="btn btn-outline" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Reset</button>
           </div>
-          <div class="readout-row">
-            <span class="readout-label">KE_A</span><span class="readout-val" id="r-coll-kea">—</span>
-            <span class="readout-label">KE_B</span><span class="readout-val" id="r-coll-keb">—</span>
-            <span class="readout-label">KE_total</span><span class="readout-val" id="r-coll-ketot">—</span>
-          </div>
-          <div class="readout-row">
-            <span class="readout-label" id="r-coll-status" style="font-weight:600; color: var(--accent);">Ready — press Launch</span>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">p_A</span><span class="readout-value" id="r-coll-pa">—</span></div>
+            <div class="readout-item"><span class="readout-label">p_B</span><span class="readout-value" id="r-coll-pb">—</span></div>
+            <div class="readout-item"><span class="readout-label">p_total</span><span class="readout-value" id="r-coll-ptot">—</span></div>
+            <div class="readout-item"><span class="readout-label">KE_total</span><span class="readout-value" id="r-coll-ketot">—</span></div>
+            <div class="readout-item" style="grid-column:1/-1;"><span class="readout-label" id="r-coll-status" style="color:var(--text-muted); text-transform:none; letter-spacing:0; font-size:.75rem;">Ready — press Launch</span></div>
           </div>
         </div>
       </div>
-
-      <!-- SIM 2: Explosion / Recoil -->
-      <div class="sim-card" id="sim-explosion">
-        <div class="sim-header">
-          <div class="sim-title">Explosion &amp; Recoil</div>
-          <div class="sim-tags">
-            <span class="card-tag tag-red">KE increases</span>
-            <span class="card-tag tag-green">p conserved</span>
-          </div>
-        </div>
-        <div class="sim-desc">A stationary object splits into two pieces. Total momentum stays zero — the pieces fly apart in opposite directions. Change the mass ratio to see how speeds are distributed.</div>
-
-        <div class="sim-controls">
-          <div class="control-group">
-            <label>Left piece mass (kg)</label>
-            <input type="range" id="explode-m1" min="1" max="6" step="0.5" value="2" />
-            <span class="control-val" id="explode-m1-val">2.0</span>
-          </div>
-          <div class="control-group">
-            <label>Right piece mass (kg)</label>
-            <input type="range" id="explode-m2" min="1" max="6" step="0.5" value="4" />
-            <span class="control-val" id="explode-m2-val">4.0</span>
-          </div>
-          <div class="control-group">
-            <label>Impulse magnitude (N·s)</label>
-            <input type="range" id="explode-impulse" min="5" max="30" step="1" value="12" />
-            <span class="control-val" id="explode-impulse-val">12</span>
-          </div>
-          <div class="control-row">
-            <button class="sim-btn" id="explode-fire">Explode!</button>
-            <button class="sim-btn secondary" id="explode-reset">Reset</button>
-          </div>
-        </div>
-
-        <canvas id="canvas-explosion" width="680" height="160"></canvas>
-
-        <div class="sim-readout">
-          <div class="readout-row">
-            <span class="readout-label">v_left</span><span class="readout-val" id="r-exp-v1">0 m/s</span>
-            <span class="readout-label">v_right</span><span class="readout-val" id="r-exp-v2">0 m/s</span>
-            <span class="readout-label">p_total</span><span class="readout-val" id="r-exp-ptot">0 kg·m/s</span>
-          </div>
-          <div class="readout-row">
-            <span class="readout-label">KE_left</span><span class="readout-val" id="r-exp-ke1">0 J</span>
-            <span class="readout-label">KE_right</span><span class="readout-val" id="r-exp-ke2">0 J</span>
-            <span class="readout-label">KE_total</span><span class="readout-val" id="r-exp-ketot">0 J</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SIM 3: 2D Collision -->
-      <div class="sim-card" id="sim-2d">
-        <div class="sim-header">
-          <div class="sim-title">2D Collision</div>
-          <div class="sim-tags">
-            <span class="card-tag tag-blue">x-momentum</span>
-            <span class="card-tag tag-amber">y-momentum</span>
-          </div>
-        </div>
-        <div class="sim-desc">A puck slides in from the left and glances off a stationary puck at an angle. Both x and y momentum are conserved independently. The dashed lines show the momentum vectors before and after.</div>
-
-        <div class="sim-controls">
-          <div class="control-group">
-            <label>Incoming puck mass (kg)</label>
-            <input type="range" id="twod-m1" min="1" max="5" step="0.5" value="2" />
-            <span class="control-val" id="twod-m1-val">2.0</span>
-          </div>
-          <div class="control-group">
-            <label>Target puck mass (kg)</label>
-            <input type="range" id="twod-m2" min="1" max="5" step="0.5" value="2" />
-            <span class="control-val" id="twod-m2-val">2.0</span>
-          </div>
-          <div class="control-group">
-            <label>Glance offset (px)</label>
-            <input type="range" id="twod-offset" min="5" max="50" step="5" value="25" />
-            <span class="control-val" id="twod-offset-val">25</span>
-          </div>
-          <div class="control-row">
-            <button class="sim-btn" id="twod-launch">Launch →</button>
-            <button class="sim-btn secondary" id="twod-reset">Reset</button>
-          </div>
-        </div>
-
-        <canvas id="canvas-2d" width="680" height="280"></canvas>
-
-        <div class="sim-readout">
-          <div class="readout-row">
-            <span class="readout-label">Σp_x before</span><span class="readout-val" id="r-2d-px-i">—</span>
-            <span class="readout-label">Σp_x after</span><span class="readout-val" id="r-2d-px-f">—</span>
-            <span class="readout-label" id="r-2d-px-status" style="color:var(--text-muted)">—</span>
-          </div>
-          <div class="readout-row">
-            <span class="readout-label">Σp_y before</span><span class="readout-val" id="r-2d-py-i">—</span>
-            <span class="readout-label">Σp_y after</span><span class="readout-val" id="r-2d-py-f">—</span>
-            <span class="readout-label" id="r-2d-py-status" style="color:var(--text-muted)">—</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SIM 4: Impulse Visualizer -->
-      <div class="sim-card" id="sim-impulse">
-        <div class="sim-header">
-          <div class="sim-title">Impulse Visualizer</div>
-          <div class="sim-tags">
-            <span class="card-tag tag-blue">J = FΔt = Δp</span>
-          </div>
-        </div>
-        <div class="sim-desc">Apply a force pulse to a block and watch momentum change. The F-t graph fills in real time — the shaded area equals the impulse. Compare two profiles with the same area: same Δp, different peak forces and durations.</div>
-
-        <div class="sim-controls">
-          <div class="control-group">
-            <label>Block mass (kg)</label>
-            <input type="range" id="impulse-mass" min="0.5" max="5" step="0.5" value="2" />
-            <span class="control-val" id="impulse-mass-val">2.0</span>
-          </div>
-          <div class="control-group">
-            <label>Peak force (N)</label>
-            <input type="range" id="impulse-force" min="10" max="100" step="5" value="40" />
-            <span class="control-val" id="impulse-force-val">40</span>
-          </div>
-          <div class="control-group">
-            <label>Pulse duration (s)</label>
-            <input type="range" id="impulse-duration" min="0.2" max="2.0" step="0.1" value="0.8" />
-            <span class="control-val" id="impulse-duration-val">0.8</span>
-          </div>
-          <div class="control-row">
-            <button class="sim-btn" id="impulse-apply">Apply Impulse</button>
-            <button class="sim-btn secondary" id="impulse-reset">Reset</button>
-          </div>
-        </div>
-
-        <canvas id="canvas-impulse" width="680" height="220"></canvas>
-
-        <div class="sim-readout">
-          <div class="readout-row">
-            <span class="readout-label">Impulse J</span><span class="readout-val" id="r-imp-j">0 N·s</span>
-            <span class="readout-label">Δp</span><span class="readout-val" id="r-imp-dp">0 kg·m/s</span>
-            <span class="readout-label">v_final</span><span class="readout-val" id="r-imp-vf">0 m/s</span>
-          </div>
-        </div>
-      </div>
-
     </div>
+
+    <!-- ── SIM 2: Explosion / Recoil ── -->
+    <div class="sim-card">
+      <h3>2. Explosion &amp; Recoil</h3>
+      <p class="sim-desc">A stationary object splits into two pieces. Total momentum stays zero — pieces fly in opposite directions. Change the mass ratio to see how speeds redistribute.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-explosion" width="500" height="180"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Left mass <span id="lbl-exp-m1">2.0 kg</span></label>
+            <input type="range" id="sl-exp-m1" min="1" max="6" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Right mass <span id="lbl-exp-m2">4.0 kg</span></label>
+            <input type="range" id="sl-exp-m2" min="1" max="6" step="0.5" value="4" />
+          </div>
+          <div class="sim-control">
+            <label>Impulse J <span id="lbl-exp-j">12 N·s</span></label>
+            <input type="range" id="sl-exp-j" min="4" max="30" step="1" value="12" />
+          </div>
+          <div style="display:flex; gap:.5rem;">
+            <button id="btn-exp-fire" class="btn btn-primary" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Explode!</button>
+            <button id="btn-exp-reset" class="btn btn-outline" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Reset</button>
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">v_left</span><span class="readout-value" id="r-exp-v1">0 m/s</span></div>
+            <div class="readout-item"><span class="readout-label">v_right</span><span class="readout-value" id="r-exp-v2">0 m/s</span></div>
+            <div class="readout-item"><span class="readout-label">p_total</span><span class="readout-value" id="r-exp-ptot">0 kg·m/s</span></div>
+            <div class="readout-item"><span class="readout-label">KE added</span><span class="readout-value" id="r-exp-ke">0 J</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 3: 2D Collision ── -->
+    <div class="sim-card">
+      <h3>3. 2D Glancing Collision</h3>
+      <p class="sim-desc">A puck slides in and glances off a stationary puck. Both x- and y-momentum are conserved independently. The offset slider controls the glance angle.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-twod" width="500" height="300"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Puck A mass <span id="lbl-2d-m1">2.0 kg</span></label>
+            <input type="range" id="sl-2d-m1" min="1" max="5" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Puck B mass <span id="lbl-2d-m2">2.0 kg</span></label>
+            <input type="range" id="sl-2d-m2" min="1" max="5" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Glance offset <span id="lbl-2d-off">25 px</span></label>
+            <input type="range" id="sl-2d-off" min="5" max="55" step="5" value="25" />
+          </div>
+          <div style="display:flex; gap:.5rem;">
+            <button id="btn-2d-launch" class="btn btn-primary" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Launch →</button>
+            <button id="btn-2d-reset" class="btn btn-outline" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Reset</button>
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Σp_x before</span><span class="readout-value" id="r-2d-pxi">—</span></div>
+            <div class="readout-item"><span class="readout-label">Σp_x after</span><span class="readout-value" id="r-2d-pxf">—</span></div>
+            <div class="readout-item"><span class="readout-label">Σp_y before</span><span class="readout-value" id="r-2d-pyi">—</span></div>
+            <div class="readout-item"><span class="readout-label">Σp_y after</span><span class="readout-value" id="r-2d-pyf">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 4: Impulse Visualizer ── -->
+    <div class="sim-card">
+      <h3>4. Impulse Visualizer — J = FΔt = Δp</h3>
+      <p class="sim-desc">Apply a force pulse to a block. The F-t graph fills in real time — the shaded area equals the impulse. Watch the block accelerate and compare J with Δp = mΔv.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-impulse" width="500" height="220"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Block mass <span id="lbl-imp-mass">2.0 kg</span></label>
+            <input type="range" id="sl-imp-mass" min="0.5" max="5" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Peak force <span id="lbl-imp-force">40 N</span></label>
+            <input type="range" id="sl-imp-force" min="10" max="100" step="5" value="40" />
+          </div>
+          <div class="sim-control">
+            <label>Duration <span id="lbl-imp-dur">0.8 s</span></label>
+            <input type="range" id="sl-imp-dur" min="0.2" max="2.0" step="0.1" value="0.8" />
+          </div>
+          <div style="display:flex; gap:.5rem;">
+            <button id="btn-imp-apply" class="btn btn-primary" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Apply Impulse</button>
+            <button id="btn-imp-reset" class="btn btn-outline" style="flex:1; font-size:.8rem; padding:.4rem .5rem;">Reset</button>
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Impulse J</span><span class="readout-value" id="r-imp-j">0 N·s</span></div>
+            <div class="readout-item"><span class="readout-label">Δp = mΔv</span><span class="readout-value" id="r-imp-dp">0 kg·m/s</span></div>
+            <div class="readout-item"><span class="readout-label">Final speed</span><span class="readout-value" id="r-imp-vf">0 m/s</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </main>
 
