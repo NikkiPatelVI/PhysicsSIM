@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torque &amp; Rotation Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Torque &amp; Rotation"></site-breadcrumb>
+
+  <div id="embedded-content">
+
+    <div class="study-section">
+      <h3>Angular Kinematics</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Angular Displacement</div>
+          <div class="formula-eq">θ = s / r</div>
+          <div class="formula-desc">Angle swept in radians, defined as arc length divided by radius. 2π rad = 360°, so one full revolution = 2π rad.</div>
+          <div class="formula-vars">
+            <span>θ — angular displacement (rad)</span>
+            <span>s — arc length (m)</span>
+            <span>r — radius (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>A radian is defined so that an arc of length equal to the radius subtends exactly 1 rad. That means for any circle, θ (in rad) = s/r by definition. The conversion 2π rad = 360° follows from the full circumference being s = 2πr, giving θ = 2πr/r = 2π. Always convert degrees to radians before plugging into kinematics equations.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Angular Velocity</div>
+          <div class="formula-eq">ω = Δθ / Δt</div>
+          <div class="formula-desc">Rate of change of angular displacement, in rad/s. Direction is given by the right-hand rule: curl fingers in the direction of rotation, thumb points along ω.</div>
+          <div class="formula-vars">
+            <span>ω — angular velocity (rad/s)</span>
+            <span>Δθ — change in angular displacement (rad)</span>
+            <span>Δt — time interval (s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Exactly analogous to linear velocity v = Δx/Δt — replace displacement x with angle θ. Angular velocity is a vector whose magnitude is the spin rate and whose direction (by right-hand rule) tells you which way the axis points. For AP 1, you mostly need the magnitude; direction matters mainly when angular momentum vectors are added or compared.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Angular Acceleration</div>
+          <div class="formula-eq">α = Δω / Δt</div>
+          <div class="formula-desc">Rate of change of angular velocity, in rad/s². Positive α means speeding up in the positive-θ direction (or slowing down in the negative-θ direction).</div>
+          <div class="formula-vars">
+            <span>α — angular acceleration (rad/s²)</span>
+            <span>Δω — change in angular velocity (rad/s)</span>
+            <span>Δt — time interval (s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Direct analog of linear acceleration a = Δv/Δt, with ω replacing v. Net torque causes angular acceleration the same way net force causes linear acceleration — the rotational version of Newton's second law is Στ = Iα. Sign convention: pick a positive rotation direction (usually counterclockwise) and keep it consistent throughout the problem.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Rotational Kinematics</div>
+          <div class="formula-eq">ω = ω₀ + αt &nbsp;|&nbsp; θ = ω₀t + ½αt² &nbsp;|&nbsp; ω² = ω₀² + 2αθ &nbsp;|&nbsp; θ = ½(ω₀ + ω)t</div>
+          <div class="formula-desc">Four equations parallel to the linear kinematics big four — replace x with θ, v with ω, and a with α. Apply only when α is constant.</div>
+          <div class="formula-vars">
+            <span>ω₀ — initial angular velocity (rad/s)</span>
+            <span>ω — final angular velocity (rad/s)</span>
+            <span>α — constant angular acceleration (rad/s²)</span>
+            <span>θ — angular displacement (rad)</span>
+            <span>t — time (s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>These are derived identically to the linear kinematic equations — integrate α = dω/dt once to get ω = ω₀ + αt, integrate again to get θ = ω₀t + ½αt². Eliminate t to get ω² = ω₀² + 2αθ, and average ω to get the last equation. Every linear kinematics trick (choosing which equation to use based on what's unknown) works the same way here.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Arc Length &amp; Tangential Velocity</div>
+          <div class="formula-eq">s = rθ &nbsp;&nbsp;&nbsp; v_t = rω</div>
+          <div class="formula-desc">Link between rotational and linear quantities for a point on the rim. A larger radius means greater linear speed for the same ω — this is why the outer edge of a spinning disk moves faster than the inner edge.</div>
+          <div class="formula-vars">
+            <span>s — arc length (m)</span>
+            <span>r — distance from rotation axis (m)</span>
+            <span>θ — angle (rad)</span>
+            <span>v_t — tangential speed (m/s)</span>
+            <span>ω — angular velocity (rad/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>s = rθ is just the definition of a radian rearranged. Differentiate both sides with respect to time: ds/dt = r·dθ/dt → v_t = rω. This is the tangential component of velocity (directed along the arc, perpendicular to r). Different points on a rigid body share the same ω but have different v_t depending on their r.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Tangential &amp; Centripetal Acceleration</div>
+          <div class="formula-eq">a_t = rα &nbsp;&nbsp;&nbsp; a_c = ω²r = v²/r</div>
+          <div class="formula-desc">A point on a rotating body has two acceleration components: tangential (changing speed) and centripetal (changing direction, always toward the center). They are perpendicular; total acceleration = √(a_t² + a_c²).</div>
+          <div class="formula-vars">
+            <span>a_t — tangential acceleration (m/s²)</span>
+            <span>a_c — centripetal acceleration (m/s²)</span>
+            <span>r — radius (m)</span>
+            <span>α — angular acceleration (rad/s²)</span>
+            <span>ω — angular velocity (rad/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Differentiate v_t = rω with respect to time to get a_t = r·dω/dt = rα. The centripetal acceleration comes from the direction change of the velocity vector; for circular motion, a_c = v²/r = (rω)²/r = ω²r. Even at constant ω (α = 0), there is still centripetal acceleration because the direction of v is always changing — that's why circular motion requires a net inward force.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Torque</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Torque Definition</div>
+          <div class="formula-eq">τ = rF sinθ = r⊥F = rF⊥</div>
+          <div class="formula-desc">Torque (N·m) is the rotational effect of a force. r is the distance from pivot to point of force application; θ is the angle between r and F. The lever arm r⊥ = r sinθ is the perpendicular distance from the pivot to the line of force.</div>
+          <div class="formula-vars">
+            <span>τ — torque (N·m)</span>
+            <span>r — distance from pivot to force (m)</span>
+            <span>F — force magnitude (N)</span>
+            <span>θ — angle between r and F</span>
+            <span>r⊥ = r sinθ — lever arm (m)</span>
+            <span>F⊥ = F sinθ — perpendicular force component (N)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Only the component of force perpendicular to r actually causes rotation; the component parallel to r just pulls toward/away from the pivot and does nothing rotationally. So τ = r × (F sinθ) = rF⊥. Equivalently, you can extend the line of force and drop a perpendicular from the pivot to it — that perpendicular distance is the lever arm r⊥, and τ = r⊥·F. Both approaches give the same result: τ = rF sinθ.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Newton's 2nd Law for Rotation</div>
+          <div class="formula-eq">Στ = Iα</div>
+          <div class="formula-desc">Net torque equals moment of inertia times angular acceleration. The rotational analog of ΣF = ma — torque causes angular acceleration the same way force causes linear acceleration.</div>
+          <div class="formula-vars">
+            <span>Στ — net torque about rotation axis (N·m)</span>
+            <span>I — moment of inertia (kg·m²)</span>
+            <span>α — angular acceleration (rad/s²)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For a single point mass m at radius r, the tangential force F_t = ma_t = m(rα). Its torque is τ = rF_t = mr²α. For a rigid body, sum over all particles: Στ = (Σmᵢrᵢ²)α = Iα. The quantity I = Σmᵢrᵢ² is the moment of inertia, which plays exactly the role that mass plays in F = ma — it measures resistance to angular acceleration.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Rotational Equilibrium</div>
+          <div class="formula-eq">Στ = 0</div>
+          <div class="formula-desc">When net torque about any point is zero, there is no angular acceleration. For full static equilibrium, both ΣF = 0 (no linear acceleration) and Στ = 0 (no angular acceleration) must hold simultaneously.</div>
+          <div class="formula-vars">
+            <span>τ_cw — clockwise torques (take as negative)</span>
+            <span>τ_ccw — counterclockwise torques (take as positive)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From Στ = Iα: if Στ = 0, then α = 0, meaning the object either stays at rest or rotates at constant ω. For static equilibrium we also need ΣF = 0. A key trick: you can take torques about any convenient pivot — choosing a point where an unknown force acts eliminates that unknown from the torque equation, simplifying the algebra significantly.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Moment of Inertia</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Definition of I</div>
+          <div class="formula-eq">I = Σmᵢrᵢ²</div>
+          <div class="formula-desc">Moment of inertia (kg·m²) is the resistance to angular acceleration. It depends on both the total mass AND how that mass is distributed relative to the rotation axis — mass far from the axis contributes much more than mass close to it.</div>
+          <div class="formula-vars">
+            <span>I — moment of inertia (kg·m²)</span>
+            <span>mᵢ — mass of each particle (kg)</span>
+            <span>rᵢ — distance of each particle from axis (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From the derivation of Στ = Iα (see above), I = Σmᵢrᵢ² naturally emerges as the "rotational mass." Because rᵢ is squared, mass far from the axis contributes disproportionately — doubling the radius quadruples the contribution to I. This is why a figure skater extends arms to slow down (I increases) and tucks them in to speed up (I decreases), even though their mass hasn't changed.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Common Shapes</div>
+          <div class="formula-eq">Solid cylinder/disk: ½MR² &nbsp;|&nbsp; Hollow ring: MR² &nbsp;|&nbsp; Solid sphere: ⅖MR² &nbsp;|&nbsp; Hollow sphere: ⅔MR² &nbsp;|&nbsp; Rod (center): ¹⁄₁₂ML² &nbsp;|&nbsp; Rod (end): ⅓ML²</div>
+          <div class="formula-desc">These are provided on the AP exam reference sheet, but knowing them helps you predict race-down-a-ramp outcomes. Smaller coefficient → smaller I → accelerates faster.</div>
+          <div class="formula-vars">
+            <span>M — total mass of object (kg)</span>
+            <span>R — radius (m)</span>
+            <span>L — length of rod (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Each formula comes from integrating I = ∫r² dm over the object's geometry — calculus beyond AP 1, but the pattern makes sense. A hollow ring has all its mass at radius R, so I = MR². A solid disk has mass spread from r = 0 to R, averaging to ½MR². Moving mass closer to the axis (solid vs. hollow) always reduces I, which is why solid spheres beat hollow spheres rolling down a ramp.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Parallel Axis Theorem</div>
+          <div class="formula-eq">I = I_cm + Md²</div>
+          <div class="formula-desc">If you know the moment of inertia about an axis through the center of mass (I_cm), you can find I about any parallel axis a distance d away by adding Md². The CM axis always gives the minimum I.</div>
+          <div class="formula-vars">
+            <span>I — moment of inertia about new axis (kg·m²)</span>
+            <span>I_cm — moment of inertia about CM axis (kg·m²)</span>
+            <span>M — total mass (kg)</span>
+            <span>d — distance between the two parallel axes (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For an axis shifted by d from the CM, every particle's distance from the new axis gains a contribution from d. When you expand rᵢ² for the new axis and sum over all particles, cross terms involving the CM vanish (by definition of CM), leaving I = I_cm + Md². Classic application: a rod rotating about one end. I_end = I_cm + M(L/2)² = (1/12)ML² + (1/4)ML² = (1/3)ML² — matches the formula above.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Rotational Dynamics &amp; Energy</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Rotational KE</div>
+          <div class="formula-eq">KE_rot = ½Iω²</div>
+          <div class="formula-desc">Kinetic energy stored in a spinning object. Exactly analogous to ½mv² — replace mass with moment of inertia and speed with angular velocity.</div>
+          <div class="formula-vars">
+            <span>KE_rot — rotational kinetic energy (J)</span>
+            <span>I — moment of inertia (kg·m²)</span>
+            <span>ω — angular velocity (rad/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Sum the kinetic energy of all particles: KE = Σ½mᵢvᵢ² = Σ½mᵢ(rᵢω)² = ½(Σmᵢrᵢ²)ω² = ½Iω². The derivation makes clear that ½Iω² is not a new formula — it is simply ½mv² applied to every piece of the rotating body and summed up.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Rolling Without Slipping</div>
+          <div class="formula-eq">v_cm = Rω &nbsp;&nbsp;&nbsp; a_cm = Rα</div>
+          <div class="formula-desc">Constraint linking translational and rotational motion when an object rolls without slipping. The contact point is instantaneously at rest — the bottom of the wheel has zero velocity relative to the ground.</div>
+          <div class="formula-vars">
+            <span>v_cm — speed of center of mass (m/s)</span>
+            <span>R — radius of object (m)</span>
+            <span>ω — angular velocity (rad/s)</span>
+            <span>a_cm — linear acceleration of CM (m/s²)</span>
+            <span>α — angular acceleration (rad/s²)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For pure rolling (no slipping), the arc length the wheel rotates through equals the distance the CM travels: s = Rθ. Differentiate once: v_cm = Rω. Differentiate again: a_cm = Rα. This constraint ties the two degrees of freedom together into one, which is why rolling problems can be solved with a single energy or force equation rather than separate translational and rotational equations.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Total KE (Rolling)</div>
+          <div class="formula-eq">KE_total = ½mv² + ½Iω²</div>
+          <div class="formula-desc">A rolling object has both translational KE (motion of the CM) and rotational KE (spinning about the CM). Both terms must be included — forgetting ½Iω² is one of the most common AP errors.</div>
+          <div class="formula-vars">
+            <span>m — total mass (kg)</span>
+            <span>v — speed of CM (m/s)</span>
+            <span>I — moment of inertia about CM axis (kg·m²)</span>
+            <span>ω — angular velocity (rad/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>The kinetic energy theorem for a rigid body separates into two parts: KE of the CM's translation plus KE of rotation about the CM. These are independent — the body's mass moving as a whole gives ½mv_cm², and its spin about the CM gives ½I_cm·ω². For rolling, use v = Rω to express everything in terms of one variable before solving energy conservation equations.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Rolling Down an Incline</div>
+          <div class="formula-eq">v = √( 2gh / (1 + I/mR²) )</div>
+          <div class="formula-desc">Final speed at the bottom of a ramp of height h for an object rolling without slipping from rest. Objects with smaller I/mR² (like solid cylinders) reach the bottom faster than those with larger I/mR² (like hollow rings).</div>
+          <div class="formula-vars">
+            <span>v — speed at bottom (m/s)</span>
+            <span>g — 9.8 m/s²</span>
+            <span>h — height of ramp (m)</span>
+            <span>I — moment of inertia about CM (kg·m²)</span>
+            <span>m — mass (kg), R — radius (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Apply energy conservation: mgh = ½mv² + ½Iω². Substitute the rolling constraint ω = v/R: mgh = ½mv² + ½I(v/R)² = ½v²(m + I/R²). Solving for v gives v = √(2gh/(1 + I/mR²)). The factor I/mR² is the key — it is dimensionless and equals ½ for a solid disk, 1 for a ring, ⅖ for a solid sphere. Larger I/mR² means more energy goes into rotation and less into translational KE, so the object is slower.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Angular Momentum</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Angular Momentum</div>
+          <div class="formula-eq">L = Iω &nbsp;&nbsp;&nbsp; (point mass: L = mvr)</div>
+          <div class="formula-desc">Rotational analog of linear momentum p = mv. For a point mass moving with speed v at perpendicular distance r from an axis, L = mvr. For an extended rigid body, L = Iω. Units: kg·m²/s.</div>
+          <div class="formula-vars">
+            <span>L — angular momentum (kg·m²/s)</span>
+            <span>I — moment of inertia (kg·m²)</span>
+            <span>ω — angular velocity (rad/s)</span>
+            <span>m — mass (kg), v — speed (m/s), r — perpendicular distance to axis (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For a point mass in circular motion, L = r × p = r·mv·sin90° = mvr (when v is perpendicular to r). For a rigid body, sum over all particles: L = Σmᵢrᵢ·vᵢ = Σmᵢrᵢ·(rᵢω) = (Σmᵢrᵢ²)ω = Iω. Angular momentum is a vector; for AP 1 problems, the magnitude L = Iω is usually sufficient, with sign indicating the sense of rotation.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Angular Impulse</div>
+          <div class="formula-eq">τ_net · Δt = ΔL</div>
+          <div class="formula-desc">Net torque applied for a time interval produces a change in angular momentum. Rotational analog of the impulse-momentum theorem J = FΔt = Δp.</div>
+          <div class="formula-vars">
+            <span>τ_net — net torque (N·m)</span>
+            <span>Δt — time interval (s)</span>
+            <span>ΔL — change in angular momentum (kg·m²/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From Στ = Iα = I·Δω/Δt = ΔL/Δt. Multiply both sides by Δt: Στ·Δt = ΔL. Just as a large force applied briefly gives the same impulse as a small force applied for a long time, a large torque for a short time gives the same angular impulse as a small torque for a long time. The area under a τ-t graph equals ΔL.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Conservation of Angular Momentum</div>
+          <div class="formula-eq">If Στ_ext = 0: &nbsp; L_i = L_f &nbsp; → &nbsp; I_i ω_i = I_f ω_f</div>
+          <div class="formula-desc">When there is no net external torque on a system, total angular momentum is conserved. Classic examples: spinning skater, collapsing star, diver going into a tuck. Pulling arms in decreases I, so ω must increase to keep L constant.</div>
+          <div class="formula-vars">
+            <span>I_i, ω_i — initial moment of inertia and angular velocity</span>
+            <span>I_f, ω_f — final moment of inertia and angular velocity</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From angular impulse: if Στ_ext = 0 for the entire event, then ΔL = Στ_ext·Δt = 0, so L is constant. This is the rotational analog of conservation of linear momentum (which holds when net external force = 0). Note that kinetic energy is NOT generally conserved — a skater pulling her arms in gains KE because her muscles do work on her limbs. But L is still conserved because there is no external torque.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h3>Quick Reference: Conversions &amp; Analogy Table</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Key Conversions</div>
+          <div class="formula-desc" style="line-height:2;">
+            1 rev = 2π rad ≈ 6.283 rad<br/>
+            1 Hz = 1 rev/s = 2π rad/s<br/>
+            1 rpm = 2π/60 rad/s ≈ 0.1047 rad/s<br/>
+            360° = 2π rad &nbsp;→&nbsp; 1 rad ≈ 57.3°<br/>
+            g = 9.8 m/s² (use 10 for quick estimates)
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Rotational ↔ Linear Analogy</div>
+          <div class="formula-desc" style="line-height:2;">
+            x (displacement) ↔ θ (angular displacement)<br/>
+            v (velocity) ↔ ω (angular velocity)<br/>
+            a (acceleration) ↔ α (angular acceleration)<br/>
+            F (force) ↔ τ (torque)<br/>
+            m (mass) ↔ I (moment of inertia)<br/>
+            p = mv (momentum) ↔ L = Iω (angular momentum)<br/>
+            KE = ½mv² ↔ KE = ½Iω²<br/>
+            ΣF = ma ↔ Στ = Iα<br/>
+            J = FΔt = Δp ↔ τΔt = ΔL
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+</body>
+</html>
