@@ -10,11 +10,9 @@
   <link rel="stylesheet" href="../../../css/styles.css" />
 </head>
 <body>
-
 <site-nav base="../../../" active="ap-physics-1"></site-nav>
 <script src="../../../js/nav.js" defer></script>
 <script src="../../../js/breadcrumb.js" defer></script>
-
 <main class="container page">
   <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Fluid Dynamics"></site-breadcrumb>
 
@@ -22,17 +20,6 @@
     <div class="study-section">
       <h3>Fluid Properties</h3>
       <div class="formula-grid">
-
-        <div class="formula-card">
-          <div class="formula-name">Absolute vs. Gauge Pressure</div>
-          <div class="formula-eq">P_gauge = P − P_atm</div>
-          <div class="formula-desc">Absolute pressure is the full pressure including atmosphere. Gauge pressure is the excess above atmospheric — what most instruments read. At the open surface, gauge pressure = 0.</div>
-          <div class="formula-vars">
-            <span>P — absolute pressure (Pa)</span>
-            <span>P_atm ≈ 1.01 × 10⁵ Pa</span>
-            <span>P_gauge — excess above atmosphere (Pa)</span>
-          </div>
-        </div>
 
         <div class="formula-card">
           <div class="formula-name">Density</div>
@@ -43,6 +30,12 @@
             <span>m — mass (kg)</span>
             <span>V — volume (m³)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Definition: density is how much mass is packed into a unit volume. It's an intrinsic material property — cutting an object in half halves its mass and volume, so ρ stays the same. Density determines whether things float (ρ_obj &lt; ρ_fluid) or sink (ρ_obj &gt; ρ_fluid).</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -54,10 +47,33 @@
             <span>F — force (N)</span>
             <span>A — area (m²)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Definition: pressure is force distributed over area. The same force on a smaller area creates higher pressure — why knife blades are sharp. In a static fluid, pressure is isotropic (equal in all directions) because if it weren't, fluid molecules would accelerate to equalize it. Units: 1 Pa = 1 N/m² = 1 kg/(m·s²).</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
-          <div class="formula-name">Gauge Pressure / Hydrostatic Pressure</div>
+          <div class="formula-name">Gauge Pressure</div>
+          <div class="formula-eq">P_gauge = P − P_atm</div>
+          <div class="formula-desc">Absolute pressure is the full pressure including atmosphere. Gauge pressure is the excess above atmospheric — what most instruments read. At the open surface, gauge pressure = 0.</div>
+          <div class="formula-vars">
+            <span>P — absolute pressure (Pa)</span>
+            <span>P_atm ≈ 1.01 × 10⁵ Pa</span>
+            <span>P_gauge — excess above atmosphere (Pa)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Most pressure instruments measure relative to atmosphere (which surrounds us everywhere). A tire gauge reading "30 psi" means 30 psi above atmosphere. Absolute pressure = gauge + atmospheric. In fluid problems, P_atm often appears on both sides of an equation and cancels — which is why gauge pressure simplifies calculations.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Hydrostatic Pressure</div>
           <div class="formula-eq">P = P₀ + ρgh</div>
           <div class="formula-desc">Pressure at depth h below the surface. P₀ is the pressure at the surface (often atmospheric, ~101 325 Pa).</div>
           <div class="formula-vars">
@@ -66,6 +82,12 @@
             <span>g — 9.8 m/s²</span>
             <span>h — depth below surface (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Consider a fluid column of height h, cross-section A, at rest (ΣF = 0). Weight of fluid = ρ·V·g = ρ·A·h·g. This weight pushes down on the area A below, adding pressure ΔP = weight/area = ρgh. Add the surface pressure P₀ to get total pressure: P = P₀ + ρgh. Pressure increases linearly with depth — every 10 m of water ≈ 1 additional atm.</p>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -83,6 +105,12 @@
             <span>F₁, F₂ — input/output forces (N)</span>
             <span>A₁, A₂ — piston areas (m²)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>In a static fluid, pressure transmits equally in all directions (Pascal, 1648). So the added pressure at piston 1 (= F₁/A₁) equals the pressure at piston 2 (= F₂/A₂): <code>F₁/A₁ = F₂/A₂</code>. This is a force multiplier — larger area gets larger force. But energy is conserved: the small piston moves farther, so <code>F₁d₁ = F₂d₂</code>. Car brakes and hydraulic lifts exploit this.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -95,6 +123,12 @@
             <span>V_sub — submerged volume (m³)</span>
             <span>g — 9.8 m/s²</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Pressure increases with depth, so the upward pressure on the bottom of a submerged object is greater than the downward pressure on its top. Net upward pressure force = ΔP · A = ρ_f·g·h·A = ρ_f·g·V_sub. This equals the weight of displaced fluid: <code>F_b = ρ_f·V_sub·g</code>. Archimedes' principle: the buoyant force equals the weight of the fluid that would fill the submerged volume.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -105,6 +139,12 @@
             <span>ρ_obj — object density (kg/m³)</span>
             <span>ρ_f — fluid density (kg/m³)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>At equilibrium, F_b = W_obj: <code>ρ_f·V_sub·g = ρ_obj·V_obj·g</code>. Cancel g and rearrange: <code>V_sub/V_obj = ρ_obj/ρ_f</code>. If ρ_obj = 0.7·ρ_f, then 70% of the object is submerged. Ice in water: ρ_ice/ρ_water ≈ 0.917, so 91.7% of an iceberg is below the surface.</p>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -123,6 +163,12 @@
             <span>A — cross-sectional area (m²)</span>
             <span>v — fluid speed (m/s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>In time Δt, a fluid moving at speed v sweeps out a cylinder of length v·Δt and cross-section A. Volume = A·v·Δt. Flow rate Q = Volume/Δt = A·v. Think of it as the "pipe area times how fast fluid moves through it." Units: m² × m/s = m³/s.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -133,6 +179,12 @@
             <span>A₁, A₂ — areas at points 1, 2 (m²)</span>
             <span>v₁, v₂ — speeds at points 1, 2 (m/s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Conservation of mass: for an incompressible fluid (constant density), the mass entering any section per second must equal the mass leaving it. Mass flow rate = ρ·A·v = constant. Since ρ is constant, A·v = constant: <code>A₁v₁ = A₂v₂</code>. This is why water speeds up when you squeeze the hose nozzle — same Q, smaller A → larger v.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -144,6 +196,12 @@
             <span>ρgy — gravitational PE density (Pa)</span>
             <span>½ρv² — kinetic energy density (Pa)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Divide the work-energy theorem by volume V for a fluid parcel. KE/V = ½ρv². PE/V = ρgh. The pressure term comes from the work done by pressure forces on the parcel: W_pressure/V = P. Combining: P + ½ρv² + ρgy = constant — this is just conservation of energy per unit volume along a streamline. Higher v means some KE came from somewhere — in a horizontal pipe, it came from pressure drop (P decreases).</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -154,6 +212,12 @@
             <span>Subscripts 1, 2 — two points on streamline</span>
             <span>y₁, y₂ — heights above reference (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Same as above — just equate the constant at two specific points. The key assumptions are: <strong>steady</strong> flow (velocity field doesn't change in time), <strong>incompressible</strong> (ρ = constant, valid for liquids and slow gases), <strong>non-viscous</strong> (no friction between fluid layers), and along a single <strong>streamline</strong>. Violating any of these requires corrections beyond AP Physics.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -164,6 +228,12 @@
             <span>v — exit speed at hole (m/s)</span>
             <span>y_A — height of fluid surface above hole (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Apply Bernoulli between the surface (point A: P = P_atm, v_A ≈ 0, h = y_A) and the hole (point B: P = P_atm, v = ?, h = 0). P_atm cancels on both sides. ρg·y_A + 0 = 0 + ½ρv² → v = √(2g·y_A). Identical to the speed of a free-falling object dropped from height y_A — a beautiful result showing Bernoulli is really just energy conservation.</p>
+            </div>
+          </details>
         </div>
 
       </div>

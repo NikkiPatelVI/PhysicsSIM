@@ -46,6 +46,7 @@ const sectionLoader = (() => {
         if (typeof initKinematicsSims === 'function') initKinematicsSims();
         if (typeof initDynamicsSims === 'function') initDynamicsSims();
         if (typeof initWorkEnergySims === 'function') initWorkEnergySims();
+        if (typeof initMomentumSims === 'function') initMomentumSims();
       }
     } catch (error) {
       console.warn('Section load failed:', error);

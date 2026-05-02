@@ -606,6 +606,60 @@ details.answer-toggle[open] summary { margin-bottom: .75rem; }
   margin: .25rem 0;
 }
 
+/* ── DERIVATION TOGGLES (formula cards) ── */
+details.derivation-toggle {
+  margin-top: .625rem;
+  border-top: 1px dashed var(--border);
+  padding-top: .625rem;
+}
+
+details.derivation-toggle summary {
+  cursor: pointer;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--amber);
+  padding: .2rem 0;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  user-select: none;
+}
+
+details.derivation-toggle summary::-webkit-details-marker { display: none; }
+
+details.derivation-toggle summary::before {
+  content: '▸';
+  font-size: .7rem;
+  transition: transform .15s;
+  display: inline-block;
+}
+
+details.derivation-toggle[open] summary::before { transform: rotate(90deg); }
+details.derivation-toggle summary:hover { opacity: .8; }
+details.derivation-toggle[open] summary { margin-bottom: .5rem; }
+
+.derivation-body {
+  font-size: .8125rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  background: var(--amber-light);
+  border-radius: 6px;
+  padding: .5rem .75rem;
+}
+
+.derivation-body p { margin-bottom: .375rem; }
+.derivation-body p:last-child { margin-bottom: 0; }
+.derivation-body strong { color: var(--text); }
+.derivation-body code {
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  color: var(--amber);
+  background: rgba(0,0,0,.04);
+  padding: .1em .3em;
+  border-radius: 3px;
+}
+
 /* ── FRQ SCORING POINT HIGHLIGHTS ── */
 .score-point {
   display: flex;

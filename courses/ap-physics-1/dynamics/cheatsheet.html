@@ -15,7 +15,6 @@
 <main class="container page">
   <div id="embedded-content">
 
-    <!-- ── Newton's Laws ── -->
     <div class="study-section">
       <h3>Newton's Three Laws</h3>
       <div class="formula-grid">
@@ -28,6 +27,12 @@
             <span>ΣF — net (vector sum of all) forces (N)</span>
             <span>a — acceleration (m/s²)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Galileo's insight, formalized by Newton: on a frictionless surface, a moving object keeps moving forever. "Inertia" is mass resisting velocity changes. The 1st Law is a special case of the 2nd: if ΣF = 0 then a = ΣF/m = 0. It also defines what an "inertial reference frame" is — one where the 1st Law holds.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -39,6 +44,12 @@
             <span>m — mass (kg)</span>
             <span>a — acceleration (m/s²)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Empirical: doubling net force doubles acceleration; doubling mass halves it. This relation defines the unit of force — 1 N gives 1 kg an acceleration of 1 m/s². More precisely, ΣF = dp/dt (rate of change of momentum), which reduces to ma when mass is constant.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -49,12 +60,17 @@
             <span>F₁₂ — force object 1 exerts on object 2 (N)</span>
             <span>F₂₁ — force object 2 exerts on object 1 (N)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Follows from conservation of momentum. When two objects interact in an isolated system, any momentum gained by one must be lost by the other: Δp₁ = −Δp₂. Dividing by Δt gives F₁₂ = −F₂₁. Key: the forces act on <em>different</em> objects, so they never cancel each other in a single FBD.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Common Forces ── -->
     <div class="study-section">
       <h3>Common Forces</h3>
       <div class="formula-grid">
@@ -68,6 +84,12 @@
             <span>m — mass (kg)</span>
             <span>g = 9.8 m/s²</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Apply ΣF = ma to a freely falling object. The only force is gravity, and experiment shows a = g = 9.8 m/s² downward for every object. So F_gravity = mg. Near Earth's surface this is constant — it changes slightly with altitude (full formula: F = GMm/r², where M is Earth's mass).</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -78,6 +100,12 @@
             <span>N — normal force (N)</span>
             <span>Direction: perpendicular (outward) from surface</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Electromagnetic repulsion between the atoms of the object and surface prevents interpenetration. Macroscopically, N is whatever value is needed so the object doesn't accelerate through the surface: <code>ΣF_⊥ = 0</code> → N = (sum of all perpendicular force components). <strong>Never assume N = mg</strong> on inclines or when vertical forces are applied.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -89,6 +117,12 @@
             <span>μ_s — coefficient of static friction (unitless)</span>
             <span>N — normal force (N)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Empirical: increase applied force on a stationary block. Friction grows to match it (ΣF = 0) until the block breaks free at f_s,max. The ratio f_s,max/N is remarkably consistent for a given surface pair — define this as μ_s. Below max, use ΣF = 0 to find the actual friction value; it's an inequality, not an equation.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -100,6 +134,12 @@
             <span>μ_k — coefficient of kinetic friction (unitless)</span>
             <span>N — normal force (N)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Empirical: once sliding, the friction force is approximately constant regardless of speed and independent of contact area (surprising!). Why μ_k &lt; μ_s? Static contact involves stronger adhesion between asperities; during sliding, microscopic bonds break and reform rapidly, giving lower average force. The model breaks down at very high speeds but is accurate for AP scenarios.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -111,6 +151,12 @@
             <span>k — spring constant (N/m)</span>
             <span>x — displacement from equilibrium (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Hooke's empirical law (1678): "as the extension, so the force." Within the elastic limit, deformation is proportional to applied force. The spring constant k reflects the material stiffness — stiffer material = larger k. Beyond the elastic limit (too much stretch), the spring deforms permanently and Hooke's Law breaks down.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -122,12 +168,17 @@
             <span>Massless string: T is uniform throughout</span>
             <span>Direction: along string, toward the string</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For a massless string, apply ΣF = ma to any segment: m = 0 so ΣF = 0, meaning tensions at both ends must be equal. This propagates throughout → T is uniform. Over a frictionless, massless pulley, T is also preserved because the pulley only changes direction, not magnitude. If the string has mass, T varies and you must apply Newton's 2nd Law to each segment.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Inclined Planes ── -->
     <div class="study-section">
       <h3>Inclined Planes</h3>
       <div class="formula-grid">
@@ -141,6 +192,12 @@
             <span>F_⊥ — component into the surface (N)</span>
             <span>θ — angle of incline from horizontal</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Tilt the coordinate axes so x is along the slope. The weight vector mg points straight down. The angle between the slope-normal and the vertical equals θ (alternate interior angles from the geometry). So the component <em>along</em> the slope = mg sinθ (opposite side) and the component <em>into</em> the slope = mg cosθ (adjacent side). Draw the right triangle once and you'll never mix them up.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -152,6 +209,12 @@
             <span>N — normal force (N)</span>
             <span>θ — slope angle</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Along slope: only mg sinθ acts → <code>mg sinθ = ma</code> → divide by m → <code>a = g sinθ</code>. Perpendicular: ΣF = 0 → <code>N = mg cosθ</code>. Mass cancels because both the driving force (mg sinθ) and inertia (ma) scale with m. At θ = 0° (flat): a = 0. At θ = 90° (vertical): a = g (free fall). Makes sense!</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -163,12 +226,17 @@
             <span>μ_k — kinetic friction coefficient</span>
             <span>θ — slope angle</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Along slope: <code>mg sinθ − f_k = ma</code>. f_k = μ_k·N = μ_k·mg cosθ. Substitute: <code>mg sinθ − μ_k mg cosθ = ma</code>. Divide by m: <code>a = g(sinθ − μ_k cosθ)</code>. Sliding condition: the object begins sliding when mg sinθ > f_s,max = μ_s·mg cosθ → <code>tanθ > μ_s</code>. Mass cancels again — pure geometry and μ determine the threshold.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Multi-Body Systems ── -->
     <div class="study-section">
       <h3>Multi-Body Systems</h3>
       <div class="formula-grid">
@@ -182,6 +250,12 @@
             <span>m₂ — heavier mass (kg)</span>
             <span>a — acceleration of system (m/s²)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Write ΣF = ma for each mass with the same tension T and same acceleration magnitude a. m₂ (down): <code>m₂g − T = m₂a</code>. m₁ (up): <code>T − m₁g = m₁a</code>. <strong>Add</strong> the two equations (T cancels): <code>(m₂−m₁)g = (m₁+m₂)a</code> → divide: <code>a = (m₂−m₁)g/(m₁+m₂)</code>. Shortcut: treat the whole system — net force = (m₂−m₁)g, total mass = (m₁+m₂).</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -192,6 +266,12 @@
             <span>T — string tension (N)</span>
             <span>m₁, m₂ — the two masses (kg)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Substitute a back into m₁'s equation: <code>T = m₁(g + a) = m₁g[1 + (m₂−m₁)/(m₁+m₂)] = m₁g · 2m₂/(m₁+m₂) = 2m₁m₂g/(m₁+m₂)</code>. Check limits: if m₁ = m₂ = m, then T = mg (static). If m₁ → 0, then T → 0 (free fall). These make physical sense.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -203,12 +283,17 @@
             <span>m_t — table mass (kg)</span>
             <span>T — string tension = m_t · a (N)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Hanging mass (vertical): <code>m_h·g − T = m_h·a</code>. Table mass (horizontal): <code>T = m_t·a</code>. Add: <code>m_h·g = (m_t + m_h)·a</code> → <code>a = m_h·g/(m_t+m_h)</code>. Same structure as Atwood — the "net driving force" is m_h·g (no counter-mass on other side), total inertia is (m_t+m_h). Adding friction to the table: subtract μ_k·m_t·g from the numerator.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Key Values ── -->
     <div class="study-section">
       <h3>Key Values &amp; Units</h3>
       <div class="formula-grid">

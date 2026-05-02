@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linear Momentum Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<main class="container page">
+  <div id="embedded-content">
+
+    <!-- ── Momentum & Impulse ── -->
+    <div class="study-section">
+      <h3>Momentum &amp; Impulse</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Linear Momentum</div>
+          <div class="formula-eq">p = mv</div>
+          <div class="formula-desc">Momentum is a vector — direction matters. A heavy slow object can have the same momentum as a light fast one. SI unit: kg·m/s.</div>
+          <div class="formula-vars">
+            <span>p — momentum (kg·m/s)</span>
+            <span>m — mass (kg)</span>
+            <span>v — velocity (m/s, vector)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Definition, introduced by Newton as "quantity of motion." The more precise form of Newton's 2nd Law is <code>ΣF = dp/dt</code> (rate of change of momentum), not ΣF = ma — the ma form only holds when mass is constant. Momentum is the fundamental quantity; force is the rate at which it changes.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Impulse</div>
+          <div class="formula-eq">J = FΔt = Δp</div>
+          <div class="formula-desc">Impulse is the product of net force and time interval. It equals the change in momentum — a vector. The area under a force-time graph is the impulse.</div>
+          <div class="formula-vars">
+            <span>J — impulse (N·s = kg·m/s)</span>
+            <span>F — average net force (N)</span>
+            <span>Δt — time of force application (s)</span>
+            <span>Δp = p_f − p_i — change in momentum</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From Newton's 2nd Law: <code>F = Δp/Δt</code>. Multiply both sides by Δt: <code>F·Δt = Δp</code>. This is the impulse-momentum theorem. For varying forces, J = ∫F dt = area under F-t graph. Key insight: the same Δp (same impulse) can come from a large force for a short time or a small force for a long time — this is why airbags and crumple zones extend collision time to reduce peak force.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Impulse-Momentum Theorem</div>
+          <div class="formula-eq">F_avg · Δt = m·Δv</div>
+          <div class="formula-desc">The average force times the contact time equals the change in momentum. Use this when force is unknown but contact time and velocity change are given.</div>
+          <div class="formula-vars">
+            <span>F_avg — average force during collision (N)</span>
+            <span>Δt — collision time (s)</span>
+            <span>Δv = v_f − v_i — change in velocity (m/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Same as J = Δp, rewritten. For constant mass: Δp = m·v_f − m·v_i = m·Δv. So <code>F_avg·Δt = m·Δv</code>. This is the AP exam's favourite form for collision problems: given initial and final velocity, find average force (divide by Δt) or collision time (divide by force). Always check signs — Δv is a vector!</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Conservation of Momentum ── -->
+    <div class="study-section">
+      <h3>Conservation of Momentum</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Conservation Law</div>
+          <div class="formula-eq">p_total,i = p_total,f</div>
+          <div class="formula-desc">Total momentum of an isolated system is constant. "Isolated" means no external net force. Internal forces (object A on B, B on A) cancel by Newton's 3rd Law.</div>
+          <div class="formula-vars">
+            <span>Applies when: ΣF_external = 0</span>
+            <span>m₁v₁i + m₂v₂i = m₁v₁f + m₂v₂f</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From Newton's 3rd Law: when objects A and B interact, F_AB = −F_BA. Both act for the same time Δt: J_AB = −J_BA → Δp_A = −Δp_B → Δp_total = 0. Total momentum doesn't change. If there's a net external force (like friction or gravity with a non-normal component), momentum is <em>not</em> conserved — check this before applying the law.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">2-Body Collision (1D)</div>
+          <div class="formula-eq">m₁v₁i + m₂v₂i = m₁v₁f + m₂v₂f</div>
+          <div class="formula-desc">General momentum conservation for two objects. Works for all collision types. Add a second equation (KE conserved or objects stick) to solve for two unknowns.</div>
+          <div class="formula-vars">
+            <span>Subscript i — initial velocity</span>
+            <span>Subscript f — final velocity</span>
+            <span>Signs: rightward positive, leftward negative</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Apply conservation of momentum: total p before = total p after. With two unknowns (v₁f and v₂f) you need a second equation. For <strong>elastic</strong> collisions: also conserve KE → gives relative velocity equation v₁f − v₂f = −(v₁i − v₂i). For <strong>perfectly inelastic</strong>: v₁f = v₂f = v_f (they stick), so you only have one unknown.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">2D Momentum Conservation</div>
+          <div class="formula-eq">Σp_x,i = Σp_x,f &nbsp;·&nbsp; Σp_y,i = Σp_y,f</div>
+          <div class="formula-desc">In 2D, momentum is conserved independently in x and y directions. Decompose all velocity vectors into components and apply conservation to each axis separately.</div>
+          <div class="formula-vars">
+            <span>x-component: m₁v₁ₓ + m₂v₂ₓ before = same after</span>
+            <span>y-component: m₁v₁ᵧ + m₂v₂ᵧ before = same after</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Conservation of momentum is a vector law — it holds in every direction simultaneously. Decompose each momentum vector into x and y components and apply the scalar conservation law to each component independently. This gives you two equations for a 2D collision. If one object is initially at rest (target practice style), and you know the final angle of one object, you can find everything.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Collision Types ── -->
+    <div class="study-section">
+      <h3>Collision Types</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Elastic Collision</div>
+          <div class="formula-eq">KE_i = KE_f &nbsp;·&nbsp; p_i = p_f</div>
+          <div class="formula-desc">Both momentum AND kinetic energy are conserved. Billiard balls, atomic collisions. Objects bounce off with no energy lost.</div>
+          <div class="formula-vars">
+            <span>Special case equal masses: velocities swap</span>
+            <span>v₁f = ((m₁−m₂)v₁i + 2m₂v₂i) / (m₁+m₂)</span>
+            <span>v₂f = ((m₂−m₁)v₂i + 2m₁v₁i) / (m₁+m₂)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Solve the system of two equations: momentum conservation + KE conservation. The velocity formulas come from eliminating one unknown. <strong>Equal mass shortcut</strong>: m₁ = m₂ → v₁f = v₂i, v₂f = v₁i (velocities swap). If m₂ >> m₁ (wall): v₁f ≈ −v₁i (elastic bounce). If m₁ >> m₂ (bowling ball hits marble): v₁f ≈ v₁i, v₂f ≈ 2v₁i.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Perfectly Inelastic Collision</div>
+          <div class="formula-eq">m₁v₁i + m₂v₂i = (m₁+m₂)v_f</div>
+          <div class="formula-desc">Objects stick together after collision. Maximum kinetic energy is lost (but momentum is still conserved). Typical AP scenario: ballistic pendulum, clay.</div>
+          <div class="formula-vars">
+            <span>v_f = (m₁v₁i + m₂v₂i) / (m₁+m₂)</span>
+            <span>ΔKE = ½(m₁+m₂)v_f² − (½m₁v₁i² + ½m₂v₂i²)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>The objects stick together → same final velocity v_f. Momentum conservation: <code>m₁v₁i + m₂v₂i = (m₁+m₂)v_f</code>. Solve for v_f. The kinetic energy <em>lost</em> = initial KE − final KE — this goes to deformation, heat, and sound. You can verify that KE is always lost in inelastic collisions (never gained), which follows from the center-of-mass frame analysis.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Explosion / Recoil</div>
+          <div class="formula-eq">0 = m₁v₁f + m₂v₂f</div>
+          <div class="formula-desc">System starts at rest → total momentum is zero before and after. The two fragments fly apart with equal and opposite momenta: m₁v₁ = −m₂v₂.</div>
+          <div class="formula-vars">
+            <span>v₁f = −(m₂/m₁)v₂f</span>
+            <span>Heavier fragment → slower recoil</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>System starts at rest → p_total,i = 0. By conservation: p_total,f = 0 = m₁v₁f + m₂v₂f → <code>m₁v₁f = −m₂v₂f</code>. The momenta are equal and opposite regardless of the explosion energy. This is why a rifle recoils when fired: the bullet goes forward, gun goes backward, total momentum = 0. Same reason rockets work in space — no air needed.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Center of Mass ── -->
+    <div class="study-section">
+      <h3>Center of Mass</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Center of Mass Position</div>
+          <div class="formula-eq">x_cm = (m₁x₁ + m₂x₂ + …) / M</div>
+          <div class="formula-desc">Weighted average position, weighted by mass. The system behaves as if all mass is concentrated at x_cm when an external force is applied.</div>
+          <div class="formula-vars">
+            <span>x_cm — center of mass position (m)</span>
+            <span>M = Σm — total mass (kg)</span>
+            <span>x_i — position of each object (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For a system of particles, Newton's 2nd Law for the whole system gives: <code>ΣF_ext = M·a_cm</code>. This requires defining a_cm as the acceleration of the mass-weighted average position. Integrating twice defines x_cm = Σ(m_i·x_i)/M. The center of mass moves as if all the mass were at that point with all external forces applied there.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">CoM Velocity</div>
+          <div class="formula-eq">v_cm = (m₁v₁ + m₂v₂) / M = p_total / M</div>
+          <div class="formula-desc">The center of mass velocity equals total momentum divided by total mass. For an isolated system, v_cm is constant — even during collisions.</div>
+          <div class="formula-vars">
+            <span>v_cm — center of mass velocity (m/s)</span>
+            <span>p_total — total momentum (kg·m/s)</span>
+            <span>M — total mass (kg)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Differentiate x_cm: v_cm = dx_cm/dt = Σ(m_i·v_i)/M = p_total/M. For an isolated system, p_total is conserved → v_cm is constant throughout any collision or explosion. This is why the center of mass of a firework keeps traveling in a parabola even as the fragments scatter — the total momentum doesn't change.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">CoM for Isolated System</div>
+          <div class="formula-eq">ΣF_ext = 0 → v_cm = constant</div>
+          <div class="formula-desc">With no external forces, the center of mass moves at constant velocity forever — even if the internal pieces collide, explode, or interact in any way.</div>
+          <div class="formula-vars">
+            <span>Internal forces cannot change p_total</span>
+            <span>External forces change v_cm</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>ΣF_ext = dp_total/dt = M·a_cm. If ΣF_ext = 0, then a_cm = 0 → v_cm = constant. This is conservation of momentum restated in terms of the CoM. Practical AP use: in an explosion from rest, the CoM remains stationary — the fragments always fly apart so that Σ(m_i·r_i) = 0 relative to the original position.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Key Values ── -->
+    <div class="study-section">
+      <h3>Key Values &amp; Units</h3>
+      <div class="formula-grid">
+        <div class="formula-card">
+          <div class="formula-name">Units</div>
+          <div class="formula-desc" style="line-height:2;">
+            Momentum p: kg·m/s = N·s<br/>
+            Impulse J: N·s = kg·m/s<br/>
+            (Same unit — impulse equals change in momentum)
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Collision Summary</div>
+          <div class="formula-desc" style="line-height:2;">
+            <strong>All collisions:</strong> momentum conserved<br/>
+            <strong>Elastic:</strong> KE also conserved<br/>
+            <strong>Perfectly inelastic:</strong> max KE lost, stick together<br/>
+            <strong>Inelastic:</strong> somewhere between — most real collisions
+          </div>
+        </div>
+        <div class="formula-card">
+          <div class="formula-name">Sign Convention</div>
+          <div class="formula-desc" style="line-height:2;">
+            Choose a positive direction and stick with it.<br/>
+            Rightward → positive velocity<br/>
+            Leftward → negative velocity<br/>
+            Wrong sign = wrong direction of momentum
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>

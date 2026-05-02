@@ -15,7 +15,6 @@
 <main class="container page">
   <div id="embedded-content">
 
-    <!-- ── Work ── -->
     <div class="study-section">
       <h3>Work</h3>
       <div class="formula-grid">
@@ -30,6 +29,12 @@
             <span>d — displacement magnitude (m)</span>
             <span>θ — angle between F and d</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Work is the dot product of force and displacement vectors: <code>W = F⃗ · d⃗</code>. The dot product picks out the component of F along d (= F cosθ) and multiplies by the displacement magnitude. Only this parallel component transfers energy — the perpendicular component moves the object sideways, doing no work.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -41,6 +46,12 @@
             <span>θ = 90° → W = 0 (normal force, circular)</span>
             <span>θ = 180° → W = −Fd (friction, braking)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Directly from W = Fd cosθ. cos 0° = 1 (same direction → maximum energy transfer). cos 90° = 0 (perpendicular → no energy transfer, even if the force is large). cos 180° = −1 (opposing → energy is removed from the object). Normal force and centripetal force are always perpendicular to motion → always zero work.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -52,12 +63,17 @@
             <span>f_k = μ_k N — kinetic friction force (N)</span>
             <span>d — sliding distance (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Friction force direction is always opposite to velocity (θ = 180°), so W = f_k · d · cos 180° = −f_k · d. The energy isn't destroyed — it becomes thermal energy (heat) in the surfaces: <code>ΔE_thermal = +f_k · d</code>. Total energy is conserved; mechanical energy decreases by exactly this amount.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Kinetic & Potential Energy ── -->
     <div class="study-section">
       <h3>Kinetic &amp; Potential Energy</h3>
       <div class="formula-grid">
@@ -71,6 +87,12 @@
             <span>m — mass (kg)</span>
             <span>v — speed (m/s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Apply the work-energy theorem to an object accelerated from rest by a constant force F over distance d: W = F·d = ma·d. Using v² = 2ad → d = v²/(2a). So W = ma · v²/(2a) = ½mv². This work equals the energy gained — define that as KE = ½mv². The ½ and v² both come directly from kinematics.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -83,6 +105,12 @@
             <span>g = 9.8 m/s²</span>
             <span>h — height above reference (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Work done <em>against</em> gravity to lift mass m a height h at constant velocity: W = F·d = mg · h (force = mg upward, displacement = h upward, θ = 0°). This work is stored as potential energy: PE_g = mgh. Because only ΔPE matters in energy conservation, the reference height can be placed anywhere convenient — usually the lowest point in the problem.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -94,12 +122,17 @@
             <span>k — spring constant (N/m)</span>
             <span>x — displacement from equilibrium (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Work done compressing a spring by x: the force varies from 0 to kx (Hooke's law). The work is the <strong>area under the F-x graph</strong> — a triangle with base x and height kx: W = ½ · x · kx = ½kx². This is why PE_s is quadratic in x while the force is linear. Doubling compression quadruples stored energy.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Work-Energy Theorem & Conservation ── -->
     <div class="study-section">
       <h3>Work-Energy Theorem &amp; Conservation</h3>
       <div class="formula-grid">
@@ -112,6 +145,12 @@
             <span>W_net — total work by all forces (J)</span>
             <span>ΔKE = KE_f − KE_i (J)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From Newton's 2nd Law: ΣF = ma. Multiply both sides by displacement d: ΣF·d = m·a·d = W_net. From kinematics, a·d = (v² − v₀²)/2. So W_net = m(v² − v₀²)/2 = ½mv² − ½mv₀² = ΔKE. This works for any path, any forces — as long as you use the <em>net</em> work.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -123,6 +162,12 @@
             <span>KE = ½mv² (J)</span>
             <span>PE = mgh or ½kx² (J)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Definition: mechanical energy is the energy associated with macroscopic motion and position. It's "useful" energy that can do work — unlike thermal energy (random molecular motion). When only conservative forces (gravity, springs) act, E_mech is constant. Non-conservative forces (friction) convert E_mech to thermal energy.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -133,6 +178,12 @@
             <span>Applies when: no friction, no air drag</span>
             <span>KE + PE = constant at every point</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For conservative forces, the work done depends only on start and end positions, not path. Define PE as the negative of the work done by the conservative force: W_conservative = −ΔPE. From W-E theorem: W_net = ΔKE → −ΔPE = ΔKE → ΔKE + ΔPE = 0 → KE + PE = constant. This is why you can swap KE↔PE freely without worrying about how the object got there.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -144,12 +195,17 @@
             <span>W_nc = −f_k · d for kinetic friction</span>
             <span>ΔE_mech = W_nc (energy lost to heat)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>The work-energy theorem always holds: W_total = ΔKE. Split work into conservative (W_c = −ΔPE) and non-conservative (W_nc) parts: W_c + W_nc = ΔKE → −ΔPE + W_nc = ΔKE → W_nc = ΔKE + ΔPE = ΔE_mech. For friction W_nc = −f_k·d, so E_mech decreases by f_k·d — that energy becomes thermal energy in the surfaces.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Power ── -->
     <div class="study-section">
       <h3>Power</h3>
       <div class="formula-grid">
@@ -163,6 +219,12 @@
             <span>W — work done (J)</span>
             <span>t — time elapsed (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Definition: power is the rate of energy transfer. Just as velocity = Δx/Δt (rate of position change), power = W/Δt (rate of work). A 1 W motor delivers 1 J every second. A 100 W bulb consumes 100 J/s. Power describes <em>how quickly</em> energy moves, not how much total energy is involved.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -174,6 +236,12 @@
             <span>F — force along direction of motion (N)</span>
             <span>v — speed (m/s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Start from P = W/t = F·d/t = F·(d/t) = F·v. This is the instantaneous form when F and v are parallel. Example: a car engine delivering force F at speed v puts out power Fv. At constant speed F = drag force, so power = drag × speed. This is why highway driving (high v) uses more power than city driving even if F is similar.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -185,12 +253,17 @@
             <span>W_out — useful work output (J)</span>
             <span>W_in — total work input (J)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Energy is always conserved (W_in = W_out + W_lost), but not all input energy ends up as useful output — some is converted to thermal energy by friction. Efficiency measures what fraction is "usefully" converted. A perfect machine (e = 100%) is impossible because some energy always goes to heat. On AP FRQs, efficiency problems typically ask you to find W_lost = W_in − W_out.</p>
+            </div>
+          </details>
         </div>
 
       </div>
     </div>
 
-    <!-- ── Energy Bar Charts ── -->
     <div class="study-section">
       <h3>Energy Bar Charts (LOL Diagrams)</h3>
       <div class="formula-grid">

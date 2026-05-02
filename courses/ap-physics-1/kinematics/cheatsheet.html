@@ -28,6 +28,12 @@
             <span>x_f — final position (m)</span>
             <span>x_i — initial position (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Straight subtraction of position coordinates. The sign gives direction: positive means rightward (or upward), negative means leftward (or downward). Distance is <strong>|Δx|</strong>, which discards direction.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -39,6 +45,12 @@
             <span>Δx — displacement (m)</span>
             <span>Δt — time interval (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Definition of "rate of change." It's the slope of a position-vs-time graph over an interval. Instantaneous velocity is the limit as Δt → 0, which gives the slope of the tangent line.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -50,6 +62,12 @@
             <span>Δv — change in velocity (m/s)</span>
             <span>Δt — time interval (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Same structure as velocity: "rate of change of velocity." It's the slope of a velocity-vs-time graph. An object <em>decelerating</em> has acceleration pointing opposite to its velocity — both are vectors.</p>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -69,6 +87,12 @@
             <span>a — acceleration (m/s²)</span>
             <span>t — time (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Rearrange the definition of acceleration: <code>a = (v − v₀)/t</code>. Multiply both sides by t: <code>at = v − v₀</code>. Add v₀ to both sides → <code>v = v₀ + at</code>. That's it — one algebraic step from the definition.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -81,6 +105,12 @@
             <span>a — acceleration (m/s²)</span>
             <span>t — time (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Area under the v-t graph. Velocity increases linearly from v₀ to v₀+at. That shape is a <strong>rectangle</strong> (base t, height v₀) plus a <strong>triangle</strong> (base t, height at). Area = <code>v₀t + ½·t·at = v₀t + ½at²</code>.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -93,6 +123,12 @@
             <span>a — acceleration (m/s²)</span>
             <span>Δx — displacement (m)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Eliminate t between the first two equations. From eq 1: <code>t = (v−v₀)/a</code>. Substitute into eq 2: <code>Δx = v₀(v−v₀)/a + ½a·(v−v₀)²/a²</code>. Multiply through by 2a and simplify: <code>2aΔx = v² − v₀²</code>.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -105,6 +141,12 @@
             <span>v — final velocity (m/s)</span>
             <span>t — time (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For <strong>constant acceleration</strong>, the v-t graph is a straight line, so average velocity = midpoint = <code>(v₀+v)/2</code>. Then Δx = v_avg × t = <code>½(v₀+v)t</code>. This only works when acceleration is constant.</p>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -122,6 +164,12 @@
             <span>g = 9.8 m/s² (gravitational acceleration)</span>
             <span>Sign depends on chosen positive direction</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Near Earth's surface, the gravitational field is approximately uniform: every kilogram of mass experiences a downward force of 9.8 N. From F = ma: a = F/m = 9.8 N/kg = 9.8 m/s². Air resistance is neglected in free fall.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -133,6 +181,12 @@
             <span>v₀ — initial upward speed (m/s)</span>
             <span>g = 9.8 m/s²</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>At maximum height the object stops momentarily: v = 0. Plug into <code>v² = v₀² − 2gh</code>: <code>0 = v₀² − 2gh</code> → <code>h = v₀²/(2g)</code>. Direct algebraic substitution — no new physics needed.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -144,6 +198,12 @@
             <span>v₀ — initial upward speed (m/s)</span>
             <span>g = 9.8 m/s²</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>At max height v = 0. From <code>v = v₀ − gt</code>: set v = 0 → <code>0 = v₀ − g·t_up</code> → <code>t_up = v₀/g</code>. Because the acceleration is symmetric (constant −g), the time back down equals t_up — total air time = <code>2v₀/g</code>.</p>
+            </div>
+          </details>
         </div>
 
       </div>
@@ -162,6 +222,12 @@
             <span>θ — launch angle above horizontal</span>
             <span>v_x — horizontal component (constant)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Vector decomposition using trigonometry. A vector of magnitude v₀ at angle θ has a horizontal projection <code>v₀cosθ</code> (adjacent side) and a vertical projection <code>v₀sinθ</code> (opposite side). These are perpendicular and completely independent of each other.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -173,6 +239,12 @@
             <span>v_x = v₀cosθ (m/s, constant)</span>
             <span>t — time (s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Newton's 1st Law: no horizontal force (ignoring air) → no horizontal acceleration. Apply <code>Δx = v_x·t + ½a_x t²</code> with a_x = 0 → <code>x = v_x·t</code>. Horizontal motion is just uniform motion.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -184,6 +256,12 @@
             <span>v_y₀ = v₀sinθ (initial vertical speed)</span>
             <span>g = 9.8 m/s²</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>The only vertical force is gravity (−mg). From Newton's 2nd Law: a_y = −g = −9.8 m/s². Apply the first kinematic equation vertically: <code>v_y = v_y₀ + a_y·t = v_y₀ − gt</code>. The horizontal and vertical components never affect each other.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -195,6 +273,12 @@
             <span>v₀ — launch speed (m/s)</span>
             <span>θ — launch angle</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Total air time T = 2v₀sinθ/g (double the time-to-peak). Range = v_x · T = v₀cosθ · 2v₀sinθ/g = <code>v₀²·2sinθcosθ / g</code>. Using the double-angle identity <code>2sinθcosθ = sin(2θ)</code> gives R = v₀²sin(2θ)/g. Maximum when sin(2θ) = 1 → θ = 45°.</p>
+            </div>
+          </details>
         </div>
 
         <div class="formula-card">
@@ -206,6 +290,12 @@
             <span>v_x — horizontal component (m/s)</span>
             <span>v_y — vertical component at that instant (m/s)</span>
           </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>The two velocity components are perpendicular vectors. The magnitude of the resultant uses the Pythagorean theorem: <code>|v| = √(v_x² + v_y²)</code>. The angle below horizontal is <code>arctan(|v_y|/v_x)</code>. This works at any point — bottom of arc, mid-flight, anywhere.</p>
+            </div>
+          </details>
         </div>
 
       </div>
