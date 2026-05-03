@@ -87,6 +87,22 @@ function initProjectile() {
     trail.length = 0;
   }
 
+  function drawGhostPath(p, toC) {
+    ctx.strokeStyle = '#d1d5db';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    const steps = 80;
+    for (let i = 0; i <= steps; i++) {
+      const t = (i / steps) * p.tFlight;
+      const [cx, cy] = toC(p.vx * t, p.vy0 * t - 0.5 * G * t * t);
+      if (i === 0) ctx.moveTo(cx, cy);
+      else ctx.lineTo(cx, cy);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
   function draw(p) {
     ctx.clearRect(0, 0, W, H);
     const ml = 30, mr = 20, mt = 20, mb = 30;
@@ -99,14 +115,7 @@ function initProjectile() {
     ctx.beginPath(); ctx.moveTo(ml, H - mb); ctx.lineTo(W - mr, H - mb); ctx.stroke();
 
     // ghost path (analytical)
-    ctx.strokeStyle = '#d1d5db'; ctx.lineWidth = 1.5; ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    for (let i = 0; i <= 80; i++) {
-      const t = (i / 80) * p.tFlight;
-      const [cx, cy] = toC(p.vx * t, p.vy0 * t - 0.5 * G * t * t);
-      i === 0 ? ctx.moveTo(cx, cy) : ctx.lineTo(cx, cy);
-    }
-    ctx.stroke(); ctx.setLineDash([]);
+    drawGhostPath(p, toC);
 
     // range / height annotations
     const [x0, y0] = toC(0, 0);
