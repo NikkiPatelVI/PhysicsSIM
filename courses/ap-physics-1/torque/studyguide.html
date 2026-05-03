@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torque &amp; Rotation Study Guide — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Torque &amp; Rotation"></site-breadcrumb>
+
+  <div id="embedded-content">
+
+    <!-- ── 1. WHAT THE EXAM TESTS ── -->
+    <div class="study-section">
+      <h3>What the AP Exam Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Units 5–6 account for roughly 12–18% of the AP Physics 1 exam. Most questions are conceptual or semi-quantitative: ranking rotational inertias, predicting what changes when mass distribution shifts, or explaining why angular momentum is conserved. Full calculations appear in FRQs — expect equilibrium torque problems and angular momentum conservation.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — Torque Is the Rotational Equivalent of Force</h4>
+        <p>A force can cause linear acceleration (ΣF = ma). A torque can cause angular acceleration (Στ = Iα). Only the component of force perpendicular to the lever arm creates torque — a force aimed directly at the pivot does nothing rotationally. Always identify the fulcrum before calculating any torque.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — Rotational Inertia Depends on Mass Distribution, Not Just Mass</h4>
+        <p>Two objects with the same mass can have wildly different rotational inertias depending on how that mass is spread around the axis. Mass far from the axis contributes as r², so doubling the radius quadruples the contribution. A hollow ring is harder to spin than a solid disk of equal mass and radius because all the ring's mass sits at maximum r.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Angular Momentum Is Conserved When Net External Torque Is Zero</h4>
+        <p>Just as linear momentum is conserved when net external force is zero, angular momentum L = Iω is conserved when net external torque is zero. This holds through collisions and through internal changes (like a skater pulling in her arms). If I decreases, ω must increase to keep L constant — and vice versa.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 4 — Equilibrium Requires Both ΣF = 0 AND Στ = 0</h4>
+        <p>An object can have zero net force (no linear acceleration) but still have a net torque that makes it rotate. Static equilibrium needs both conditions simultaneously. When writing torque equations, you can choose any point as the fulcrum — pick the point where an unknown force acts to eliminate it from the equation.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 5 — Centripetal Acceleration Is Always Directed Inward</h4>
+        <p>Any object moving in a circle accelerates toward the center at a = v²/r, even at constant speed. That acceleration requires a net inward force (ΣF = mv²/r). The source of that force changes with context: friction for a car on a flat curve, tension for a ball on a string, gravity for an orbiting satellite.</p>
+      </div>
+    </div>
+
+    <!-- ── 2. COMMON TRAPS ── -->
+    <div class="study-section">
+      <h3>Common Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1 — Using the wrong distance in τ = Fd</strong>
+        The distance d must be the perpendicular distance from the fulcrum to the line of force — not the distance from the fulcrum to where the force is applied. If a force is applied at an angle θ, the lever arm is r sinθ, not r. Alternatively, break the force into components and use only the perpendicular component: τ = r · (F sinθ).
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2 — Forgetting that rotational inertia changes when the pivot changes</strong>
+        The same object has a different I depending on which axis it rotates about. A rod rotating about its center has I = (1/12)ML²; rotating about one end, I = (1/3)ML². Use the parallel-axis theorem: I = I_cm + Md². Never plug in a formula without confirming the pivot matches.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3 — Thinking kinetic energy is conserved in angular momentum problems</strong>
+        When a skater pulls in her arms, L is conserved but KE increases because her muscles do work. When a ball of putty sticks to a rotating rod, L is conserved but KE decreases (it becomes internal energy). Conservation of angular momentum says nothing about energy — check separately whether the interaction is elastic or not.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4 — Treating centripetal force as a separate force on the FBD</strong>
+        Centripetal force is not a new force — it is the name for the net inward force provided by existing forces (friction, tension, gravity, normal force). Never draw an arrow labeled "centripetal force" on an FBD. Instead, identify which real force points toward the center and set it equal to mv²/r.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Choosing a bad fulcrum and creating more unknowns</strong>
+        In static equilibrium problems with two unknown support forces, choosing a pivot where one unknown acts eliminates it from the torque equation, leaving one equation with one unknown. Choosing the midpoint or some other arbitrary point gives a torque equation with two unknowns — technically solvable but harder. Always choose a support point as the fulcrum.
+      </div>
+    </div>
+
+    <!-- ── 3. PROBLEM-SOLVING FRAMEWORK ── -->
+    <div class="study-section">
+      <h3>Problem-Solving Framework</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">Torque Equilibrium (beam/bridge/plank problems)</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Identify all forces</strong> — support forces, weights (including the object's own weight acting at its center of mass), and any applied forces.</li>
+          <li><strong>Choose a smart fulcrum</strong> — pick the point where one of the unknown support forces acts; that unknown drops out of the torque equation.</li>
+          <li><strong>List clockwise and counterclockwise torques</strong> — each torque = force × perpendicular distance from the fulcrum. Assign signs (+ ccw, − cw) consistently.</li>
+          <li><strong>Set Στ = 0</strong> — solve for the remaining unknown torque/force.</li>
+          <li><strong>Use ΣF = 0</strong> — with one support force found, the vertical force equation gives the other.</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Angular Momentum Conservation</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Confirm Στ_ext = 0</strong> — verify that no external torque acts on the system during the event (internal torques cancel in pairs).</li>
+          <li><strong>Write L_i = L_f</strong> — state angular momentum conservation explicitly. For a rigid body, I_i ω_i = I_f ω_f.</li>
+          <li><strong>Calculate I before and after</strong> — use I = Σmr² for each component; add them if the system has multiple parts.</li>
+          <li><strong>Solve for the unknown ω or I</strong> — plug in and solve. Check whether KE changed (it usually does) and explain why.</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Circular Motion (centripetal force)</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Draw the FBD</strong> — identify all real forces; one or more must point toward the center of the circle.</li>
+          <li><strong>Write ΣF_centripetal = mv²/r</strong> — only the net inward force component goes on the left.</li>
+          <li><strong>Write ΣF_perpendicular = 0</strong> — the direction perpendicular to the centripetal direction has zero net force (if speed is constant).</li>
+          <li><strong>Solve</strong> — if mass cancels, note that the result is mass-independent.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ── 4. MUST-KNOW SCENARIOS ── -->
+    <div class="study-section">
+      <h3>Must-Know Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Car Rounding a Flat Horizontal Curve</h4>
+        <p>The only horizontal force is static friction, which provides centripetal force: f_s = mv²/r. The normal force equals mg (flat road, no banking). The maximum speed before skidding is found from μ_s mg = mv²/r → v_max = √(μ_s gr). Mass cancels — the speed limit for a curve is independent of the car's mass.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Extended Object in Static Equilibrium</h4>
+        <p>Treat the object's own weight as acting at its center of mass. For a uniform object (uniform rod, uniform plank), the center of mass is at the geometric center. For an asymmetric object, the CM location must be given. The torque from the object's weight is W × (distance from fulcrum to CM).</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Spinning Skater / Collapsing Star</h4>
+        <p>No external torque acts, so L = Iω = constant. Pulling arms in reduces I → ω increases (spins faster). Extending arms increases I → ω decreases. KE = L²/(2I), so decreasing I increases KE — the skater's muscles supply the extra energy. A neutron star collapses to a tiny radius and spins absurdly fast for the same reason.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Ball of Putty Colliding with a Rotating Rod</h4>
+        <p>The only torques are internal to the system (rod on putty, putty on rod), so angular momentum is conserved. But this is an inelastic collision — mechanical energy is lost. Write L_i = L_f: (m_putty · v · r) + I_rod · ω_i = (I_rod + m_putty · r²) · ω_f. The putty contributes mr² to the new rotational inertia.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Rolling Object Down a Ramp</h4>
+        <p>Energy splits between translational KE (½mv²) and rotational KE (½Iω²). Use rolling constraint v = Rω to tie them together: mgh = ½mv² + ½Iω² = ½v²(m + I/R²). Objects with larger I/mR² move slower at the bottom. Ranking (fastest to slowest): solid sphere (⅖) → solid cylinder (½) → hollow sphere (⅔) → hollow ring (1).</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Planet in Elliptical Orbit</h4>
+        <p>Gravity always acts along the line from planet to sun — it has no lever arm about the sun, so it applies no torque. Therefore L = mvr = constant. When the planet is close to the sun (small r), v must be large; when far away (large r), v is small. This is Kepler's Second Law (equal areas in equal times) expressed as conservation of angular momentum.</p>
+      </div>
+    </div>
+
+    <!-- ── 5. PRACTICE PROBLEMS ── -->
+    <div class="study-section">
+      <h3>Practice Problems</h3>
+
+      <div class="concept-block">
+        <h4>Problem 1 — Torque Equilibrium</h4>
+        <p>A uniform 4.0 m plank has mass 20 kg. It rests on two supports: support A at the left end and support B 3.0 m from the left end. A 50 kg person stands 1.0 m from the left end. Find the force each support exerts on the plank. (g = 10 m/s²)</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Step 1:</strong> Identify forces — F_A (up, at x = 0), F_B (up, at x = 3.0 m), plank weight 200 N at x = 2.0 m (center), person's weight 500 N at x = 1.0 m.</p>
+          <p><strong>Step 2:</strong> Choose fulcrum at A (x = 0) to eliminate F_A from the torque equation.</p>
+          <p><strong>Step 3:</strong> Counterclockwise (positive) torques: F_B × 3.0 m. Clockwise (negative) torques: 500 N × 1.0 m + 200 N × 2.0 m = 500 + 400 = 900 N·m.</p>
+          <p><strong>Step 4:</strong> F_B × 3.0 = 900 → <strong>F_B = 300 N</strong>.</p>
+          <p><strong>Step 5:</strong> ΣF_y = 0: F_A + 300 = 500 + 200 = 700 → <strong>F_A = 400 N</strong>.</p>
+          <p><strong>Check:</strong> F_A > F_B because the person is closer to A — A carries more of the load. ✓</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 2 — Rotational Inertia Ranking</h4>
+        <p>Three identical thin rods of mass M and length L are pivoted at different points: Rod A at one end, Rod B at the center, Rod C at a point L/4 from one end. Rank them by rotational inertia from greatest to least.</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Formulas:</strong> I_cm (center pivot) = (1/12)ML². Use parallel-axis theorem for other pivots: I = I_cm + Md².</p>
+          <p><strong>Rod A</strong> (pivot at end, d = L/2 from CM): I_A = (1/12)ML² + M(L/2)² = (1/12 + 3/12)ML² = <strong>(1/3)ML²</strong>.</p>
+          <p><strong>Rod B</strong> (pivot at center, d = 0): I_B = <strong>(1/12)ML²</strong>.</p>
+          <p><strong>Rod C</strong> (pivot at L/4 from one end, so d = L/4 from CM): I_C = (1/12)ML² + M(L/4)² = (1/12 + 1/16)ML² = (4/48 + 3/48)ML² = <strong>(7/48)ML²</strong>.</p>
+          <p><strong>Ranking:</strong> I_A > I_C > I_B. The end pivot is always largest (most mass far from axis); the center is always smallest.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 3 — Angular Momentum Conservation</h4>
+        <p>A figure skater spins at 3.0 rad/s with arms extended, giving a rotational inertia of 4.0 kg·m². She pulls her arms in, reducing her rotational inertia to 1.5 kg·m². (a) What is her new angular speed? (b) By what factor does her rotational kinetic energy change?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> No external torque → L conserved: I_i ω_i = I_f ω_f.</p>
+          <p>4.0 × 3.0 = 1.5 × ω_f → ω_f = 12/1.5 = <strong>8.0 rad/s</strong>.</p>
+          <p><strong>(b)</strong> KE_i = ½(4.0)(3.0²) = 18 J. KE_f = ½(1.5)(8.0²) = 48 J.</p>
+          <p>Ratio = 48/18 = <strong>2.67 (KE increases by a factor of 8/3)</strong>. Her muscles did positive work pulling her arms inward, supplying the extra 30 J.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 4 — Circular Motion</h4>
+        <p>A car of mass m travels at speed v around a flat circular track of radius r. (a) What is the minimum coefficient of static friction needed? (b) If the speed doubles, what coefficient is required? (c) Does the answer depend on m?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> Friction provides centripetal force: μ_s mg = mv²/r. Solving: μ_s = v²/(gr).</p>
+          <p><strong>(b)</strong> With speed 2v: μ_s = (2v)²/(gr) = 4v²/(gr) — four times greater. Doubling speed requires four times the friction coefficient.</p>
+          <p><strong>(c)</strong> No — mass cancels in both cases. The required μ_s is independent of mass. This is why speed limit signs on curves list one speed for all vehicles, regardless of weight.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 5 — Newton's Second Law for Rotation</h4>
+        <p>A solid disk (mass 2.0 kg, radius 0.50 m) is free to rotate about its center. A rope wrapped around its rim applies a tangential force of 8.0 N. (a) Find the angular acceleration. (b) Starting from rest, how long does it take to reach 10 rad/s?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> I for solid disk = ½MR² = ½(2.0)(0.50²) = 0.25 kg·m².</p>
+          <p>Net torque: τ = F × R = 8.0 × 0.50 = 4.0 N·m.</p>
+          <p>Στ = Iα → 4.0 = 0.25α → <strong>α = 16 rad/s²</strong>.</p>
+          <p><strong>(b)</strong> From ω = ω₀ + αt with ω₀ = 0: t = ω/α = 10/16 = <strong>0.625 s</strong>.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── 6. ANNOTATED FRQ ── -->
+    <div class="study-section">
+      <h3>Annotated FRQ Example</h3>
+
+      <div class="concept-block">
+        <h4>Question Setup</h4>
+        <p>A uniform horizontal beam of mass M = 10 kg and length L = 6.0 m is attached to a wall by a hinge at its left end. A cable attached at the right end makes an angle of 30° above horizontal. A block of mass m = 20 kg hangs from the beam at x = 4.0 m from the hinge. The system is in static equilibrium. (g = 10 m/s²)</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (a) — Draw a free-body diagram of the beam</h4>
+        <p>Show all forces acting on the beam: hinge force (components F_x left, F_y up), cable tension T at 30° above horizontal at the right end, beam weight Mg downward at the center (x = 3.0 m), and block weight mg downward at x = 4.0 m.</p>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct directions for all four forces. Cable tension must be drawn at the right end pointing up-and-to-the-right (or into the wall at 30°). Hinge force components allowed.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Both weights drawn as downward arrows at the correct positions (center for beam, x = 4.0 m for block).</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (b) — Find the tension T in the cable</h4>
+        <p>Take torques about the hinge to eliminate the unknown hinge force.</p>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct torque equation about the hinge: T sin30° × L = Mg × (L/2) + mg × 4.0. The cable's torque uses only the vertical component T sin30°, since the horizontal component has no lever arm about the hinge.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct substitution: T(0.5)(6.0) = (10)(10)(3.0) + (20)(10)(4.0) → 3T = 300 + 800 = 1100 → T = 367 N.</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (c) — If the block is moved closer to the hinge, does T increase, decrease, or stay the same? Justify.</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>T decreases. Moving the block closer to the hinge reduces its lever arm, so its clockwise torque decreases. To maintain equilibrium (Στ = 0), the counterclockwise torque from the cable must also decrease, requiring a smaller T.</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (d) — Find the horizontal component of the hinge force</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>From ΣF_x = 0: F_hinge,x = T cos30° = 367 × (√3/2) ≈ 318 N directed away from the wall (to the right), because the cable pulls the right end toward the wall and the hinge must balance that pull.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. 5-POINT FRQ STRATEGY ── -->
+    <div class="study-section">
+      <h3>5-Point FRQ Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        AP FRQs award partial credit generously. Write the correct formula first,
+        substitute values second, solve third. A correct formula with an arithmetic
+        mistake still earns most of the points.
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>State which principle or law you're using (e.g., "Στ = 0 because the system is in static equilibrium")</li>
+          <li>Show the general equation before substituting numbers</li>
+          <li>Explicitly identify your chosen fulcrum in torque problems</li>
+          <li>For angular momentum: state whether external torque is zero and why</li>
+          <li>Include units in your final answer; for qualitative questions, explain the direction of change AND the reason</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+</body>
+</html>

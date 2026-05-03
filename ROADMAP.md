@@ -84,8 +84,7 @@ and simulations filled out:
 - Unit 1 — Kinematics ✅ (complete)
 - Unit 2 — Force and Translational Dynamics ✅ (complete)
 - Unit 3 — Work, Energy, Power ✅ (complete)
-- Unit 4 — Linear Momentum
-- Unit 5 — Torque and Rotational Dynamics
-- Unit 6 — Energy and Momentum of Rotating Systems
+- Unit 4 — Linear Momentum ✅ (complete)
+- Units 5–6 — Torque, Rotation, Angular Momentum ✅ (complete)
 - Unit 7 — Oscillations
 - Unit 8 — Fluids ✅ (complete)

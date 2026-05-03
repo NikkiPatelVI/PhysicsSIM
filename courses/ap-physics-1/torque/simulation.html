@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torque &amp; Rotation Simulation — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Torque &amp; Rotation"></site-breadcrumb>
+
+  <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Drag the sliders to change parameters and see the physics update in real time.
+      Each simulation maps to a "Must-Know Scenario" in the Study Guide tab.
+    </p>
+
+    <!-- ── SIM 1: TORQUE BALANCE ── -->
+    <div class="sim-card">
+      <h3>1. Torque Balance — Beam Equilibrium</h3>
+      <p class="sim-desc">Adjust the mass and position of two weights on a beam pivoted at its center. See whether the beam tips clockwise, counterclockwise, or stays balanced.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-balance" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Left mass (kg) <span id="bal-ml-label">2.0</span></label>
+            <input type="range" id="bal-ml" min="1" max="10" step="0.5" value="2" />
+          </div>
+          <div class="sim-control">
+            <label>Left position (m from center) <span id="bal-xl-label">3.0</span></label>
+            <input type="range" id="bal-xl" min="0.5" max="4" step="0.5" value="3" />
+          </div>
+          <div class="sim-control">
+            <label>Right mass (kg) <span id="bal-mr-label">3.0</span></label>
+            <input type="range" id="bal-mr" min="1" max="10" step="0.5" value="3" />
+          </div>
+          <div class="sim-control">
+            <label>Right position (m from center) <span id="bal-xr-label">2.0</span></label>
+            <input type="range" id="bal-xr" min="0.5" max="4" step="0.5" value="2" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Left torque (N·m)</span><span class="readout-value" id="bal-tl">—</span></div>
+            <div class="readout-item"><span class="readout-label">Right torque (N·m)</span><span class="readout-value" id="bal-tr">—</span></div>
+            <div class="readout-item"><span class="readout-label">Net torque (N·m)</span><span class="readout-value" id="bal-tnet">—</span></div>
+            <div class="readout-item"><span class="readout-label">Status</span><span class="readout-value" id="bal-status">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 2: ANGULAR MOMENTUM CONSERVATION ── -->
+    <div class="sim-card">
+      <h3>2. Angular Momentum — Spinning Skater</h3>
+      <p class="sim-desc">Simulate a skater pulling in or extending her arms. Watch angular speed change to conserve L = Iω while kinetic energy changes as her muscles do work.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-skater" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Arm radius (m) <span id="sk-r-label">0.80</span></label>
+            <input type="range" id="sk-r" min="0.1" max="1.2" step="0.05" value="0.8" />
+          </div>
+          <div class="sim-control">
+            <label>Arm mass (kg each) <span id="sk-m-label">3.0</span></label>
+            <input type="range" id="sk-m" min="1" max="8" step="0.5" value="3" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Total I (kg·m²)</span><span class="readout-value" id="sk-I">—</span></div>
+            <div class="readout-item"><span class="readout-label">Angular speed (rad/s)</span><span class="readout-value" id="sk-w">—</span></div>
+            <div class="readout-item"><span class="readout-label">L (kg·m²/s)</span><span class="readout-value" id="sk-L">—</span></div>
+            <div class="readout-item"><span class="readout-label">KE (J)</span><span class="readout-value" id="sk-KE">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 3: CIRCULAR MOTION ── -->
+    <div class="sim-card">
+      <h3>3. Circular Motion — Centripetal Force</h3>
+      <p class="sim-desc">Adjust a car's speed and track radius. See the required centripetal force and whether static friction is sufficient to keep the car on the curve.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-circular" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Speed (m/s) <span id="circ-v-label">15</span></label>
+            <input type="range" id="circ-v" min="1" max="40" step="1" value="15" />
+          </div>
+          <div class="sim-control">
+            <label>Radius (m) <span id="circ-r-label">50</span></label>
+            <input type="range" id="circ-r" min="10" max="200" step="5" value="50" />
+          </div>
+          <div class="sim-control">
+            <label>Friction coefficient μ_s <span id="circ-mu-label">0.60</span></label>
+            <input type="range" id="circ-mu" min="0.1" max="1.2" step="0.05" value="0.6" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Centripetal accel. (m/s²)</span><span class="readout-value" id="circ-ac">—</span></div>
+            <div class="readout-item"><span class="readout-label">Required μ_s</span><span class="readout-value" id="circ-mu-req">—</span></div>
+            <div class="readout-item"><span class="readout-label">Max safe speed (m/s)</span><span class="readout-value" id="circ-vmax">—</span></div>
+            <div class="readout-item"><span class="readout-label">Status</span><span class="readout-value" id="circ-status">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+<script src="torque-sims.js" defer></script>
+
+</body>
+</html>
