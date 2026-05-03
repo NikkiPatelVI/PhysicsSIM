@@ -56,7 +56,7 @@ units (1, 2, 3, 7).
 Visual showing how energy conservation, Newton's 2nd, and momentum thread
 through 5+ units. Trains flexibility in choosing which principle to apply.
 
-### 8. Equation derivations
+### 8. Completed - Equation derivations
 Expandable section under each formula card showing where it comes from.
 Knowing *why* `P + ½ρv² + ρgh = const` exists prevents memorization slips on
 novel scenarios.
@@ -86,5 +86,5 @@ and simulations filled out:
 - Unit 3 — Work, Energy, Power ✅ (complete)
 - Unit 4 — Linear Momentum ✅ (complete)
 - Units 5–6 — Torque, Rotation, Angular Momentum ✅ (complete)
-- Unit 7 — Oscillations
+- Unit 7 — Oscillations ✅ (complete)
 - Unit 8 — Fluids ✅ (complete)
