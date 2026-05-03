@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Harmonic Motion Simulation — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Simple Harmonic Motion"></site-breadcrumb>
+
+  <div id="embedded-content">
+    <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:1.5rem;">
+      Drag the sliders to change parameters and see the physics update in real time.
+      Each simulation maps to a "Must-Know Scenario" in the Study Guide tab.
+    </p>
+
+    <!-- ── SIM 1: MASS-SPRING ── -->
+    <div class="sim-card">
+      <h3>1. Mass-Spring Oscillator</h3>
+      <p class="sim-desc">Watch a mass oscillate on a spring. Adjust mass, spring constant, and amplitude — notice that only mass and k affect the period, while amplitude only changes the maximum speed.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-spring" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Mass (kg) <span id="sp-m-label">0.5</span></label>
+            <input type="range" id="sp-m" min="0.1" max="2.0" step="0.1" value="0.5" />
+          </div>
+          <div class="sim-control">
+            <label>Spring constant k (N/m) <span id="sp-k-label">50</span></label>
+            <input type="range" id="sp-k" min="10" max="200" step="10" value="50" />
+          </div>
+          <div class="sim-control">
+            <label>Amplitude (m) <span id="sp-a-label">0.10</span></label>
+            <input type="range" id="sp-a" min="0.02" max="0.18" step="0.01" value="0.10" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Period T (s)</span><span class="readout-value" id="sp-T">—</span></div>
+            <div class="readout-item"><span class="readout-label">Frequency f (Hz)</span><span class="readout-value" id="sp-f">—</span></div>
+            <div class="readout-item"><span class="readout-label">Max speed (m/s)</span><span class="readout-value" id="sp-vmax">—</span></div>
+            <div class="readout-item"><span class="readout-label">Current speed (m/s)</span><span class="readout-value" id="sp-v">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 2: PENDULUM ── -->
+    <div class="sim-card">
+      <h3>2. Simple Pendulum</h3>
+      <p class="sim-desc">Adjust pendulum length and gravitational field strength. See how period changes with length and g — but not with mass or release angle (for small angles).</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-pendulum" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Length L (m) <span id="pen-L-label">1.00</span></label>
+            <input type="range" id="pen-L" min="0.1" max="2.5" step="0.05" value="1.0" />
+          </div>
+          <div class="sim-control">
+            <label>Gravity g (m/s²) <span id="pen-g-label">9.8</span></label>
+            <input type="range" id="pen-g" min="1.6" max="26" step="0.2" value="9.8" />
+          </div>
+          <div class="sim-control">
+            <label>Release angle (°) <span id="pen-ang-label">15</span></label>
+            <input type="range" id="pen-ang" min="5" max="30" step="1" value="15" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Period T (s)</span><span class="readout-value" id="pen-T">—</span></div>
+            <div class="readout-item"><span class="readout-label">Frequency f (Hz)</span><span class="readout-value" id="pen-f">—</span></div>
+            <div class="readout-item"><span class="readout-label">Max height h (m)</span><span class="readout-value" id="pen-h">—</span></div>
+            <div class="readout-item"><span class="readout-label">Max speed (m/s)</span><span class="readout-value" id="pen-vmax">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SIM 3: ENERGY BAR ── -->
+    <div class="sim-card">
+      <h3>3. Energy Distribution in SHM</h3>
+      <p class="sim-desc">Watch kinetic energy and spring potential energy trade off as the mass moves. Total energy (blue line) stays constant — confirming energy conservation with no friction.</p>
+      <div class="sim-layout">
+        <div class="sim-canvas-wrap">
+          <canvas id="sim-energy" width="500" height="280"></canvas>
+        </div>
+        <div class="sim-controls">
+          <div class="sim-control">
+            <label>Mass (kg) <span id="en-m-label">0.5</span></label>
+            <input type="range" id="en-m" min="0.1" max="2.0" step="0.1" value="0.5" />
+          </div>
+          <div class="sim-control">
+            <label>Spring constant k (N/m) <span id="en-k-label">50</span></label>
+            <input type="range" id="en-k" min="10" max="200" step="10" value="50" />
+          </div>
+          <div class="sim-control">
+            <label>Amplitude (m) <span id="en-a-label">0.10</span></label>
+            <input type="range" id="en-a" min="0.02" max="0.18" step="0.01" value="0.10" />
+          </div>
+          <div class="sim-readout">
+            <div class="readout-item"><span class="readout-label">Total E (J)</span><span class="readout-value" id="en-E">—</span></div>
+            <div class="readout-item"><span class="readout-label">KE (J)</span><span class="readout-value" id="en-KE">—</span></div>
+            <div class="readout-item"><span class="readout-label">Spring PE (J)</span><span class="readout-value" id="en-PE">—</span></div>
+            <div class="readout-item"><span class="readout-label">Position x (m)</span><span class="readout-value" id="en-x">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+<script src="oscillations-sims.js" defer></script>
+</body>
+</html>

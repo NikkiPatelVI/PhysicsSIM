@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Harmonic Motion Cheatsheet — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Simple Harmonic Motion"></site-breadcrumb>
+
+  <div id="embedded-content">
+
+    <!-- ── SECTION 1: Period & Frequency ── -->
+    <div class="study-section">
+      <h3>Period &amp; Frequency</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Period–Frequency Relationship</div>
+          <div class="formula-eq">T = 1/f &nbsp;&nbsp;&nbsp; f = 1/T</div>
+          <div class="formula-desc">Period T is the time for one complete oscillation (s). Frequency f is the number of complete oscillations per second (Hz). They are exact reciprocals — doubling T cuts f in half.</div>
+          <div class="formula-vars">
+            <span>T — period (s)</span>
+            <span>f — frequency (Hz = 1/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>By definition, frequency is the number of cycles per unit time and period is the duration of one cycle. If you complete f cycles per second, each cycle takes 1/f seconds. This inverse relationship holds for every periodic phenomenon — waves, orbits, AC circuits. On the AP exam, the most common trap is forgetting to convert: if the problem gives period in seconds, frequency is in Hz, not in seconds.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Angular Frequency</div>
+          <div class="formula-eq">ω = 2π/T = 2πf = √(k/m)</div>
+          <div class="formula-desc">Angular frequency ω (rad/s) is the rate of oscillation in radians per second. It converts the regular frequency into the "rotational speed" of the equivalent circular motion that generates the sinusoidal oscillation.</div>
+          <div class="formula-vars">
+            <span>ω — angular frequency (rad/s)</span>
+            <span>T — period (s)</span>
+            <span>f — frequency (Hz)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>m — mass (kg)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>SHM can be modeled as the horizontal projection of uniform circular motion. One full revolution is 2π radians, completed in time T, so angular speed = 2π/T. The formula ω = √(k/m) comes from solving the differential equation for a spring-mass system: ma = −kx → ω² = k/m. Knowing ω immediately gives T = 2π/ω and f = ω/(2π) without separate memorization.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Position in SHM</div>
+          <div class="formula-eq">x(t) = A cos(ωt) &nbsp;&nbsp; [released from amplitude]</div>
+          <div class="formula-desc">Position oscillates between +A and −A. Starting from the amplitude (maximum displacement), position follows a cosine. Starting from equilibrium with maximum speed, it follows a sine. Amplitude A does not affect T or f.</div>
+          <div class="formula-vars">
+            <span>x — displacement from equilibrium (m)</span>
+            <span>A — amplitude (m)</span>
+            <span>ω — angular frequency (rad/s)</span>
+            <span>t — time (s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Solving ẍ = −ω²x (Newton's second law for a spring) gives x(t) = A cos(ωt + φ), where φ is the initial phase. If released from rest at x = A, then φ = 0, giving x = A cos(ωt). The fact that amplitude A appears only as a scaling factor — not inside the cosine — is why amplitude doesn't change the period. This is the defining property of SHM and distinguishes it from nonlinear oscillations.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SECTION 2: Mass-Spring System ── -->
+    <div class="study-section">
+      <h3>Mass-Spring System</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Hooke's Law (Restoring Force)</div>
+          <div class="formula-eq">F = −kx</div>
+          <div class="formula-desc">The spring exerts a restoring force proportional to displacement and directed toward equilibrium. The negative sign means: displaced right → force acts left, and vice versa. This is what makes the motion oscillatory.</div>
+          <div class="formula-vars">
+            <span>F — restoring force (N)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>x — displacement from equilibrium (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Hooke's Law is empirical — it describes the linear region of spring behavior before the spring is permanently deformed. The negative sign is physics: for SHM to occur, the force must always point back toward equilibrium (restoring force). Any force of the form F = −kx, regardless of the physical mechanism, will produce SHM. This includes the net force on a pendulum for small angles, where the restoring component is −mg sinθ ≈ −(mg/L)x.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Period of Mass-Spring</div>
+          <div class="formula-eq">T = 2π√(m/k)</div>
+          <div class="formula-desc">Period depends on mass and spring constant only — NOT on amplitude. Heavier mass → longer period (more inertia to overcome). Stiffer spring → shorter period (stronger restoring force). The 2π comes from one full cycle of the equivalent circular motion.</div>
+          <div class="formula-vars">
+            <span>T — period (s)</span>
+            <span>m — mass (kg)</span>
+            <span>k — spring constant (N/m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From F = ma and F = −kx: ma = −kx → a = −(k/m)x. Comparing with a = −ω²x gives ω² = k/m → ω = √(k/m). Then T = 2π/ω = 2π√(m/k). The key insight: amplitude cancels entirely during the derivation, which is why it doesn't appear in the period formula. On the AP exam, the most common proportional-reasoning question is "if mass quadruples, T ______" — answer: doubles (T ∝ √m).</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Spring Potential Energy</div>
+          <div class="formula-eq">PE_spring = ½kx²</div>
+          <div class="formula-desc">Elastic potential energy stored in a spring stretched or compressed by x from equilibrium. Maximum at the endpoints (x = ±A); zero at equilibrium. Always positive — it doesn't matter which direction the spring is displaced.</div>
+          <div class="formula-vars">
+            <span>PE_spring — elastic potential energy (J)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>x — displacement from equilibrium (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Work done by a variable force equals the area under the F vs. x graph. Since F = kx (taking magnitude), the graph is a triangle with area ½ · (kx) · x = ½kx². Alternatively, integrate: W = ∫₀ˣ kx' dx' = ½kx². This work is stored as potential energy. The x² dependence means that doubling the amplitude stores four times the energy — which is why the maximum speed (where all PE becomes KE) also depends on amplitude: v_max = A√(k/m).</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SECTION 3: Energy in SHM ── -->
+    <div class="study-section">
+      <h3>Energy in SHM</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Energy Conservation in SHM</div>
+          <div class="formula-eq">½kA² = ½mv² + ½kx²</div>
+          <div class="formula-desc">Total mechanical energy is constant (no friction). At the amplitude (x = A), all energy is spring PE and v = 0. At equilibrium (x = 0), all energy is KE and speed is maximum. Use this — not kinematics — to find speed at any position.</div>
+          <div class="formula-vars">
+            <span>A — amplitude (m)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>m — mass (kg)</span>
+            <span>v — speed at position x (m/s)</span>
+            <span>x — displacement from equilibrium (m)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Conservation of mechanical energy: E_total = KE + PE_spring = ½mv² + ½kx² = constant. At x = A (turning point), v = 0, so E_total = ½kA². This total never changes (no friction), so ½kA² = ½mv² + ½kx² at every point. Solving for v: v = √(k/m) · √(A² − x²) = ω√(A² − x²). This confirms v is maximum at x = 0 (v_max = Aω) and zero at x = ±A, which matches the position equation x = A cos(ωt).</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Maximum Speed in SHM</div>
+          <div class="formula-eq">v_max = A√(k/m) = Aω</div>
+          <div class="formula-desc">The object moves fastest when passing through equilibrium (x = 0), where all energy is kinetic. Maximum speed is proportional to amplitude — twice the amplitude means twice the max speed. Doubling the mass halves the max speed.</div>
+          <div class="formula-vars">
+            <span>v_max — maximum speed (m/s)</span>
+            <span>A — amplitude (m)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>m — mass (kg)</span>
+            <span>ω = √(k/m) — angular frequency (rad/s)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>From energy conservation: at x = 0, all energy is kinetic: ½mv_max² = ½kA². Solving: v_max = A√(k/m) = Aω. Notice that v_max does depend on amplitude (unlike T). This makes sense: a larger amplitude means the object travels farther in the same period, so it must go faster. The AP exam sometimes asks how v_max changes when amplitude changes — it scales linearly with A, while T does not change at all.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Force &amp; Acceleration in SHM</div>
+          <div class="formula-eq">F = −kx &nbsp;&nbsp;&nbsp; a = −(k/m)x = −ω²x</div>
+          <div class="formula-desc">Force and acceleration are maximum at the endpoints (x = ±A) and zero at equilibrium. They are always directed toward equilibrium (opposite to displacement). Since acceleration is not constant, kinematics equations DO NOT apply — use energy methods instead.</div>
+          <div class="formula-vars">
+            <span>F — net force (N)</span>
+            <span>a — acceleration (m/s²)</span>
+            <span>k — spring constant (N/m)</span>
+            <span>x — displacement from equilibrium (m)</span>
+            <span>ω² = k/m</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>F = ma combined with F = −kx gives a = −(k/m)x. Because acceleration depends on position (which is constantly changing), it is not constant — so the five kinematics equations (v = v₀ + at, etc.) are invalid for SHM. The acceleration is in phase with the force: when the spring is fully stretched (max x), acceleration and force point back toward center with maximum magnitude. At equilibrium, acceleration is zero — the object is at maximum speed and changing direction of acceleration from inward to outward (or vice versa).</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── SECTION 4: Pendulum ── -->
+    <div class="study-section">
+      <h3>Pendulum</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Period of a Simple Pendulum</div>
+          <div class="formula-eq">T = 2π√(L/g)</div>
+          <div class="formula-desc">Period depends on string length and gravitational field strength only — NOT on mass or amplitude (for small angles). Longer pendulum → longer period. Stronger gravity → shorter period. A pendulum on the Moon swings more slowly than on Earth.</div>
+          <div class="formula-vars">
+            <span>T — period (s)</span>
+            <span>L — length from pivot to center of mass of bob (m)</span>
+            <span>g — gravitational field strength (9.8 m/s² on Earth)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>For small angles (θ ≲ 15°), the restoring force on the pendulum bob is F ≈ −(mg/L)x, which has the form F = −kx with an effective spring constant k_eff = mg/L. Substituting into T = 2π√(m/k_eff) = 2π√(m·L/mg) = 2π√(L/g). The mass cancels — just like free fall. The small-angle approximation sinθ ≈ θ is what makes the restoring force linear (SHM). For large amplitudes, the period is slightly longer than 2π√(L/g) and does depend on amplitude.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Pendulum Energy</div>
+          <div class="formula-eq">E = mgh_max = ½mv_max²</div>
+          <div class="formula-desc">At maximum displacement, all energy is gravitational PE (h measured from lowest point). At the bottom, all energy is kinetic. Use h = L(1 − cosθ) to find the height of the bob above its lowest point given the angle θ.</div>
+          <div class="formula-vars">
+            <span>h_max — maximum height above lowest point (m)</span>
+            <span>L — pendulum length (m)</span>
+            <span>θ — maximum angle from vertical</span>
+            <span>h = L(1 − cosθ)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>The bob traces an arc; its height above the lowest point is h = L − L cosθ = L(1 − cosθ). This comes from the geometry: the pivot is L above the lowest point; the bob hangs at vertical distance L cosθ below the pivot, so its height above the bottom is L − L cosθ. At the top of the swing: E = mgh = mgL(1 − cosθ). At the bottom: E = ½mv_max². Setting equal and solving for v_max: v_max = √(2gL(1 − cosθ)).</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Comparing Spring vs. Pendulum</div>
+          <div class="formula-eq">Spring: T = 2π√(m/k) &nbsp;&nbsp;&nbsp; Pendulum: T = 2π√(L/g)</div>
+          <div class="formula-desc">Spring period increases with mass; pendulum period is independent of mass. Spring period is independent of amplitude; pendulum period is also independent of amplitude (for small angles). Both use energy conservation to find speed at any position.</div>
+          <div class="formula-vars">
+            <span>Spring: T ∝ √m (mass matters)</span>
+            <span>Spring: T ∝ 1/√k (stiffer → faster)</span>
+            <span>Pendulum: T ∝ √L (longer → slower)</span>
+            <span>Pendulum: T ∝ 1/√g (stronger gravity → faster)</span>
+          </div>
+          <details class="derivation-toggle">
+            <summary>Where does this come from?</summary>
+            <div class="derivation-body">
+              <p>Both systems are SHM with different effective spring constants: for the mass-spring, k_eff = k; for the pendulum, k_eff = mg/L. The mass cancels in the pendulum case because the restoring force mg sinθ is itself proportional to mass — so doubling the mass doubles both the restoring force and the inertia, leaving T unchanged. This is the same reason all objects fall at the same rate: gravity scales with mass in exactly the right way to cancel mass from the motion equations.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── KEY VALUES ── -->
+    <div class="study-section">
+      <h3>Key Values &amp; Units</h3>
+      <div class="formula-grid">
+
+        <div class="formula-card">
+          <div class="formula-name">Constants</div>
+          <div class="formula-desc" style="line-height:2;">
+            g = 9.8 m/s² (Earth surface)<br/>
+            g_Moon = 1.6 m/s²<br/>
+            g_Jupiter ≈ 26 m/s²<br/>
+            2π ≈ 6.28
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">SI Units for This Topic</div>
+          <div class="formula-desc" style="line-height:2;">
+            Period T: seconds (s)<br/>
+            Frequency f: hertz (Hz = 1/s)<br/>
+            Angular frequency ω: rad/s<br/>
+            Spring constant k: N/m<br/>
+            Amplitude A: meters (m)<br/>
+            Spring PE: joules (J)
+          </div>
+        </div>
+
+        <div class="formula-card">
+          <div class="formula-name">Proportional Reasoning Quick-Ref</div>
+          <div class="formula-desc" style="line-height:2;">
+            m → 4m: T × 2 (spring only)<br/>
+            k → 4k: T ÷ 2 (spring only)<br/>
+            L → 4L: T × 2 (pendulum only)<br/>
+            A → 2A: T unchanged, v_max × 2<br/>
+            g → 4g: T ÷ 2 (pendulum only)
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+
+</body>
+</html>

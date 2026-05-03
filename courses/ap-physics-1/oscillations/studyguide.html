@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Harmonic Motion Study Guide — Nikki Patel AP Physics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../../css/styles.css" />
+</head>
+<body>
+<site-nav base="../../../" active="ap-physics-1"></site-nav>
+<script src="../../../js/nav.js" defer></script>
+<script src="../../../js/breadcrumb.js" defer></script>
+<main class="container page">
+  <site-breadcrumb base="../../../" course-name="AP Physics 1" course-link="../index.html" topic-name="Simple Harmonic Motion"></site-breadcrumb>
+
+  <div id="embedded-content">
+
+    <!-- ── 1. WHAT THE EXAM TESTS ── -->
+    <div class="study-section">
+      <h3>What the AP Exam Tests</h3>
+
+      <div class="tip-box">
+        <strong>Exam focus</strong>
+        Unit 7 accounts for roughly 10–15% of the AP Physics 1 exam. The exam almost never asks you to compute a period numerically. Instead, expect proportional reasoning ("if mass triples, what happens to T?"), energy questions at specific positions, and qualitative explanations of why amplitude doesn't affect period. FRQs often combine SHM with energy conservation.
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 1 — Amplitude Does Not Affect Period</h4>
+        <p>This is the most tested conceptual fact in Unit 7. The period of a mass-spring system (T = 2π√(m/k)) contains no A. Neither does the pendulum period. Doubling the amplitude doubles the maximum speed and quadruples the total energy, but the period stays exactly the same. If a question asks "what changes the period?" — amplitude is never the answer.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 2 — Use Energy, Not Kinematics</h4>
+        <p>The acceleration in SHM is not constant (a = −ω²x changes as x changes), which means the five constant-acceleration kinematics equations are invalid. To find speed at any position, use conservation of energy: ½kA² = ½mv² + ½kx². At equilibrium (x = 0), all energy is KE; at the endpoints (x = ±A), all energy is spring PE.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Big Idea 3 — Pendulum Period Depends on L and g, Nothing Else</h4>
+        <p>T = 2π√(L/g) has no mass and no amplitude. This is why a pendulum clock ticks at the same rate regardless of the bob's weight, and why it would tick differently on the Moon. "What happens to the period if you move this pendulum to Jupiter?" → T decreases because g is larger. "What if you make the bob heavier?" → nothing changes.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Big Idea 4 — Restoring Force Always Points Toward Equilibrium</h4>
+        <p>The defining feature of SHM is a restoring force proportional to displacement: F = −kx. At the positive endpoint, F is negative (pointing left/back). At the negative endpoint, F is positive (pointing right/back). At equilibrium, F = 0. This means force and acceleration are maximum at the endpoints, zero at equilibrium — exactly opposite to the velocity pattern.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Big Idea 5 — Period and Frequency Are Inverses</h4>
+        <p>f = 1/T and T = 1/f. If the period doubles, the frequency is cut in half. If the mass quadruples on a spring, the period doubles (T ∝ √m), so the frequency is cut in half. This inverse relationship is tested often in conjunction with proportional reasoning — state the effect on T first, then invert to get the effect on f.</p>
+      </div>
+    </div>
+
+    <!-- ── 2. COMMON TRAPS ── -->
+    <div class="study-section">
+      <h3>Common Exam Traps</h3>
+
+      <div class="warn-box">
+        <strong>Trap 1 — Using kinematics equations in SHM</strong>
+        Since acceleration is not constant in SHM, equations like v² = v₀² + 2ax are invalid. If you need to find the speed at a specific position, use energy conservation: ½kA² = ½mv² + ½kx². If you need speed at equilibrium, set x = 0 and solve for v. Never plug into a kinematics equation mid-oscillation.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 2 — Thinking amplitude changes the period</strong>
+        Stretching a spring further or pulling a pendulum to a larger angle does NOT change the period (for small angles). It only changes the maximum speed and total energy. This surprises students because intuitively a larger amplitude "seems like it should take longer." The math shows otherwise — and the AP exam tests this directly.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 3 — Forgetting the negative sign in F = −kx</strong>
+        Hooke's Law is F = −kx, not F = kx. The negative sign is the physics — it means the force opposes the displacement. If you write F = kx (positive), you get a force that pushes the object further away from equilibrium, which is an unstable equilibrium (like a ball on top of a hill), not SHM. Always include the negative sign when analyzing direction of force or acceleration.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 4 — Confusing period with half-period in word problems</strong>
+        A pendulum clock ticks once per half-cycle (one side to the other). If the clock ticks every 1 second, the period is 2 seconds — it takes 2 seconds to complete a full back-and-forth cycle. Read carefully: "from one side to the other" = T/2; "back to starting position" = T.
+      </div>
+
+      <div class="warn-box">
+        <strong>Trap 5 — Applying pendulum formula to a spring (or vice versa)</strong>
+        T = 2π√(L/g) is only for pendulums. T = 2π√(m/k) is only for mass-spring systems. Mass matters for springs but not pendulums. Gravity matters for pendulums but not springs (a spring oscillates identically horizontally or vertically once equilibrium is accounted for).
+      </div>
+    </div>
+
+    <!-- ── 3. PROBLEM-SOLVING FRAMEWORK ── -->
+    <div class="study-section">
+      <h3>Problem-Solving Framework</h3>
+
+      <h4 style="margin-bottom:.75rem; font-size:.9375rem;">Finding Speed at Any Position (Spring-Mass)</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Identify the amplitude A</strong> — this is the maximum displacement from equilibrium. If the object starts from rest at a stretched position, that position is A.</li>
+          <li><strong>Write energy conservation</strong> — ½kA² = ½mv² + ½kx², where x is the position you want the speed at.</li>
+          <li><strong>Substitute and solve for v</strong> — rearrange: v = √(k/m) · √(A² − x²). At x = 0 (equilibrium), v = A√(k/m) = v_max. At x = A (endpoint), v = 0.</li>
+          <li><strong>Check sign</strong> — speed is always positive; the direction of motion must be determined from context (which half of the oscillation is the object in?).</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Proportional Reasoning for Period</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Identify the system</strong> — spring-mass (T = 2π√(m/k)) or pendulum (T = 2π√(L/g)).</li>
+          <li><strong>Identify what changes</strong> — which variable in the formula is being scaled?</li>
+          <li><strong>Find the scaling factor</strong> — since T ∝ √(variable), if the variable multiplies by n, T multiplies by √n.</li>
+          <li><strong>State the effect on f</strong> — frequency changes by the inverse factor. If T doubles, f halves.</li>
+        </ol>
+      </div>
+
+      <h4 style="margin-top:1.5rem; margin-bottom:.75rem; font-size:.9375rem;">Pendulum Energy Problems</h4>
+      <div class="steps">
+        <ol>
+          <li><strong>Find the height h</strong> — use geometry: h = L(1 − cosθ), where θ is the angle from vertical at the release point.</li>
+          <li><strong>Set up energy conservation</strong> — mgh = ½mv² (mass cancels). Solve: v = √(2gh).</li>
+          <li><strong>Use v_max at the bottom</strong> — the pendulum is fastest at the lowest point, where all energy is kinetic.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ── 4. MUST-KNOW SCENARIOS ── -->
+    <div class="study-section">
+      <h3>Must-Know Scenarios</h3>
+
+      <div class="concept-block">
+        <h4>Mass Released from Rest at Amplitude</h4>
+        <p>The object starts at x = A with v = 0. All energy is spring PE: E = ½kA². It accelerates toward equilibrium, reaching maximum speed v_max = A√(k/m) at x = 0. It then decelerates, stopping at x = −A. One full oscillation takes T = 2π√(m/k). The motion is symmetric: left half mirrors right half.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Effect of Changing Amplitude Mid-Oscillation</h4>
+        <p>If extra mass is added when the spring passes through equilibrium (v = v_max, x = 0), the new amplitude changes but the new period T' = 2π√((m+Δm)/k) is longer. If mass is added at the endpoint (v = 0), the period also changes but the amplitude stays the same — the spring PE is unchanged and now accelerates more mass, so the new v_max is smaller.</p>
+      </div>
+
+      <div class="concept-block amber">
+        <h4>Pendulum on Different Planets</h4>
+        <p>T = 2π√(L/g). On the Moon (g = 1.6 m/s²), T is about 2.5× longer than on Earth — the clock runs slow. On Jupiter (g ≈ 26 m/s²), T is about 1.6× shorter — the clock runs fast. To keep the same period, the length must scale proportionally with g: L/g = constant → if g doubles, L must double to maintain the same period.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Spring PE → Kinetic Energy Conversion</h4>
+        <p>At position x, the fraction of total energy that is kinetic is (A² − x²)/A². At the quarter-amplitude position (x = A/2), KE = ½k(A² − A²/4) = (3/4)·½kA² — so 75% of total energy is kinetic. Spring PE is only 25% there. This type of "what fraction" question uses the energy equation directly.</p>
+      </div>
+
+      <div class="concept-block green">
+        <h4>Stretched Cable / Longer Pendulum Runs Slow</h4>
+        <p>If a pendulum cable stretches, L increases → T increases → the clock ticks less frequently → it counts fewer seconds → the clock runs behind (slow). This is a classic AP word problem. The key: a longer pendulum has a longer period, so each "tick" takes more real time than the clock thinks.</p>
+      </div>
+    </div>
+
+    <!-- ── 5. PRACTICE PROBLEMS ── -->
+    <div class="study-section">
+      <h3>Practice Problems</h3>
+
+      <div class="concept-block">
+        <h4>Problem 1 — Period Proportional Reasoning</h4>
+        <p>A 0.5 kg mass on a spring of constant 50 N/m oscillates with a period T. (a) What happens to T if the mass is replaced with a 2 kg mass? (b) What happens to T if the original mass is kept but the spring constant is increased to 200 N/m? (c) What happens to the maximum speed if the amplitude is doubled?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> T = 2π√(m/k). Mass increases by factor 4. Since T ∝ √m, T increases by √4 = <strong>2</strong>. New period is 2T.</p>
+          <p><strong>(b)</strong> k increases by factor 4. Since T ∝ 1/√k, T decreases by √4 = 2. New period is <strong>T/2</strong>.</p>
+          <p><strong>(c)</strong> v_max = Aω = A√(k/m). Amplitude doubles → v_max <strong>doubles</strong>. Period is unchanged.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 2 — Speed at a Specific Position</h4>
+        <p>A 0.5 kg cart on a spring (k = 50 N/m) is released from rest at x = 0.10 m from equilibrium. Find: (a) the maximum speed of the cart, and (b) the speed when the cart is at x = 0.06 m.</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Given:</strong> A = 0.10 m, k = 50 N/m, m = 0.5 kg.</p>
+          <p><strong>(a)</strong> At equilibrium (x = 0): ½kA² = ½mv_max²</p>
+          <p>v_max = A√(k/m) = 0.10 × √(50/0.5) = 0.10 × 10 = <strong>1.0 m/s</strong>.</p>
+          <p><strong>(b)</strong> Energy conservation at x = 0.06 m:</p>
+          <p>½(50)(0.10²) = ½(0.5)v² + ½(50)(0.06²)</p>
+          <p>0.25 = 0.25v² + 0.09 → 0.25v² = 0.16 → v = √0.64 = <strong>0.80 m/s</strong>.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 3 — Pendulum on the Moon</h4>
+        <p>A pendulum clock is calibrated to keep perfect time on Earth (g = 9.8 m/s²). It is then taken to the Moon (g = 1.6 m/s²). (a) By what factor does its period change? (b) If the clock reads 12 hours elapsed, how much time has actually passed on the Moon?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>(a)</strong> T ∝ 1/√g. The ratio: T_Moon/T_Earth = √(g_Earth/g_Moon) = √(9.8/1.6) = √6.125 ≈ <strong>2.47</strong>. The period is about 2.47 times longer on the Moon.</p>
+          <p><strong>(b)</strong> Each tick of the clock takes 2.47× longer in real time. So when the clock says 12 hours have passed, the actual elapsed time is 12 × 2.47 ≈ <strong>29.6 hours</strong>. The clock runs slow on the Moon.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 4 — Energy Fraction</h4>
+        <p>A spring-mass system oscillates with amplitude A = 0.20 m and spring constant k = 80 N/m. At position x = 0.10 m, what fraction of the total mechanical energy is (a) spring potential energy, and (b) kinetic energy?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>Total energy:</strong> E = ½kA² = ½(80)(0.20²) = 1.60 J.</p>
+          <p><strong>Spring PE at x = 0.10 m:</strong> PE = ½kx² = ½(80)(0.10²) = 0.40 J.</p>
+          <p><strong>(a)</strong> Fraction as PE = 0.40/1.60 = <strong>1/4 (25%)</strong>. Note: x = A/2 → PE/E = x²/A² = (1/2)² = 1/4. Always true.</p>
+          <p><strong>(b)</strong> Fraction as KE = 1 − 1/4 = <strong>3/4 (75%)</strong>. KE = 1.20 J.</p>
+        </details>
+      </div>
+
+      <div class="concept-block">
+        <h4>Problem 5 — Mass Added at Endpoint</h4>
+        <p>A 1.0 kg mass oscillates on a spring (k = 40 N/m) with amplitude 0.15 m. At the moment the mass reaches its maximum displacement, a 1.0 kg lump of clay is dropped onto it and sticks. (a) What is the new amplitude? (b) What is the new period? (c) What is the new maximum speed?</p>
+        <details class="answer-toggle">
+          <summary>Show solution</summary>
+          <p><strong>At the endpoint</strong>, v = 0, so the clay lands on a stationary mass — no momentum change, spring is still stretched 0.15 m.</p>
+          <p><strong>(a)</strong> The spring is still compressed by 0.15 m and both masses are at rest. The new amplitude is <strong>0.15 m</strong> (unchanged — the spring's stored PE is unchanged).</p>
+          <p><strong>(b)</strong> New mass = 2.0 kg. T' = 2π√(m'/k) = 2π√(2.0/40) = 2π√(0.05) ≈ <strong>1.40 s</strong>. Old T = 2π√(1.0/40) ≈ 0.99 s. Period increased by √2.</p>
+          <p><strong>(c)</strong> v_max = A√(k/m') = 0.15√(40/2.0) = 0.15 × √20 ≈ <strong>0.67 m/s</strong>. (Old v_max was 0.15√40 ≈ 0.95 m/s — slower now because more mass.)</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── 6. ANNOTATED FRQ ── -->
+    <div class="study-section">
+      <h3>Annotated FRQ Example</h3>
+
+      <div class="concept-block">
+        <h4>Question Setup</h4>
+        <p>A 0.4 kg block is attached to a horizontal spring (k = 100 N/m) on a frictionless surface. The block is pulled 0.12 m from equilibrium and released from rest. A motion detector records its position over time.</p>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (a) — Calculate the period and frequency of oscillation</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct formula stated: T = 2π√(m/k)</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct substitution and answer: T = 2π√(0.4/100) = 2π(0.0632) ≈ 0.397 s. Frequency f = 1/T ≈ 2.52 Hz.</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (b) — Find the maximum speed of the block</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct energy conservation equation: ½kA² = ½mv_max² (or v_max = A√(k/m)).</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Correct answer: v_max = 0.12√(100/0.4) = 0.12 × 15.8 ≈ 1.90 m/s.</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (c) — At what position(s) is the block's speed equal to half its maximum speed?</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Energy conservation set up correctly: ½kA² = ½mv² + ½kx², with v = v_max/2.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Solving: ½kx² = ½kA² − ½m(v_max/2)² = ½kA² − ⅛mv_max² = ½kA²(1 − ¼) = (3/4)·½kA² → x² = (3/4)A² → x = ±(√3/2)A ≈ ±0.104 m. Two positions stated.</p>
+        </div>
+      </div>
+
+      <div class="concept-block">
+        <h4>Part (d) — The amplitude is now doubled. Describe what happens to the period and maximum speed.</h4>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Period is unchanged — T = 2π√(m/k) has no amplitude. Explicit statement required.</p>
+        </div>
+        <div class="score-point">
+          <span class="score-tag">1 pt</span>
+          <p>Maximum speed doubles — v_max = Aω, and A doubles while ω is unchanged. Justification citing v_max ∝ A earns the point.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 7. 5-POINT FRQ STRATEGY ── -->
+    <div class="study-section">
+      <h3>5-Point FRQ Strategy</h3>
+
+      <div class="tip-box">
+        <strong>Free-response approach</strong>
+        AP FRQs award partial credit generously. Write the correct formula first,
+        substitute values second, solve third. A correct formula with an arithmetic
+        mistake still earns most of the points.
+      </div>
+
+      <div class="concept-block">
+        <h4>What earns full marks</h4>
+        <ul>
+          <li>State which formula you're using and why (e.g., "Using energy conservation because acceleration is not constant in SHM")</li>
+          <li>Show the general equation before substituting numbers</li>
+          <li>For proportional reasoning: write the ratio explicitly (T'/T = √(m'/m)), don't just state the answer</li>
+          <li>When asked about amplitude's effect on period: explicitly say "amplitude does not appear in T = 2π√(m/k), so the period is unchanged"</li>
+          <li>Include units in every numerical answer</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="../../../js/include-footer.js" defer></script>
+</body>
+</html>
