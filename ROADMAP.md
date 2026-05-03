@@ -5,7 +5,7 @@ AP exam: May 2026.
 
 ## Tier 1 — Highest leverage (build first)
 
-### Completed - 1. Past FRQ archive with annotated rubrics
+### ✅ Completed - 1. Past FRQ archive with annotated rubrics
 College Board publishes every released FRQ + scoring guide. Build a searchable
 archive (filter by unit, year, topic) where each scoring point is called out
 inline with the model solution. This matches exactly how the exam is graded
@@ -14,7 +14,7 @@ and is the highest-ROI feature on this list.
 - UI: list view with unit/year filters → detail view with question, then expandable model answer with `.score-point` callouts (pattern already exists in `studyguide.html`)
 - Storage: one HTML fragment per FRQ, indexed by JSON manifest
 
-### Completed - 2. MCQ bank with timed mode + explanations
+### ✅ Completed - 2. MCQ bank with timed mode + explanations
 50% of the AP score is multiple choice. Need ~200 questions across all 8 units,
 each with a short explanation of *why each wrong answer is wrong* (not just
 which is right).
@@ -56,7 +56,7 @@ units (1, 2, 3, 7).
 Visual showing how energy conservation, Newton's 2nd, and momentum thread
 through 5+ units. Trains flexibility in choosing which principle to apply.
 
-### 8. Completed - Equation derivations
+### ✅ Completed - 8. Equation derivations
 Expandable section under each formula card showing where it comes from.
 Knowing *why* `P + ½ρv² + ρgh = const` exists prevents memorization slips on
 novel scenarios.

@@ -4,6 +4,7 @@
 
 A personal AP Physics 1 prep site covering all 8 units of the 2025–2026 curriculum.
 Built with vanilla HTML, CSS, and JavaScript — no build tools or frameworks.
+Includes interactive simulations powered by Matter.js and Canvas.
 
 ## What's here
 
@@ -15,16 +16,13 @@ Built with vanilla HTML, CSS, and JavaScript — no build tools or frameworks.
 
 ## Units
 
-| # | Topic | Status |
-|---|---|---|
-| 1 | Kinematics | Cheatsheet + Study Guide |
-| 2 | Force & Translational Dynamics | In progress |
-| 3 | Work, Energy & Power | In progress |
-| 4 | Linear Momentum | In progress |
-| 5 | Torque & Rotational Motion | In progress |
-| 6 | Energy & Momentum of Rotating Systems | In progress |
-| 7 | Oscillations | In progress |
-| 8 | Fluid Dynamics (NEW 2025) | Complete — Cheatsheet, Study Guide, 6 simulations |
+- Unit 1 — Kinematics ✅ complete
+- Unit 2 — Force and Translational Dynamics ✅ complete
+- Unit 3 — Work, Energy, Power ✅ complete
+- Unit 4 — Linear Momentum ✅ complete
+- Units 5–6 — Torque, Rotation, Angular Momentum ✅ complete
+- Unit 7 — Oscillations ✅ complete
+- Unit 8 — Fluids ✅ complete
 
 ## Running locally
 
